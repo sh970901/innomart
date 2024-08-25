@@ -276,7 +276,7 @@ body {
     /*background-image: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);*/
     background-image: linear-gradient(-45deg, #1859FF 0%, var(--secondary-color) 100%);
     transition: 1s ease-in-out;
-    z-index: 6;
+    z-index: 2000;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-bottom-right-radius: max(50vw, 50vh);
     border-top-left-radius: max(50vw, 50vh);
@@ -406,7 +406,7 @@ body {
 /*신규 추가*/
 .login-title {
     font-family: 'Pretendard-Regular' !important;
-    font-size: 100px;
+    font-size: 90px;
     font-weight: 700;
     padding-right: 200px;
     /*color: #9BFF6C;*/

@@ -41,13 +41,15 @@
 <div class="floating-image" style="top: 15%; left: 60%; animation-delay: 18s;"></div>
 <main class="container">
 
-    <div class=banner>
+    <div class=main-banner>
         <img src="/images/character/banner.png" alt="배너이미지" class="banner-img">
     </div>
     <div class="section-main main-home">
         <div class="item-list" id="item-list">
             <div class="item" th:each="item : ${itemList}">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg" class="d-block w-100" alt="Exotic Fruits"/>
+                <div>
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg" class="d-block w-100" alt="Exotic Fruits"/>
+                </div>
                 <!--todo 전시상품, 모달 상품명 길어질 경우 텍스트 크기 줄이거나 , 말줄임 처리 필요-->
 
                 <div class="item-name" th:text="${item.itemName}"></div>

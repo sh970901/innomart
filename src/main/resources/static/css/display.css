@@ -351,14 +351,13 @@ section h2 {
     background-color: #ffc107; /* 버튼 호버 시 색상 변경 */
 }
 
-.banner {
+.main-banner {
     margin-top: 14%;
     display: flex; /* Flexbox 컨테이너로 설정 */
     justify-content: center; /* 수평 방향으로 가운데 정렬 */
     max-width: 100%;
-    padding-left : 20px;
-    padding-right: 20px;
     /* 컨테이너의 높이를 화면 전체 높이로 설정 */
+    border: 3px solid cornflowerblue;
 }
 .banner-img {
     width: 100%;
