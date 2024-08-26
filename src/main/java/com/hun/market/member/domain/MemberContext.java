@@ -14,10 +14,11 @@ public class MemberContext extends User {
     private String mbName;
     private String mbPassword;
     private int mbCoin;
-    private final List<GrantedAuthority> authorities = new ArrayList<>();
+    private List<GrantedAuthority> authorities = new ArrayList<>();
 
     public MemberContext(Member member, List<GrantedAuthority> authorities) {
         super(member.getMbName(), member.getMbPassword(), authorities);
+        this.authorities = authorities;
         this.mbCoin = member.getMbCoin();
         this.mbName = member.getMbName();
         this.memberId = member.getId();

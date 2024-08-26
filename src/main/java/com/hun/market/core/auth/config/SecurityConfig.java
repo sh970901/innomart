@@ -27,7 +27,9 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+//                        .requestMatchers("/backoffice/**").hasRole("ADMIN")
                         .requestMatchers("/resource/**", "/", "/main", "/login","/images/**", "/css/**", "/js/**", "/common/**", "/api/v1/items/**", "/api/v1/m/send-password-email").permitAll()
+//                        .requestMatchers("/backoffice/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
 //                        .anyRequest().permitAll())
 //                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())

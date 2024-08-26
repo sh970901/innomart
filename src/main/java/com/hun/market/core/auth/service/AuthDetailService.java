@@ -30,7 +30,7 @@ public class AuthDetailService implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         // 임시 계정 생성
-        if ("admin".equals(member.getMbName())) {
+        if ("admin".equals(member.getMbName()) || "jo_minju01".equalsIgnoreCase(member.getMbName())) {
             authorities.add(new SimpleGrantedAuthority(MemberRole.ADMIN.getValue()));
         } else {
             authorities.add(new SimpleGrantedAuthority(MemberRole.USER.getValue()));
