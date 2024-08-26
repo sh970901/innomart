@@ -610,3 +610,18 @@ footer {
 .cart-purchase-btn {
     width: 10% !important;
 }
+
+.fixed-image {
+    position: fixed;
+    bottom: 100px;
+    right: 200px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.fixed-image img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
