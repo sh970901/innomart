@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>이커머스 메인 페이지</title>
-<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/display.css}">-->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>이커머스 메인 페이지</title>
+  <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/display.css}">-->
+  <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
-<!--    스윗알럿-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/common/js/common.js"></script>
+  <!--    스윗알럿-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/common/js/common.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-    <style>
-        /* 캔버스 스타일 */
-        #physicsCanvas {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%; /* 캔버스의 높이를 조정합니다. */
-            background: #f0f0f0;
-            z-index: 1000;
-        }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <style>
+    /* 캔버스 스타일 */
+    #physicsCanvas {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; /* 캔버스의 높이를 조정합니다. */
+      background: #f0f0f0;
+      z-index: 1000;
+    }
 
-        #loginRightArea,
-        #loginLeftArea{
-           z-index: 2000;
-        }
-    </style>
+    #loginRightArea,
+    #loginLeftArea {
+      z-index: 2000;
+    }
+  </style>
 
 </head>
 <body>
@@ -40,276 +40,391 @@
 </header>
 
 <main>
-    <div id="container" class="container-fluid">
-        <!-- FORM SECTION -->
-        <div class="row">
-            <!-- SIGN UP -->
-            <div class="col align-items-center flex-col sign-up">
-                <div class="form-wrapper align-items-center">
-                    <div class="form sign-up">
-                        <div class="input-group">
-                            <i class='bx bxs-user'></i>
-                            <input type="text" placeholder="Username">
-                        </div>
-                        <div class="input-group">
-                            <i class='bx bx-mail-send'></i>
-                            <input type="email" placeholder="Email">
-                        </div>
-                        <div class="input-group">
-                            <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Password">
-                        </div>
-                        <div class="input-group">
-                            <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Confirm password">
-                        </div>
-                        <button>
-                            Sign up
-                        </button>
-                        <p>
+  <div id="container" class="container-fluid">
+    <!-- FORM SECTION -->
+    <div class="row">
+      <!-- SIGN UP -->
+      <div class="col align-items-center flex-col sign-up">
+        <div class="form-wrapper align-items-center">
+          <div class="form sign-up">
+            <div class="input-group">
+              <i class='bx bxs-user'></i>
+              <input type="text" placeholder="Username">
+            </div>
+            <div class="input-group">
+              <i class='bx bx-mail-send'></i>
+              <input type="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="password" placeholder="Password">
+            </div>
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="password" placeholder="Confirm password">
+            </div>
+            <button>
+              Sign up
+            </button>
+            <p>
               <span>
                 Already have an account?
               </span>
-                            <b onclick="toggle()" class="pointer">
-                                Sign in here
-                            </b>
-                        </p>
-                    </div>
-                </div>
+              <b onclick="toggle()" class="pointer">
+                Sign in here
+              </b>
+            </p>
+          </div>
+        </div>
 
-            </div>
-            <!-- END SIGN UP -->
-            <!-- SIGN IN -->
-            <div class="col align-items-center flex-col sign-in" >
-                <div class="form-wrapper align-items-center" id="loginLeftArea">
-                    <div class="form sign-in">
-                        <form th:action="@{/login}" method="post">
-                            <div class="input-group">
-                                <i class='bx bxs-user'></i>
-                                <input type="text" name="mbName" id="mbName" placeholder="사번">
-                            </div>
-                            <div class="input-group">
-                                <i class='bx bxs-lock-alt'></i>
-                                <input type="password" name="mbPassword" id="mbPassword" placeholder="비밀번호">
-                            </div>
-                            <button type="submit" class="login-title">
-                                Sign in
-                            </button>
-                            <div th:if="${param.error}">
-                                <div class="alert alert-danger">
-                                    올바르지 않은 정보입니다.
-                                </div>
-                            </div>
-                        </form>
-                        <p>
-                            <b>
-                                <a class="" style="text-decoration: none" data-bs-toggle="modal" data-bs-target="#passwordModal">Forgot password?</a>
-                            </b>
-                        </p>
-                        <p>
+      </div>
+      <!-- END SIGN UP -->
+      <!-- SIGN IN -->
+      <div class="col align-items-center flex-col sign-in">
+        <div class="form-wrapper align-items-center" id="loginLeftArea">
+          <div class="form sign-in">
+            <form th:action="@{/login}" method="post">
+              <div class="input-group">
+                <i class='bx bxs-user'></i>
+                <input type="text" name="mbName" id="mbName" placeholder="사번">
+              </div>
+              <div class="input-group">
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" name="mbPassword" id="mbPassword" placeholder="비밀번호">
+              </div>
+              <button type="submit" class="login-title">
+                Sign in
+              </button>
+              <div th:if="${param.error}">
+                <div class="alert alert-danger">
+                  올바르지 않은 정보입니다.
+                </div>
+              </div>
+            </form>
+            <p>
+              <b>
+                <a class="" style="text-decoration: none" data-bs-toggle="modal" data-bs-target="#passwordModal">Forgot password?</a>
+              </b>
+            </p>
+            <p>
               <span>
                 Don't have an account?
               </span>
-                            <b onclick="toggle()" class="pointer">
-                                Sign up here
-                            </b>
-                        </p>
-                    </div>
-                </div>
-                <div class="form-wrapper">
-
-                </div>
-            </div>
-            <!-- END SIGN IN -->
-            <!-- 물리 엔진을 위한 캔버스 -->
-            <div id="physicsCanvas">
-
-            </div>
+              <b onclick="toggle()" class="pointer">
+                Sign up here
+              </b>
+            </p>
+          </div>
         </div>
-        <!-- END FORM SECTION -->
-        <!-- CONTENT SECTION -->
-        <div class="row content-row" id="loginRightArea">
-            <!-- SIGN IN CONTENT -->
-            <div class="col align-items-center flex-col">
-                <div class="text sign-in">
-                    <div class="login-title">
-                        INNOMARKET
-                    </div>
+        <div class="form-wrapper">
 
-                </div>
-                <div class="img sign-in">
-
-                </div>
-            </div>
-            <!-- END SIGN IN CONTENT -->
-            <!-- SIGN UP CONTENT -->
-            <div class="col align-items-center flex-col">
-                <div class="img sign-up">
-
-                </div>
-                <div class="text sign-up">
-                    <h2>
-                        Join with us
-                    </h2>
-
-                </div>
-            </div>
-            <!-- END SIGN UP CONTENT -->
         </div>
-        <!-- END CONTENT SECTION -->
+      </div>
+      <!-- END SIGN IN -->
+      <!-- 물리 엔진을 위한 캔버스 -->
+      <div id="physicsCanvas">
+
+      </div>
     </div>
+    <!-- END FORM SECTION -->
+    <!-- CONTENT SECTION -->
+    <div class="row content-row" id="loginRightArea">
+      <!-- SIGN IN CONTENT -->
+      <div class="col align-items-center flex-col">
+        <div class="text sign-in">
+          <div class="login-title">
+            INNOMARKET
+          </div>
+
+        </div>
+        <div class="img sign-in">
+
+        </div>
+      </div>
+      <!-- END SIGN IN CONTENT -->
+      <!-- SIGN UP CONTENT -->
+      <div class="col align-items-center flex-col">
+        <div class="img sign-up">
+
+        </div>
+        <div class="text sign-up">
+          <h2>
+            Join with us
+          </h2>
+
+        </div>
+      </div>
+      <!-- END SIGN UP CONTENT -->
+    </div>
+    <!-- END CONTENT SECTION -->
+  </div>
 
 </main>
 
 <!-- Modal HTML -->
 <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="passwordModalLabel">비밀번호 찾기</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                등록된 계정으로 임시 비밀번호를 발급합니다.<br/>
-                로그인 후 내정보에서 비밀번호를 변경해주세요.<br/>
-                메일 발송이 최대 3분 소요될 수 있습니다.
-                <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">이메일 주소</label>
-                    <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" required>
-                    <span id="emailError" class="text-danger"></span>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                <button type="button" class="btn btn-primary" th:onclick="callMessageApi()">발송</button>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="passwordModalLabel">비밀번호 찾기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        등록된 계정으로 임시 비밀번호를 발급합니다.<br/>
+        로그인 후 내정보에서 비밀번호를 변경해주세요.<br/>
+        메일 발송이 최대 3분 소요될 수 있습니다.
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">이메일 주소</label>
+          <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" required>
+          <span id="emailError" class="text-danger"></span>
         </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary" th:onclick="callMessageApi()">발송</button>
+      </div>
     </div>
+  </div>
 </div>
 
 
 <footer th:insert="~{fragments/footer :: footerFragment}"></footer>
 </body>
 <script>
-    let container = document.getElementById('container')
+  let container = document.getElementById('container')
 
-    toggle = () => {
-        container.classList.toggle('sign-in')
-        container.classList.toggle('sign-up')
+  toggle = () => {
+    container.classList.toggle('sign-in')
+    container.classList.toggle('sign-up')
+  }
+
+  setTimeout(() => {
+    container.classList.add('sign-in')
+  }, 200)
+
+  async function callMessageApi() {
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+
+    if (!emailInput.checkValidity()) {
+      emailError.textContent = '유효한 이메일 주소를 입력하세요.';
+      return;
     }
 
-    setTimeout(() => {
-        container.classList.add('sign-in')
-    }, 200)
+    emailError.textContent = '';
 
-    async function callMessageApi() {
-        const emailInput = document.getElementById('email');
-        const emailError = document.getElementById('emailError');
+    const email = emailInput.value;
 
-        if (!emailInput.checkValidity()) {
-            emailError.textContent = '유효한 이메일 주소를 입력하세요.';
-            return;
-        }
-
-        emailError.textContent = '';
-
-        const email = emailInput.value;
-
-        const response = await fetch('/api/v1/m/send-password-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(email)
-        });
-
-        const result = await response.json();
-
-        if (response.ok || result.resultCode === 200) {
-            // alert(result.data.description);
-            successAlert("메일이 발송되었습니다.")
-        } else {
-            warnAlert("존재하지 않는 사원입니다. 관리자에게 문의 부탁드립니다.")
-            emailError.textContent = result.data.description || '임시 비밀번호 발송에 실패했습니다.';
-        }
-    }
-
-    /*로그인 폼, 타이틀 같은 div요소에 넣기 실패, z-index로 적절히 조절*/
-
-    const { Engine, Render, World, Bodies, Mouse, MouseConstraint, Composite, Body, Events } = Matter;
-
-
-    const engine = Engine.create();
-    const render = Render.create({
-        element: document.getElementById('physicsCanvas'),
-        engine: engine,
-        options: {
-            width: document.getElementById('physicsCanvas').offsetWidth,
-            height: document.getElementById('physicsCanvas').offsetHeight,
-            wireframes: false
-        }
+    const response = await fetch('/api/v1/m/send-password-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(email)
     });
 
-    // 물체 추가
-    const box = Bodies.rectangle(400, 200, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box1 = Bodies.rectangle(800, 50, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box2 = Bodies.rectangle(1212, 400, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box3 = Bodies.rectangle(1300, 200, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box4 = Bodies.rectangle(1423, 300, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box5 = Bodies.rectangle(1511, 700, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box6 = Bodies.rectangle(1612, 200, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box7 = Bodies.rectangle(1700, 150, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box8 = Bodies.rectangle(1200, 192, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
-    const box9 = Bodies.rectangle(1900, 1728, 80, 80, { restitution: 0.8, friction: 0.1, frictionAir: 0.01 });
+    const result = await response.json();
 
+    if (response.ok || result.resultCode === 200) {
+      // alert(result.data.description);
+      successAlert("메일이 발송되었습니다.")
+    } else {
+      warnAlert("존재하지 않는 사원입니다. 관리자에게 문의 부탁드립니다.")
+      emailError.textContent = result.data.description || '임시 비밀번호 발송에 실패했습니다.';
+    }
+  }
 
-    // 좌우 벽 생성
-    const wallThickness = 60; // 벽 두께
-    const leftWall = Bodies.rectangle(wallThickness / 2, render.options.height / 2, wallThickness, render.options.height, { isStatic: true });
-    const rightWall = Bodies.rectangle(render.options.width - wallThickness / 2, render.options.height / 2, wallThickness, render.options.height, { isStatic: true });
-    const ground = Bodies.rectangle(render.options.width / 2, render.options.height - 30, render.options.width, 60, { isStatic: true });
-    const ceiling = Bodies.rectangle(render.options.width / 2, 30, render.options.width, 60, { isStatic: true });
+  /*로그인 폼, 타이틀 같은 div요소에 넣기 실패, z-index로 적절히 조절*/
 
-    // 월드에 물체 추가
-    World.add(engine.world, [box, box1, box2, box3, box4, box5, box6, box7, box8, box9, leftWall, rightWall, ground, ceiling]);
+  const {Engine, Render, World, Bodies, Mouse, MouseConstraint, Composite, Body, Events} = Matter;
 
-     // 마우스 클릭 이벤트
-    const mouse = Mouse.create(render.canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-        mouse: mouse,
-        constraint: {
-            stiffness: 0.8, // 물체 움직이는 정도(숫자 낮으면 날라다님)
+  // 엔진 및 렌더러 생성
+  const engine = Engine.create();
+  const render = Render.create({
+    element: document.getElementById('physicsCanvas'),
+    engine: engine,
+    options: {
+      width: document.getElementById('physicsCanvas').offsetWidth,
+      height: document.getElementById('physicsCanvas').offsetHeight,
+      wireframes: false,
+      // background: '#f0f0f0' // 배경색 설정
+    }
+  });
+
+  // 물체를 생성할 배열
+  const shapes = [];
+
+  // 색상 배열 (채도가 낮은 색상)
+  const colors = [
+      '#D32F2F', // 진한 빨강
+      '#8E24AA', // 진한 보라
+      '#1976D2', // 진한 파랑
+      '#D81B60', // 진한 분홍
+      '#388E3C', // 진한 녹색
+      '#FBC02D', // 진한 노랑
+      '#F57C00', // 진한 주황
+      '#E64A19'  // 진한 연한 주황
+  ];
+
+  // 랜덤 색상 생성 함수
+  const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+
+  // 다양한 모양의 물체 생성
+  for (let i = 0; i < 130; i++) {
+    let shape;
+    const shapeType = Math.random(); // 랜덤으로 모양 선택
+    const color = getRandomColor(); // 랜덤 색상 선택
+
+    if (shapeType < 0.2) {
+      // 사각형
+      shape = Bodies.rectangle(
+          Math.random() * render.options.width,
+          Math.random() * render.options.height,
+          80, // 너비
+          80, // 높이
+          {
+            restitution: 0.8,
+            friction: 0.1,
+            frictionAir: 0.01,
             render: {
-                visible: false
+              fillStyle: color
             }
-        },
-        collisionFilter: {
-            group: -1 // 모든 물체 충돌 비활성화
-        }
+          }
+      );
+    } else if (shapeType < 0.4) {
+      // 원형
+      shape = Bodies.circle(
+          Math.random() * render.options.width,
+          Math.random() * render.options.height,
+          40, // 반지름
+          {
+            restitution: 0.8,
+            friction: 0.1,
+            frictionAir: 0.01,
+            render: {
+              fillStyle: color
+            }
+          }
+      );
+    } else if (shapeType < 0.6) {
+      // 삼각형
+      shape = Bodies.polygon(
+          Math.random() * render.options.width,
+          Math.random() * render.options.height,
+          7, // 변의 수
+          40, // 반지름
+          {
+            restitution: 0.8,
+            friction: 0.1,
+            frictionAir: 0.01,
+            render: {
+              fillStyle: color
+            }
+          }
+      );
+    } else if (shapeType < 0.8) {
+      // 오각형
+      shape = Bodies.polygon(
+          Math.random() * render.options.width,
+          Math.random() * render.options.height,
+          5, // 변의 수
+          40, // 반지름
+          {
+            restitution: 0.8,
+            friction: 0.1,
+            frictionAir: 0.01,
+            render: {
+              fillStyle: color
+            }
+          }
+      );
+    } else {
+      // 별 모양 (10개 정점)
+      shape = Bodies.polygon(
+          Math.random() * render.options.width,
+          Math.random() * render.options.height,
+          10, // 변의 수
+          40, // 반지름
+          {
+            angle: Math.PI / 2, // 별 모양의 각도 조정
+            render: {
+              fillStyle: color
+            }
+          }
+      );
+    }
+
+    shapes.push(shape);
+  }
+
+  // 벽 생성
+  const wallThickness = 60;
+  const wallColor = '#ffffff'; // 벽 색상 (흰색)
+
+  const leftWall = Bodies.rectangle(wallThickness / 2, render.options.height / 2, wallThickness, render.options.height, {
+    isStatic: true,
+    render: {
+      fillStyle: wallColor
+    }
+  });
+  const rightWall = Bodies.rectangle(render.options.width - wallThickness / 2, render.options.height / 2, wallThickness, render.options.height, {
+    isStatic: true,
+    render: {
+      fillStyle: wallColor
+    }
+  });
+  const ground = Bodies.rectangle(render.options.width / 2, render.options.height - 30, render.options.width, 60, {
+    isStatic: true,
+    render: {
+      fillStyle: wallColor
+    }
+  });
+  const ceiling = Bodies.rectangle(render.options.width / 2, 30, render.options.width, 60, {
+    isStatic: true,
+    render: {
+      fillStyle: wallColor
+    }
+  });
+
+  // 월드에 물체 추가
+  World.add(engine.world, [...shapes, leftWall, rightWall, ground, ceiling]);
+
+  // 마우스 클릭 이벤트
+  const mouse = Mouse.create(render.canvas);
+  const mouseConstraint = MouseConstraint.create(engine, {
+    mouse: mouse,
+    constraint: {
+      stiffness: 0.8,
+      render: {
+        visible: false
+      }
+    },
+    collisionFilter: {
+      group: -1
+    }
+  });
+  World.add(engine.world, mouseConstraint);
+
+  // 벽 막기
+  Events.on(engine, 'beforeUpdate', function () {
+    const bodies = Composite.allBodies(engine.world);
+    bodies.forEach(body => {
+      if (body.position.x < wallThickness / 2) {
+        Body.setPosition(body, {x: wallThickness / 2, y: body.position.y});
+      } else if (body.position.x > render.options.width - wallThickness / 2) {
+        Body.setPosition(body, {x: render.options.width - wallThickness / 2, y: body.position.y});
+      }
+      if (body.position.y < 30) {
+        Body.setPosition(body, {x: body.position.x, y: 30});
+      } else if (body.position.y > render.options.height - 30) {
+        Body.setPosition(body, {x: body.position.x, y: render.options.height - 30});
+      }
     });
-    World.add(engine.world, mouseConstraint);
+  });
 
-    // 벽 막기
-    Events.on(engine, 'beforeUpdate', function() {
-        const bodies = Composite.allBodies(engine.world);
-        bodies.forEach(body => {
-            if (body.position.x < wallThickness / 2) {
-                Body.setPosition(body, { x: wallThickness / 2, y: body.position.y });
-            } else if (body.position.x > render.options.width - wallThickness / 2) {
-                Body.setPosition(body, { x: render.options.width - wallThickness / 2, y: body.position.y });
-            }
-            if (body.position.y < 30) {
-                Body.setPosition(body, { x: body.position.x, y: 30 });
-            } else if (body.position.y > render.options.height - 30) {
-                Body.setPosition(body, { x: body.position.x, y: render.options.height - 30 });
-            }
-        });
-    });
-
-
-    Engine.run(engine);
-    Render.run(render);
+  Engine.run(engine);
+  Render.run(render);
 
 
 </script>
