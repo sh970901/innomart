@@ -1,10 +1,12 @@
 package com.hun.market.backoffice.controller;
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.hun.market.backoffice.dto.CoinProvideRequestDto;
 import com.hun.market.backoffice.dto.ItemModifyDto;
 import com.hun.market.backoffice.enums.ExcelUploadType;
 import com.hun.market.backoffice.service.ExcelService;
 import com.hun.market.backoffice.service.ImageService;
+import com.hun.market.backoffice.service.S3UploadService;
 import com.hun.market.item.dto.ItemDto;
 import com.hun.market.item.service.ItemService;
 import com.hun.market.member.dto.MemberDto;
@@ -12,6 +14,10 @@ import com.hun.market.member.service.MemberService;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +40,7 @@ public class BackOfficeApiController {
     private final ImageService imageService;
     private final ItemService itemService;
     private final MemberService memberService;
+    private final S3UploadService s3UploadService;
 
     // TODO 폼 제출할떄 요청URL 바꾸기 ㅜ
     @PostMapping("/upload/employees")
@@ -90,8 +97,14 @@ public class BackOfficeApiController {
         return itemService.getAllItems();
     }
 
-
-
-
+    /**
+     * S3 TEST
+     * @param multipartFile
+     * @throws IOException
+     */
+    @PostMapping("/s3/upload")
+    public void s3Upload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+        s3UploadService.saveFile(multipartFile);
+    }
 
 }
