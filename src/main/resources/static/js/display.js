@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(document.querySelector('.item-list .item:last-child'));
 });
 
+document.getElementById('scrollToTop').addEventListener('click', function() {
+    window.scrollTo({
+        top: 100,
+        behavior: 'smooth'
+    });
+});
+
 function fetchMoreItems() {
     currentPage += 1;  // 페이지 값을 증가시킴
     const url = `/api/v1/i/items?page=${currentPage}&size=${size}`;
