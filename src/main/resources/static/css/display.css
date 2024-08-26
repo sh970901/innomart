@@ -611,6 +611,13 @@ footer {
     width: 10% !important;
 }
 
+.my-info-password-change {
+    padding: 10px 20px; /* 버튼의 내부 여백 */
+    min-width: 100px; /* 버튼의 최소 너비 */
+    height: auto; /* 버튼의 높이 자동 조정 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
 .fixed-image {
     position: fixed;
     bottom: 100px;
