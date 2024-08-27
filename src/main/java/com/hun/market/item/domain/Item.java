@@ -94,6 +94,10 @@ public class Item extends BaseEntity {
         this.description = itemModifyDto.getDescription();
     }
 
+    public void setImagePath(String path) {
+        this.imagePath = path;
+    }
+
     public void decreaseStock(int quantity) {
         if ( quantity < 1){
             throw new ItemStockException("상품 처리 중 오류가 발생했습니다.");

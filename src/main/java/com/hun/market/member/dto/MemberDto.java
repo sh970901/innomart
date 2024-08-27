@@ -144,7 +144,7 @@ public class MemberDto {
                                .mbName(excelUploadDto.getEmployeeName())
                                .mbEmail(excelUploadDto.getEmail())
                                .mbPassword(excelUploadDto.getEmployeeName())
-                               .mbCoin(excelUploadDto.getCoin())
+                               .mbCoin(excelUploadDto.getCoin().intValue())
                                .department(Department.builder().departmentName(excelUploadDto.getDepartmentName()).teamName(excelUploadDto.getTeamName()).build())
                                .build();
     }

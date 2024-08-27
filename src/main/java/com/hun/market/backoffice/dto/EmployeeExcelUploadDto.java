@@ -17,7 +17,7 @@ public class EmployeeExcelUploadDto {
 
     private String teamName;
 
-    private int coin;
+    private Long coin;
 
     @Override public String toString() {
         return "EmployeeExcelUploadDto{" +

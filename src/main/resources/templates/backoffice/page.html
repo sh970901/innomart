@@ -328,7 +328,7 @@
     </nav>
     <header class="header">
         <div class="user-info">
-            <span>업무지원 시스템</span>
+            <span>조민주 업무지원 시스템</span>
         </div>
     </header>
     <main class="content" id="content">
@@ -626,13 +626,13 @@
             content.innerHTML = `
 
             <div style="display: flex; align-items: center;">
-
-            <form id="uploadForm" action="/backoffice/upload/excel" method="POST" enctype="multipart/form-data" style="flex: 1;">
-                <input type="file" name="excel">
-                <input type="submit" value="업로드" class="upload-btn">
+            <form action="/backoffice/upload/employees" method="POST" enctype="multipart/form-data" style="flex: 1;">
+                <input type="file" name="employees">
+                <input type="submit" value="사원일괄등록 업로드" class="upload-btn">
             </form>
-             <button class="grant-coins-btn" onclick="openGrantCoinsPopup()">코인 일괄 지급</button>
+            <button class="grant-coins-btn" onclick="openGrantCoinsPopup()">코인 일괄 지급</button>
             </div>
+
 
 
 
@@ -665,7 +665,7 @@
 
             <form id="uploadForm" action="/backoffice/upload/items" method="POST" enctype="multipart/form-data" style="flex: 1;">
                 <input type="file" name="items">
-                <input type="submit" value="업로드" class="upload-btn">
+                <input type="submit" value="상품일괄등록 업로드" class="upload-btn">
             </form>
             <button class="grant-coins-btn" onclick="openGrantCoinsPopup()">전체상품 제거</button>
             <button class="grant-coins-btn" onclick="openGrantCoinsPopup()">단독상품 등록</button>
@@ -741,13 +741,71 @@
             <td><input class = "item-stock" type="number" value="${item.itemStock}" name="item-stock-${item.itemId}" /></td>
             <td><img src="${item.imagePath}" alt="${item.itemName}"></td>
             <td><input class = "item-desc" type="text" value="${item.description}"  name="item-desc-${item.itemId}"/></td>
-            <td><button class = "table-btn" onclick="openImagePopup(this)">업로드</button></td>
+            <td>
+            <input type="file" class="file-input" style="display: none;" accept="image/*" />
+            <button class="table-btn" onclick="triggerFileInput(this)">업로드</button>
+            </td>
             <td><button class = "table-btn" id="tabledeletebtn" onclick="deleteConfirm('ITEM', ${item.itemId})">${item.itemId}번 삭제</button><button class = "table-btn" id="tablemodifybtn" onclick="modifyItem(${item.itemId})">${item.itemId}번 수정</button></td>
         `;
 
             tbody.appendChild(row);
         });
     }
+
+    // Function to trigger file input click
+
+    // Function to trigger file input click
+    function triggerFileInput(button) {
+        const row = button.closest('tr');
+        const fileInput = row.querySelector('.file-input');
+
+        // Trigger file input click
+        fileInput.click();
+
+        // Handle file upload after file selection
+        fileInput.addEventListener('change', function(event) {
+            handleFileUpload(event);
+        });
+    }
+
+
+    // Function to handle file upload
+
+    // Function to handle file upload
+    function handleFileUpload(event) {
+        const fileInput = event.target;
+        const file = fileInput.files[0];
+        const row = fileInput.closest('tr');
+        const itemId = row.querySelector('td').textContent; // Extract item ID from the first <td>
+
+        if (!file) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('itemId', itemId);
+
+        fetch('/backoffice/s3/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+
+            console.log("result",result);
+            if (result.resultCode === '200') {
+                fetchItemData();
+            } else {
+                alert('이미지 업로드 실패');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('이미지 업로드 중 오류 발생');
+        });
+    }
+
     function validateAlert() {
         Swal.fire({
             icon: 'fail',

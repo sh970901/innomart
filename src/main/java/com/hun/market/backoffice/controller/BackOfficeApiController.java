@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequiredArgsConstructor
@@ -42,10 +43,12 @@ public class BackOfficeApiController {
     private final MemberService memberService;
     private final S3UploadService s3UploadService;
 
-    // TODO 폼 제출할떄 요청URL 바꾸기 ㅜ
+
     @PostMapping("/upload/employees")
-    public void uploadExcel(@RequestParam("employees") MultipartFile file) throws IOException {
+    public RedirectView uploadExcel(@RequestParam("employees") MultipartFile file) throws IOException {
         excelService.uploadExcel(file, ExcelUploadType.EMPLOYEE);
+
+        return new RedirectView("/backoffice/home");
     }
 
     @PostMapping("/upload/image")
@@ -59,14 +62,15 @@ public class BackOfficeApiController {
     }
 
     @PostMapping("/upload/items")
-    public void uploadMultiItems(@RequestParam("items") MultipartFile file) throws IOException {
+    public RedirectView uploadMultiItems(@RequestParam("items") MultipartFile file) throws IOException {
         excelService.uploadExcel(file, ExcelUploadType.ITEM);
+
+        return new RedirectView("/backoffice/home");
     }
 
     @PostMapping("/modify/item")
     public void updateItem(@Valid @RequestBody ItemModifyDto itemModifyDto) {
         itemService.updateItem(itemModifyDto);
-        // TODO 결과 반환은  api 재 호출로(화면단)
     }
 
     // 코인 지급은 단독, 일괄 관련 없음(리스트로 받음)
@@ -103,8 +107,8 @@ public class BackOfficeApiController {
      * @throws IOException
      */
     @PostMapping("/s3/upload")
-    public void s3Upload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
-        s3UploadService.saveFile(multipartFile);
+    public void s3Upload(@RequestParam("file") MultipartFile multipartFile,  @RequestParam("itemId") Long itemId) throws IOException {
+        s3UploadService.saveFile(multipartFile, itemId);
     }
 
 }

@@ -2,7 +2,10 @@ package com.hun.market.backoffice.service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.hun.market.item.domain.Item;
+import com.hun.market.item.repository.ItemRepository;
 import java.io.IOException;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.UrlResource;
@@ -20,7 +23,9 @@ public class S3UploadService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
-    public String saveFile(MultipartFile multipartFile) throws IOException {
+    private final ItemRepository itemRepository;
+
+    public void saveFile(MultipartFile multipartFile, Long ItemId) throws IOException {
         String originalFilename = multipartFile.getOriginalFilename();
 
         ObjectMetadata metadata = new ObjectMetadata();
@@ -28,8 +33,14 @@ public class S3UploadService {
         metadata.setContentType(multipartFile.getContentType());
 
         amazonS3.putObject(bucket, originalFilename, multipartFile.getInputStream(), metadata);
-        System.out.println("업로드 된 경로 확인 ㄱㄱ :" + amazonS3.getUrl(bucket, originalFilename).toString());
-        return amazonS3.getUrl(bucket, originalFilename).toString();
+
+        Optional<Item> selectItem = itemRepository.findById(ItemId);
+
+        selectItem.ifPresent(item -> {
+            item.setImagePath(amazonS3.getUrl(bucket, originalFilename).toString());
+            itemRepository.save(item); // 변경된 아이템을 저장
+        });
+
     }
 
     public void deleteImage(String originalFilename)  {
