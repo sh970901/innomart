@@ -16,7 +16,7 @@ spring:
   security:
     user:
       name: admin
-      password: 1234
+      password: ENC(fz4Clksg8EANe725lIAGFw==)
   thymeleaf:
     prefix : classpath:/templates/
     cache: false
@@ -26,20 +26,20 @@ spring:
     hikari:
       pool-name: Leader
       auto-commit: false
-      jdbc-url: jdbc:postgresql://localhost:5432/mart
-      username: admin
-      password: admin
-      maximum-pool-size: 10
-      minimum-idle: 10
+      jdbc-url: jdbc:postgresql://innog-gitlab-postgresql.cj8my6ge41dn.ap-northeast-2.rds.amazonaws.com:5432/mart
+      username: ENC(AtiadebP+OATBFenS9ucPw==)
+      password: ENC(fz4Clksg8EANe725lIAGFw==)
+      maximum-pool-size: 15
+      minimum-idle: 15
       driver-class-name: org.postgresql.Driver
       follower:
         pool-name: Follower
         driver-class-name: org.postgresql.Driver
-        jdbc-url: jdbc:postgresql://localhost:5432/mart
-        username: admin
-        password: admin
-        minimum-idle: 5
-        maximum-pool-size: 5
+        jdbc-url: jdbc:postgresql://innog-gitlab-postgresql.cj8my6ge41dn.ap-northeast-2.rds.amazonaws.com:5432/mart
+        username: ENC(AtiadebP+OATBFenS9ucPw==)
+        password: ENC(fz4Clksg8EANe725lIAGFw==)
+        minimum-idle: 15
+        maximum-pool-size: 15
 
   jpa:  # DB (none, create, create-drop, update, validate)
     open-in-view: false
@@ -53,14 +53,14 @@ spring:
         order_inserts: true
         order_updates: true
         hbm2ddl:
-          auto: create-drop
+          auto: create
 
 
   cache:
     type: redis
   redis:
     cache:
-      host: 127.0.0.1
+      host: dev-redis.innocommerce.co.kr
       port: 6379
 
 baobab:
