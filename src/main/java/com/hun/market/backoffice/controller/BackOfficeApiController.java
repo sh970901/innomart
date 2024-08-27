@@ -2,6 +2,7 @@ package com.hun.market.backoffice.controller;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.hun.market.backoffice.dto.CoinProvideRequestDto;
+import com.hun.market.backoffice.dto.EmployeeExcelUploadDto;
 import com.hun.market.backoffice.dto.ItemModifyDto;
 import com.hun.market.backoffice.dto.OneItemCreateDto;
 import com.hun.market.backoffice.enums.ExcelUploadType;
@@ -12,6 +13,7 @@ import com.hun.market.item.dto.ItemDto;
 import com.hun.market.item.dto.ItemDto.ItemCreateRequestDto;
 import com.hun.market.item.service.ItemService;
 import com.hun.market.member.dto.MemberDto;
+import com.hun.market.member.dto.MemberDto.MemberRequestDto;
 import com.hun.market.member.service.MemberService;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -100,6 +102,11 @@ public class BackOfficeApiController {
     @PostMapping("/item/one")
     public void createOneItem(@RequestBody ItemCreateRequestDto itemCreateRequestDto) {
         itemService.createOneItem(itemCreateRequestDto);
+    }
+
+    @PostMapping("/employee/one")
+    public void createOneMember(@RequestBody EmployeeExcelUploadDto excelUploadDto) {
+        memberService.createOneMember(excelUploadDto);
     }
 
 

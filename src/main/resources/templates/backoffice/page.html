@@ -316,6 +316,8 @@
 
 
         /* 모달 창 스타일 */
+
+        .employee-modal,
         .item-modal {
             display: none; /* 기본적으로 모달 창은 숨겨져 있습니다 */
             position: fixed;
@@ -445,6 +447,7 @@
                 <input type="submit" value="사원일괄등록 업로드" class="upload-btn">
             </form>
             <button class="grant-coins-btn" onclick="openGrantCoinsPopup()">코인 일괄 지급</button>
+            <button class="grant-coins-btn" onclick="openOneEmployeeModal()">단독 사원 등록</button>
         </div>
 
         <h1>사원관리</h1>
@@ -452,8 +455,8 @@
             <thead>
             <tr>
                 <th>no</th>
-                <th>이메일</th>
                 <th>이름</th>
+                <th>이메일</th>
                 <th>비밀번호</th>
                 <th>부서</th>
                 <th>팀</th>
@@ -613,6 +616,49 @@
     </div>
 </div>
 
+<div id="employeeModal" class="employee-modal" style="display: none;">
+    <div class="modal-content">
+        <div>단독사원 등록</div>
+
+        <form id="employeeForm">
+            <div class="form-row">
+                <label for="email">이메일</label>
+                <input type="text" id="email" name="email" maxlength="100" required>
+            </div>
+
+            <div class="form-row">
+                <label for="employeeName">직원 이름</label>
+                <input type="text" id="employeeName" name="employeeName" maxlength="100" required>
+            </div>
+
+            <div class="form-row">
+                <label for="password">비밀번호</label>
+                <input type="text" id="password" name="password" required>
+            </div>
+
+            <div class="form-row">
+                <label for="departmentName">부서</label>
+                <input type="text" id="departmentName" name="departmentName">
+            </div>
+
+            <div class="form-row">
+                <label for="teamName">팀</label>
+                <input type="text" id="teamName" name="teamName">
+            </div>
+
+            <div class="form-row">
+                <label for="coin">코인</label>
+                <input type="number" id="coin" name="coin" min="0">
+            </div>
+
+            <div class="button-group">
+                <button type="button" onclick="submitEmployeeForm()">등록</button>
+                <button type="button" onclick="closeItemModal()">닫기</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 </body>
 <script>
 
@@ -632,7 +678,6 @@
 
     // 모달 열기
     function openOneItemCreatePopup() {
-        console.log("클릭");
         var modal = document.getElementById('itemModal');
         document.getElementById('itemModal').style.display = 'block';
         modal.style.display = 'flex';
@@ -641,6 +686,42 @@
     // 모달 닫기
     function closeItemModal() {
         document.getElementById('itemModal').style.display = 'none';
+        $('#employeeModal').hide();
+    }
+
+    function submitEmployeeForm() {
+      const email = document.getElementById('email').value;
+      const employeeName = document.getElementById('employeeName').value;
+      const password = document.getElementById('password').value;
+      const departmentName = document.getElementById('departmentName').value;
+      const teamName = document.getElementById('teamName').value;
+      const coin = document.getElementById('coin').value;
+
+      const data = {
+        email: email,
+        employeeName: employeeName,
+        password: password,
+        departmentName: departmentName,
+        teamName: teamName,
+        coin: coin
+      };
+
+      fetch('/backoffice/employee/one', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+        closeItemModal();  // 폼 제출 후 모달 닫기
+        fetchEmployeeData();  // 폼 제출 후 데이터를 새로고침
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
     }
 
     // 폼 제출
@@ -674,6 +755,8 @@
             console.error('Error:', error);
         });
     }
+
+
 
 
 
@@ -799,6 +882,7 @@
                 <input type="submit" value="사원일괄등록 업로드" class="upload-btn">
             </form>
             <button class="grant-coins-btn" onclick="openGrantCoinsPopup()">코인 일괄 지급</button>
+            <button class="grant-coins-btn" onclick="openOneEmployeeModal()">단독 사원 등록</button>
             </div>
 
 
@@ -809,8 +893,8 @@
                 <thead>
                     <tr>
                       <th>no</th>
-                      <th>이메일</th>
                       <th>이름</th>
+                      <th>이메일</th>
                       <th>비밀번호</th>
                       <th>부서</th>
                       <th>팀</th>
@@ -887,6 +971,12 @@
             console.error('실패:', error);
             alert('전체 상품 제거에 실패했습니다.');
         });
+    }
+
+    function openOneEmployeeModal() {
+      $('#employeeModal').show();
+      $('#employeeModal').css('display','flex');
+
     }
 
 

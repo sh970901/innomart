@@ -141,9 +141,9 @@ public class MemberDto {
     public static MemberRequestDto from(EmployeeExcelUploadDto excelUploadDto) {
 
         return MemberRequestDto.builder()
-                               .mbName(excelUploadDto.getEmployeeName())
-                               .mbEmail(excelUploadDto.getEmail())
-                               .mbPassword(excelUploadDto.getEmployeeName())
+                               .mbName(excelUploadDto.getEmail())
+                               .mbEmail(excelUploadDto.getEmployeeName())
+                               .mbPassword(excelUploadDto.getPassword())
                                .mbCoin(excelUploadDto.getCoin().intValue())
                                .department(Department.builder().departmentName(excelUploadDto.getDepartmentName()).teamName(excelUploadDto.getTeamName()).build())
                                .build();

@@ -40,7 +40,7 @@
         </div>
         <div class ="right-contents">
             <div class="user-info-wrap">
-                <span class="user-info" th:if="${#authorization.expression('isAuthenticated()')}" th:text="${#authentication.principal.username + '님 반갑습니다.😊'}" style="color: black"></span>
+                <span class="user-info" th:if="${#authorization.expression('isAuthenticated()')}" th:text="${#authentication.principal.mbEmail + '님 반갑습니다.😊'}" style="color: black"></span>
 
                 <div class="user-info" id="mbCoinValue" th:if="${#authorization.expression('isAuthenticated()')}" th:text="'보유코인 '+|${#authentication.principal.mbCoin}💰|"></div>
             </div>

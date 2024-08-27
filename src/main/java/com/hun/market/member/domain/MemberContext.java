@@ -12,6 +12,7 @@ public class MemberContext extends User {
 
     private Long memberId;
     private String mbName;
+    private String mbEmail;
     private String mbPassword;
     private int mbCoin;
     private List<GrantedAuthority> authorities = new ArrayList<>();
@@ -22,6 +23,7 @@ public class MemberContext extends User {
         this.mbCoin = member.getMbCoin();
         this.mbName = member.getMbName();
         this.memberId = member.getId();
+        this.mbEmail = member.getMbEmail();
         this.mbPassword = member.getMbPassword();
     }
 

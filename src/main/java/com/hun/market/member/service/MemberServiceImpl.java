@@ -1,6 +1,7 @@
 package com.hun.market.member.service;
 
 import com.hun.market.backoffice.dto.CoinProvideRequestDto;
+import com.hun.market.backoffice.dto.EmployeeExcelUploadDto;
 import com.hun.market.core.util.RandomStringGenerator;
 import com.hun.market.item.exception.ItemNotFoundException;
 import com.hun.market.member.domain.CoinTransHistory;
@@ -195,6 +196,18 @@ public class MemberServiceImpl implements MemberService {
     public void deleteMember(Long memberId) {
         memberRepository.findById(memberId)
                         .ifPresent(memberRepository::delete);
+    }
+
+    @Transactional
+    @Override public void createOneMember(EmployeeExcelUploadDto excelUploadDto) {
+        Member member = Member.from(MemberDto.from(excelUploadDto));
+        member.resetPassword(excelUploadDto.getPassword());
+
+        CoinTransHistory initHistory = CoinTransHistory.registByAdmin(member, excelUploadDto.getCoin().intValue());
+        member.getCoinTransHistories().add(initHistory);
+
+        memberRepository.save(member);
+
     }
 
     @Override
