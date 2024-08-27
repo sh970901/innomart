@@ -1,12 +1,15 @@
 package com.hun.market.item.service;
 
 import com.hun.market.backoffice.dto.ItemModifyDto;
+import com.hun.market.backoffice.dto.OneItemCreateDto;
 import com.hun.market.item.domain.Item;
 import com.hun.market.item.dto.ItemDto;
 import com.hun.market.item.dto.ItemDto.ItemCreatResponseDto;
+import com.hun.market.item.dto.ItemDto.ItemCreateRequestDto;
 import com.hun.market.item.exception.ItemNotFoundException;
 import com.hun.market.item.repository.ItemRepository;
 import com.hun.market.item.service.WrapperItemService.WrapperItemResponseDtos;
+import com.hun.market.member.domain.Member;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -97,5 +100,12 @@ public class ItemServiceImpl implements ItemService {
     @Transactional
     public void deleteAllItem() {
         itemRepository.deleteAll();
+    }
+
+    @Override
+    @Transactional
+    public void createOneItem(ItemCreateRequestDto itemCreateRequestDto) {
+        itemCreateRequestDto.setImagePath("default");
+        itemRepository.save(Item.from(itemCreateRequestDto));
     }
 }

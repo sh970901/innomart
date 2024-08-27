@@ -315,6 +315,111 @@
 
 
 
+        /* 모달 창 스타일 */
+        .item-modal {
+            display: none; /* 기본적으로 모달 창은 숨겨져 있습니다 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 배경을 약간 투명하게 처리 */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 모달 내용 스타일 */
+        .modal-content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+            width: 90%;
+            max-width: 400px; /* 최대 너비 설정 */
+            box-sizing: border-box;
+        }
+
+        /* 폼 요소들 스타일 */
+        .modal-content label {
+            align-items: center;
+            font-weight: bold;
+            align-content: center;
+            margin-bottom: 8px;
+            color: #333;
+            flex: 1;
+        }
+
+        /* 라벨과 인풋을 한 줄에 표시 */
+        .modal-content .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-content input[type="text"],
+        .modal-content input[type="number"] {
+            flex: 2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .modal-content input[type="text"]:focus,
+        .modal-content input[type="number"]:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* 버튼 스타일 */
+        .modal-content .button-group {
+            display: flex;
+            justify-content: center; /* 버튼을 가로로 가운데 정렬 */
+            gap: 10px; /* 버튼 간격 */
+            margin-top: 20px;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal-content button[type="button"]:first-of-type {
+            background-color: black;
+            color: #fff;
+        }
+
+        .modal-content button[type="button"]:last-of-type {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .modal-content button[type="button"]:hover {
+            background-color: grey;
+        }
+
+        .modal-content button[type="button"]:last-of-type:hover {
+            background-color: #5a6268;
+        }
+
+        /* 타이틀 스타일 */
+        .modal-content > div:first-of-type {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+
+
 
     </style>
 </head>
@@ -472,8 +577,47 @@
     </div>
 </div>
 
+
+
+<!-- 모달 창 구조 -->
+<div id="itemModal" class="item-modal" style="display: none;">
+    <div class="modal-content">
+        <div>단독상품 등록</div>
+
+        <form id="itemForm">
+            <div class="form-row">
+                <label for="itemName">상품명</label>
+                <input type="text" id="itemName" name="itemName" maxlength="100" required>
+            </div>
+
+            <div class="form-row">
+                <label for="itemPrice">가격</label>
+                <input type="number" id="itemPrice" name="itemPrice" min="0" required>
+            </div>
+
+            <div class="form-row">
+                <label for="itemStock">재고</label>
+                <input type="number" id="itemStock" name="itemStock" min="0" required>
+            </div>
+
+            <div class="form-row">
+                <label for="description">설명</label>
+                <input type="text" id="description" name="description">
+            </div>
+
+            <div class="button-group">
+                <button type="button" onclick="submitItemForm()">등록</button>
+                <button type="button" onclick="closeItemModal()">닫기</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 </body>
 <script>
+
+
+
     $(function() {
         $(".datePicker").datepicker({
             dateFormat: 'yy-mm-dd'
@@ -485,29 +629,53 @@
         fetchEmployeeData();  // 페이지가 로드될 때 사원 데이터를 가져옴
     });
 
-    // 폼 제출 이벤트를 처리하는 함수
-    /*document.getElementById('uploadForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // 기본 제출 동작 방지
 
-        // 폼 데이터를 가져오기
-        let formData = new FormData(this);
+    // 모달 열기
+    function openOneItemCreatePopup() {
+        console.log("클릭");
+        var modal = document.getElementById('itemModal');
+        document.getElementById('itemModal').style.display = 'block';
+        modal.style.display = 'flex';
+    }
 
-        // AJAX를 사용하여 API 호출
-        fetch('/backoffice/upload/employees', {
+    // 모달 닫기
+    function closeItemModal() {
+        document.getElementById('itemModal').style.display = 'none';
+    }
+
+    // 폼 제출
+    function submitItemForm() {
+        const itemName = document.getElementById('itemName').value;
+        const itemPrice = document.getElementById('itemPrice').value;
+        const itemStock = document.getElementById('itemStock').value;
+        const description = document.getElementById('description').value;
+
+        const data = {
+            itemName: itemName,
+            itemPrice: itemPrice,
+            itemStock: itemStock,
+            description: description
+        };
+
+        fetch('/backoffice/item/one', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
-        .then(data => {
-            console.log('Upload successful:', data);
-
-            // 업로드 후에 추가 작업 수행 (예: 새로운 데이터 로드)
-            fetchEmployeeData();  // 예시: 새로운 데이터를 로드하는 함수 호출
+        .then(result => {
+            console.log('Success:', result);
+            closeItemModal();  // 폼 제출 후 모달 닫기
+            fetchItemData();
         })
         .catch(error => {
-            console.error('Error uploading file:', error);
+            console.error('Error:', error);
         });
-    });*/
+    }
+
+
 
 
     function deleteConfirm(type,path) {
@@ -668,7 +836,7 @@
                 <input type="submit" value="상품일괄등록 업로드" class="upload-btn">
             </form>
             <button class="grant-coins-btn" onclick="deleteAllItem()">전체상품 제거</button>
-            <button class="grant-coins-btn" onclick="openGrantCoinsPopup()">단독상품 등록</button>
+            <button class="grant-coins-btn" onclick="openOneItemCreatePopup()">단독상품 등록</button>
             </div>
 
 
