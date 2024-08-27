@@ -29,7 +29,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-@Profile("local|dev")
+@Profile("local")
 public class InitDataForLocal extends AbstractInitData {
 
     private boolean initDataDone = false;

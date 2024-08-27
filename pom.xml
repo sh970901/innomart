@@ -122,10 +122,10 @@
   <profiles>
     <profile>
       <id>local</id>
-<!--      <activation>-->
-<!--        <activeByDefault>true</activeByDefault>-->
-<!--        &lt;!&ndash; 다른 활성화 조건을 추가할 수도 있습니다 &ndash;&gt;-->
-<!--      </activation>-->
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <!-- 다른 활성화 조건을 추가할 수도 있습니다 -->
+      </activation>
       <dependencies>
         <dependency>
           <groupId>org.springframework.boot</groupId>
