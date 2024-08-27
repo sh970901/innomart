@@ -44,20 +44,13 @@ function fetchMoreItems() {
       newItem.classList.add('item');
       newItem.innerHTML = `
                     <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg" class="d-block w-100" alt="Exotic Fruits"/>
-                    <h3>${item.itemName}</h3>
-                    <p>${item.description}</p>
-                    <p>재고: ${item.itemStock}개</p>
-                    <span>가격: ₩${item.itemPrice}</span>
-<!--                    <p><button class="btn btn-outline-primary me-2" th:onclick="|placeOrder(${item.itemId})|">바로 구매</button></p>-->
-                    <p><button class="btn btn-outline-primary" onclick="showPurchaseModal(${item.itemId}, '${item.itemName}', ${item.itemStock},${item.itemPrice})" data-bs-toggle="modal" data-bs-target="#orderModal">바로 구매</button></p>
-                    <p>
-                        <button class="btn btn-outline-primary me-2"
-                                th:attr="data-item-id=${item.itemId}, data-item-name=${item.itemName}"
-                                onclick="addCartJs(${item.itemId}, '${item.itemName}')">
-                            찜하기
-                        </button>
-                    </p>
-
+                    <div class="item-name">${item.itemName}</div>
+                    <div class="item-desc">${item.description}</div>
+                    <div class="item-price">${item.itemPrice}원</div>
+                    <div class="btn-wrap">
+                      <button class="btn" id="buynow" onclick="showPurchaseModal(${item.itemId}, '${item.itemName}', ${item.itemStock},${item.itemPrice})" data-bs-toggle="modal" data-bs-target="#orderModal">바로 구매</button>
+                      <button class="btn" id="heart" th:attr="data-item-id=${item.itemId}, data-item-name=${item.itemName}" onclick="addCartJs(${item.itemId}, '${item.itemName}')">찜하기</button>
+                    </div>
                 `;
       itemList.appendChild(newItem);
     });

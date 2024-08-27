@@ -9,6 +9,7 @@ body {
 .container,
 .container-fluid
 {
+    position: relative; /* 부모 요소를 기준으로 fixed 위치를 설정하려면 부모에 relative 필요 */
     font-family: 'SpoqaHanSansNeo-Regular';
 }
 
@@ -611,17 +612,21 @@ footer {
     width: 10% !important;
 }
 
+.my-info-password-change {
+    padding: 10px 20px; /* 버튼의 내부 여백 */
+    min-width: 100px; /* 버튼의 최소 너비 */
+    height: auto; /* 버튼의 높이 자동 조정 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
 .fixed-image {
     position: fixed;
-    bottom: 100px;
-    right: 200px;
-    z-index: 1000;
-    cursor: pointer;
+    bottom: 50px; /* 부모 요소의 하단에서 10px 위 */
+    right: 120px; /* 우측 끝에서 20px 벗어난 위치 */
+    z-index: 1000; /* 다른 요소 위에 고정할 수 있도록 z-index를 높게 설정 */
 }
 
 .fixed-image img {
-    width: 100px;
-    height: auto;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100px;  /* 원하는 크기로 조정 */
+    height: auto; /* 비율을 유지하면서 크기 조정 */
 }
