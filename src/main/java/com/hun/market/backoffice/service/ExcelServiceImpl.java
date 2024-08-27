@@ -6,6 +6,7 @@ import com.hun.market.item.domain.Item;
 import com.hun.market.item.dto.ItemDto;
 import com.hun.market.item.dto.ItemDto.ItemCreateRequestDto;
 import com.hun.market.item.repository.ItemRepository;
+import com.hun.market.member.domain.CoinTransHistory;
 import com.hun.market.member.domain.Member;
 import com.hun.market.member.dto.MemberDto;
 import com.hun.market.member.repository.MemberRepository;
@@ -28,14 +29,20 @@ public class ExcelServiceImpl implements ExcelService {
 
     @Override
     public void uploadExcel(MultipartFile file, ExcelUploadType uploadType) throws IOException {
-        // Todo Enum 타입에 따라 클래스 타입을 받아오게 할 수 있을까? ex) getCode
 
         if (ExcelUploadType.EMPLOYEE.equals(uploadType)) {
             List<EmployeeExcelUploadDto> resultDtoList = new OneSheetExcelUploader<>(EmployeeExcelUploadDto.class, file).getResultDtoList();
             //
             for (EmployeeExcelUploadDto excelUploadDto : resultDtoList) {
                 Member member = Member.from(MemberDto.from(excelUploadDto));
+                member.resetPassword(excelUploadDto.getPassword());
+
+
+                CoinTransHistory initHistory = CoinTransHistory.registByAdmin(member, excelUploadDto.getCoin().intValue());
+                member.getCoinTransHistories().add(initHistory);
+
                 memberRepository.save(member);
+
             }
 
         } else if (ExcelUploadType.ITEM.equals(uploadType)) {

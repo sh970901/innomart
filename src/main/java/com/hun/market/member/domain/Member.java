@@ -79,6 +79,7 @@ public class Member extends BaseEntity {
                      .mbName(memberDto.getMbName())
                      .mbPassword(memberDto.getMbPassword())
                      .mbCoin(memberDto.getMbCoin())
+                     .coinTransHistories(new ArrayList<>())
                      .mbEmail(memberDto.getMbEmail())
                      .department(memberDto.getDepartment())
                      .build();

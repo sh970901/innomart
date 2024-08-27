@@ -54,12 +54,23 @@ public class CoinTransHistory extends BaseEntity {
                                .build();
     }
 
+    public static CoinTransHistory registByAdmin(Member member, int totalCoin) {
+        return CoinTransHistory.builder()
+                               .member(member)
+                               .amount(totalCoin)
+                               .totalCoin(totalCoin)
+                               .transactionType(CoinTransType.인사지급)
+                               .eventDate(LocalDateTime.now())
+                               .description("엑셀 등록")
+                               .build();
+    }
+
     // Todo 주문정보를 받아서 처리
     public static CoinTransHistory createWithdrawalTransaction(Member member, int amount) {
         return CoinTransHistory.builder()
                 .member(member)
                 .amount(amount)
-                .transactionType(CoinTransType.WITHDRAWAL)
+                .transactionType(CoinTransType.구매)
                 .eventDate(LocalDateTime.now())
                 .description("주문")
                 .build();

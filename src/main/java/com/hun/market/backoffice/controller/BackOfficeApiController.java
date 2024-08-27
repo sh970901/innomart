@@ -90,6 +90,11 @@ public class BackOfficeApiController {
         itemService.deleteItem(itemNo);
     }
 
+    @DeleteMapping("/item/delete")
+    public void deleteAllItem() {
+        itemService.deleteAllItem();
+    }
+
 
     @GetMapping("/employee/{memberId}")
     public MemberDto.MemberResponseDto getMember(@PathVariable Long memberId) {

@@ -26,4 +26,6 @@ public interface ItemRepository extends PagingAndSortingRepository<Item, Long> {
     List<Item> findAllByOrderById();
 
     void delete(Item item);
+
+    void deleteAll();
 }
