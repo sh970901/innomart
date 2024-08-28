@@ -72,7 +72,7 @@ public class CartServiceImpl implements CartService {
 
 
         return cartItemsPage.stream()
-                .map(cartItem -> CartDto.CartItemCreateResponseDto.builder().cartItemId(cartItem.getId()).itemPrice(cartItem.getItem().getItemPrice()).itemId(cartItem.getItem().getId()).itemName(cartItem.getItem().getItemName()).itemStock(cartItem.getItem().getItemStock()).quantity(cartItem.getQuantity()).build())
+                .map(cartItem -> CartDto.CartItemCreateResponseDto.builder().cartItemId(cartItem.getId()).itemPrice(cartItem.getItem().getItemPrice()).itemId(cartItem.getItem().getId()).itemName(cartItem.getItem().getItemName()).itemStock(cartItem.getItem().getItemStock()).imagePath(cartItem.getItem().getImagePath()).quantity(cartItem.getQuantity()).build())
                 .toList();
     }
 

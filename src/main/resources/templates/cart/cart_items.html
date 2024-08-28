@@ -65,7 +65,7 @@
                             <label th:for="${'itemCheckbox' + cartItem.cartItemId}"></label>
                         </td>
                         <td>
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg" class="img" alt="상품 이미지" style="width: 200px;">
+                            <img th:src="@{${cartItem.imagePath}}" class="img" alt="상품 이미지" style="width: 200px;">
                         </td>
                         <td th:text="${cartItem.itemName}">
                         </td>

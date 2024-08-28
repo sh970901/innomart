@@ -51,7 +51,7 @@ function fetchMoreItems() {
 
                 if(item.itemStock > 0) {
                     newItem.innerHTML = `
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg" class="d-block w-100" alt="Exotic Fruits"/>
+                    <img src="${item.imagePath}" class="d-block w-100" alt="Exotic Fruits"/>
                     <div class="item-name">${item.itemName}</div>
                     <div class="item-desc">${item.description}</div>
                     <div class="item-price">${item.itemPrice}원</div>
@@ -62,7 +62,7 @@ function fetchMoreItems() {
                 `;
                 } else  {
                     newItem.innerHTML = `
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg" class="d-block w-100" alt="Exotic Fruits"/>
+                    <img th:src="${item.imagePath}" class="d-block w-100" alt="Exotic Fruits"/>
                     <div class="item-name">${item.itemName}</div>
                     <div class="item-desc">${item.description}</div>
                     <div class="item-price">${item.itemPrice}</div>

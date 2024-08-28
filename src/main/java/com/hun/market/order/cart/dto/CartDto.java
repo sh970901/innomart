@@ -46,8 +46,8 @@ public class CartDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PRIVATE)
-    @AllArgsConstructor(access = AccessLevel.PRIVATE)
+    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @AllArgsConstructor(access = AccessLevel.PUBLIC)
     @Builder
     public static class CartItemCreateResponseDto {
 
@@ -66,6 +66,8 @@ public class CartDto {
         @NotNull(message = "itemStock is required")
         private Long itemStock;
 
+        @Setter
+        private String imagePath;
 
         @NotNull(message = "itemPrice is required")
         private Long itemPrice;
