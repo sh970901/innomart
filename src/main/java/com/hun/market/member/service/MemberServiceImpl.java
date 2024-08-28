@@ -159,7 +159,7 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberOrdersResponseDto> getMemberOrders(Long memberId) {
         List<Order> orders = orderRepository.findOrdersWithItemsByMemberId(memberId);
         if (orders.isEmpty()) {
-            return List.of(MemberOrdersResponseDto.builder().build());
+            return new ArrayList<>();
         }
 
         List<MemberOrdersResponseDto> memberOrdersResponseDtos = new ArrayList<>();
