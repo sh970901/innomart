@@ -204,6 +204,8 @@ section h2 {
     grid-gap: 30px;
     justify-items: center;
     align-items: center;
+    /*border-top: 3px solid cornflowerblue;*/
+    padding-top: 20px;
 }
 
 /* 중간 크기 화면(예: 태블릿)에 대한 상품 배치: 3개 */
@@ -237,7 +239,7 @@ section h2 {
 }
 
 .item {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     /*font-family: 'SpoqaHanSansNeo-Regular';*/
     background-color: #fff;
     border-radius: 5px;
@@ -366,7 +368,9 @@ section h2 {
     justify-content: center; /* 수평 방향으로 가운데 정렬 */
     max-width: 100%;
     /* 컨테이너의 높이를 화면 전체 높이로 설정 */
-    border: 3px solid cornflowerblue;
+    border-top: 3px solid cornflowerblue;
+    border-bottom: 3px solid cornflowerblue;
+
 }
 .banner-img {
     width: 100%;
@@ -645,7 +649,10 @@ footer {
     justify-content: space-between; /* 두 그룹을 반으로 나눔 */
     padding: 10px 0;
     margin-top: 20px;
-    border: 3px solid cornflowerblue;
+   /* border-top: 3px solid cornflowerblue;
+    border-bottom: 3px solid cornflowerblue;*/
+
+
     border-radius: 5px; /* 모서리를 둥글게 만들기 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 경계선에 그림자 추가 */
     background-color: white;
