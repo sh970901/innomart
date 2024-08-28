@@ -16,6 +16,7 @@ import com.hun.market.order.order.domain.OrderItem;
 import com.hun.market.order.order.dto.OrderDto;
 import com.hun.market.order.order.dto.OrderDto.OrderItemByCartCreateRequestDto;
 import com.hun.market.order.order.repository.OrderItemRepository;
+import com.hun.market.order.order.repository.OrderPossRepository;
 import com.hun.market.order.order.repository.OrderRepository;
 import com.hun.market.order.pay.service.PaymentService;
 import jakarta.persistence.OptimisticLockException;
@@ -47,6 +48,7 @@ public class OrderService {
 
     private final MemberRepository memberRepository;
     private final ItemRepository itemRepository;
+    private final OrderPossRepository orderPossRepository;
     private final PaymentService paymentCartService;
     private final AuthenticationManager authenticationManager;
 
@@ -60,6 +62,8 @@ public class OrderService {
         backoff = @Backoff(100)
     )
     public OrderDto.OrderCreateResponseDto createOrderByMemberCart(OrderDto.OrderCreateRequestDto orderDto, String buyer) {
+        // 주문가능시간 validation check
+        orderPossRepository.findByIdAndOrderPossYn(1L, "Y").orElseThrow(() -> new RuntimeException("주문 가능한 시간이 아닙니다."));
 
         List<OrderItem> orderItems = orderDto2OrderItems(orderDto);
 
@@ -158,6 +162,9 @@ public class OrderService {
             backoff = @Backoff(100)
     )
     public OrderDto.OrderCreateResponseDto createOrderByMember(OrderDto.OrderItemCreateRequestDto orderItemDto, String buyer) {
+        // 주문가능시간 validation check
+        orderPossRepository.findByIdAndOrderPossYn(1L, "Y").orElseThrow(() -> new RuntimeException("주문 가능한 시간이 아닙니다."));
+
         Member member = memberRepository.findByMbNameWithCart(buyer).orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
         Item item = itemRepository.findById(orderItemDto.getItemId()).orElseThrow(() -> new ItemNotFoundException("상품을 찾을 수 없습니다."));
         OrderItem orderItem = OrderItem.createByItem(item, orderItemDto.getQuantity());

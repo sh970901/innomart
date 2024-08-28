@@ -12,20 +12,19 @@ import com.hun.market.order.claim.domain.Claim;
 import com.hun.market.order.claim.dto.ClaimDto;
 import com.hun.market.order.claim.repository.ClaimRepository;
 import com.hun.market.order.order.domain.OrderItem;
+import com.hun.market.order.order.domain.OrderPoss;
 import com.hun.market.order.order.dto.OrderDto;
 import com.hun.market.order.order.repository.OrderItemRepository;
-import com.hun.market.order.order.repository.OrderRepository;
+import com.hun.market.order.order.repository.OrderPossRepository;
 import com.hun.market.order.order.service.OrderService;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -39,12 +38,14 @@ public class InitDataForLocal extends AbstractInitData {
 
     private final OrderService orderService;
     private final ClaimRepository claimRepository;
+    private final OrderPossRepository orderPossRepository;
 
     @Bean
     CommandLineRunner initData(OrderItemRepository orderItemRepository) {
         return args -> {
             if (initDataDone) return;
             before();
+            orderPossRepository.saveAndFlush(new OrderPoss(1L, "Y"));
             ItemDto.ItemCreateRequestDto itemDto1 = ItemDto.ItemCreateRequestDto.builder().itemName("품절된싼상품").itemPrice(1000L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(0L).description("에구저런 품절이네요").build();
             Item item1 = Item.from(itemDto1);
             itemRepository.save(item1);
@@ -76,17 +77,17 @@ public class InitDataForLocal extends AbstractInitData {
 
 
             OrderDto.OrderItemCreateRequestDto orderItemDto = OrderDto.OrderItemCreateRequestDto.builder().itemId(4L).quantity(2).build();
-            orderService.createOrderByMember(orderItemDto, mbDto.getMbName());
-
-            Item item = itemRepository.findById(orderItemDto.getItemId()).orElseThrow(() -> new ItemNotFoundException("상품을 찾을 수 없습니다."));
-            OrderItem orderItem = orderItemRepository.findByItemId(item.getId());
-
-            ClaimDto.ClaimCreateRequestDto claimCreateRequestDto = ClaimDto.ClaimCreateRequestDto.builder().refundAmount(3000L).orderItem(orderItem).time(LocalDateTime.now()).member(member1).build();
-            Claim claim = Claim.fromDto(claimCreateRequestDto);
-            member1.s2tClaims(List.of(claim));
-
-            orderItemRepository.save(orderItem);
-            claimRepository.save(claim);
+//            orderService.createOrderByMember(orderItemDto, mbDto.getMbName());
+//
+//            Item item = itemRepository.findById(orderItemDto.getItemId()).orElseThrow(() -> new ItemNotFoundException("상품을 찾을 수 없습니다."));
+//            OrderItem orderItem = orderItemRepository.findByItemId(item.getId());
+//
+//            ClaimDto.ClaimCreateRequestDto claimCreateRequestDto = ClaimDto.ClaimCreateRequestDto.builder().refundAmount(3000L).orderItem(orderItem).time(LocalDateTime.now()).member(member1).build();
+//            Claim claim = Claim.fromDto(claimCreateRequestDto);
+//            member1.s2tClaims(List.of(claim));
+//
+//            orderItemRepository.save(orderItem);
+//            claimRepository.save(claim);
 
             initDataDone = true;
         };
