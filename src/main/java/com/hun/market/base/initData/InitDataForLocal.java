@@ -45,10 +45,10 @@ public class InitDataForLocal extends AbstractInitData {
         return args -> {
             if (initDataDone) return;
             before();
-            ItemDto.ItemCreateRequestDto itemDto1 = ItemDto.ItemCreateRequestDto.builder().itemName("품절상품").itemPrice(2000L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(0L).description("에구저런 품절이네요").build();
+            ItemDto.ItemCreateRequestDto itemDto1 = ItemDto.ItemCreateRequestDto.builder().itemName("품절된싼상품").itemPrice(1000L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(0L).description("에구저런 품절이네요").build();
             Item item1 = Item.from(itemDto1);
             itemRepository.save(item1);
-            ItemDto.ItemCreateRequestDto itemDto12 = ItemDto.ItemCreateRequestDto.builder().itemName("다팔린상품").itemPrice(2000L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(0L).description("쀼쀼").build();
+            ItemDto.ItemCreateRequestDto itemDto12 = ItemDto.ItemCreateRequestDto.builder().itemName("재고있는비싼상품").itemPrice(3000L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(7L).description("쀼쀼").build();
             Item item2 = Item.from(itemDto12);
             itemRepository.save(item2);
             for(int i = 2; i<100; i++){
@@ -56,7 +56,7 @@ public class InitDataForLocal extends AbstractInitData {
                 if(i % 7 == 0) {
                     itemDto = ItemDto.ItemCreateRequestDto.builder().itemName("item"+i).itemPrice(2000L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(0L).description(i+"번 상품입니다.").build();
                 } else {
-                    itemDto = ItemDto.ItemCreateRequestDto.builder().itemName("item"+i).itemPrice(2000L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(3L).description(i+"번 상품입니다.").build();
+                    itemDto = ItemDto.ItemCreateRequestDto.builder().itemName("item"+i).itemPrice(i*20L).imagePath("https://cdn.pixabay.com/photo/2024/04/01/06/57/cookies-8668140_1280.jpg").itemStock(3L).description(i+"번 상품입니다.").build();
                 }
                 Item item = Item.from(itemDto);
                 itemRepository.save(item);

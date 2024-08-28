@@ -29,9 +29,74 @@ document.getElementById('scrollToTop').addEventListener('click', function() {
     });
 });
 
+// 새로 고침시 필터 초기화
+window.onload = function() {
+    const priceFilters = document.getElementsByName("priceFilter");
+    for (let i = 0; i < priceFilters.length; i++) {
+        priceFilters[i].checked = false;
+    }
+    document.getElementById("excludeOutOfStock").checked = false;
+
+    // 선택된 상태를 콘솔에 출력 (예시)
+    getSelectedFilters();
+};
+
+// 선택된 상태를 가져오는 함수
+function getSelectedFilters() {
+    let selectedPriceFilter = null;
+    const priceFilters = document.getElementsByName("priceFilter");
+    for (let i = 0; i < priceFilters.length; i++) {
+        if (priceFilters[i].checked) {
+            selectedPriceFilter = priceFilters[i].value;
+            break;
+        }
+    }
+
+    const excludeOutOfStock = document.getElementById("excludeOutOfStock").checked;
+
+    console.log("선택된 가격 필터:", selectedPriceFilter);
+    console.log("품절 제외 여부:", excludeOutOfStock);
+}
+
+// 이벤트 리스너 추가 (예: 선택된 필터 상태를 콘솔에 출력)
+document.querySelectorAll('.filter-group input').forEach(input => {
+    input.addEventListener('change', getSelectedFilters);
+});
+
+function getCheckedRadioValue() {
+
+    const checkedRadio = document.querySelector('input[name="priceFilter"]:checked');
+
+    // Y 가격낮은순 N 가격높은순
+    if (checkedRadio) {
+        return checkedRadio.value;
+    } else {
+        return '';
+    }
+}
+
+function getExcludeOutOfStockStatus() {
+
+    const checkbox = document.getElementById('excludeOutOfStock');
+
+    if (checkbox.checked) {
+        return 'Y'; // 체크된 경우 'Y'
+    } else {
+        return ''; // 체크되지 않은 경우 'N'
+    }
+}
+
+
 function fetchMoreItems() {
     currentPage += 1;  // 페이지 값을 증가시킴
-    const url = `/api/v1/i/items?page=${currentPage}&size=${size}`;
+
+
+    let priceSort = getCheckedRadioValue();
+
+
+    const soldOutCheck = getExcludeOutOfStockStatus();
+
+    const url = `/api/v1/i/items?page=${currentPage}&size=${size}&sort=${priceSort}&stock=${soldOutCheck}`;
 
     // // 스켈레톤 표시
     document.getElementById('loading-skeleton').style.display = 'flex';
@@ -62,7 +127,7 @@ function fetchMoreItems() {
                 `;
                 } else  {
                     newItem.innerHTML = `
-                    <img th:src="${item.imagePath}" class="d-block w-100" alt="Exotic Fruits"/>
+                    <img src="${item.imagePath}" class="d-block w-100" alt="Exotic Fruits"/>
                     <div class="item-name">${item.itemName}</div>
                     <div class="item-desc">${item.description}</div>
                     <div class="item-price">${item.itemPrice}</div>

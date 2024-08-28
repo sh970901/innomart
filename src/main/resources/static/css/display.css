@@ -630,3 +630,35 @@ footer {
     width: 100px;  /* 원하는 크기로 조정 */
     height: auto; /* 비율을 유지하면서 크기 조정 */
 }
+
+.filter-section {
+    display: flex;
+    width: 100%; /* 부모 요소와 같은 넓이 */
+    justify-content: space-between; /* 두 그룹을 반으로 나눔 */
+    padding: 10px 0;
+    margin-top: 20px;
+    border: 3px solid cornflowerblue;
+    border-radius: 5px; /* 모서리를 둥글게 만들기 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 경계선에 그림자 추가 */
+    background-color: white;
+
+}
+
+.filter-group {
+    display: flex;
+    flex: 1; /* 그룹을 동일하게 나누기 위해 flex 1 적용 */
+    justify-content: space-evenly; /* 그룹 내 요소 간 균일한 간격 */
+    align-items: center;
+}
+
+.filter-group label {
+    font-size: 18px; /* 글자 크기 키우기 */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.filter-group input[type="radio"], .filter-group input[type="checkbox"] {
+    transform: scale(1.8); /* 라디오 박스와 체크 박스 크기 더 키우기 */
+    margin-right: 10px;
+}

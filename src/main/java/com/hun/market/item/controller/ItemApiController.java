@@ -18,9 +18,9 @@ public class ItemApiController {
     private final ItemService itemService;
 
     @GetMapping("/items")
-    public List<ItemDto.ItemCreatResponseDto> getItems(@RequestParam(value = "q", required = false) String query, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "18") int size) {
+    public List<ItemDto.ItemCreatResponseDto> getItems(@RequestParam(value = "q", required = false) String query, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "18") int size, @RequestParam(defaultValue = "") String sort, @RequestParam(defaultValue = "") String stock) {
         if (query == null || query.isEmpty()) {
-            return itemService.getItemList(page, size);
+            return itemService.getItemList(page, size, sort, stock);
         } else {
             return itemService.getSearchItemList(query, page, size);
         }

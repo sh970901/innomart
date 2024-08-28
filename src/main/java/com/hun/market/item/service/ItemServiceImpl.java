@@ -41,9 +41,9 @@ public class ItemServiceImpl implements ItemService {
      * Cacheable은 AOP Base라 클래스 분리 하지않으면 타지 않음. 따라서 WrapperService 생성
      */
     @Override
-    public List<ItemDto.ItemCreatResponseDto> getItemList(int page, int size) {
+    public List<ItemDto.ItemCreatResponseDto> getItemList(int page, int size, String sort, String stock) {
         // Redis cache or DB find
-        WrapperItemResponseDtos wrapperItemResponseDtos = wrapperItemService.getItemList(page, size);
+        WrapperItemResponseDtos wrapperItemResponseDtos = wrapperItemService.getItemList(page, size, sort, stock);
 
         return wrapperItemResponseDtos.getItemCreatResponseDtos();
     }

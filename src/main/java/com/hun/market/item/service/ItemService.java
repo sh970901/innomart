@@ -8,7 +8,7 @@ import com.hun.market.item.dto.ItemDto.ItemCreateRequestDto;
 import java.util.List;
 
 public interface ItemService {
-    List<ItemDto.ItemCreatResponseDto> getItemList(int page, int size);
+    List<ItemDto.ItemCreatResponseDto> getItemList(int page, int size, String sort, String stock);
 
     void updateItem(ItemModifyDto itemModifyDto);
 

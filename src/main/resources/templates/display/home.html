@@ -46,6 +46,26 @@
     <div class=main-banner>
         <img src="/images/character/banner.png" alt="배너이미지" class="banner-img">
     </div>
+    <div class="filter-section">
+        <div class="filter-group">
+            <label>
+                <input type="radio" name="priceFilter" value="Y">
+                가격 낮은순
+            </label>
+            <label>
+                <input type="radio" name="priceFilter" value="N">
+                가격 높은순
+            </label>
+        </div>
+        <div class="filter-group">
+            <label>
+                <input type="checkbox" id="excludeOutOfStock">
+                품절 제외
+            </label>
+        </div>
+    </div>
+
+
     <div class="section-main main-home">
         <div class="item-list" id="item-list">
             <div class="item" th:each="item : ${itemList}">

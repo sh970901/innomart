@@ -24,8 +24,7 @@ public class DisplayController {
     public String display(@RequestParam(defaultValue = "0") int page,
                           @RequestParam(defaultValue = "18") int size, Model model){
 
-//        List<ItemDto.ItemCreatResponseDto> itemList = itemService.getItemList(page, size);
-        List<ItemDto.ItemCreatResponseDto> itemList = itemService.getItemList(page, size);
+        List<ItemDto.ItemCreatResponseDto> itemList = itemService.getItemList(page, size,"","");
         model.addAttribute("itemList", itemList);
 
         return "display/home";
