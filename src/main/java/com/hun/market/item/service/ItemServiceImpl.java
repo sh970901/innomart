@@ -1,7 +1,6 @@
 package com.hun.market.item.service;
 
 import com.hun.market.backoffice.dto.ItemModifyDto;
-import com.hun.market.backoffice.dto.OneItemCreateDto;
 import com.hun.market.item.domain.Item;
 import com.hun.market.item.dto.ItemDto;
 import com.hun.market.item.dto.ItemDto.ItemCreatResponseDto;
