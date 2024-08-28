@@ -27,11 +27,18 @@
             text-decoration: none; /* 밑줄 제거 */
             color: white; /* 글자 색상을 하얀색으로 설정 */
         }
+
+
+        #toggle-slider {
+            display: none;
+        }
+
+
     </style>
 </head>
 <header th:insert="~{fragments/header :: headerFragment}"></header>
 <body>
-<div class="floating-image" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+<!--<div class="floating-image" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
 <div class="floating-image" style="top: 20%; left: 80%; animation-delay: 2s;"></div>
 <div class="floating-image" style="top: 30%; left: 30%; animation-delay: 4s;"></div>
 <div class="floating-image" style="top: 40%; left: 60%; animation-delay: 6s;"></div>
@@ -40,7 +47,7 @@
 <div class="floating-image" style="top: 70%; left: 40%; animation-delay: 12s;"></div>
 <div class="floating-image" style="top: 80%; left: 50%; animation-delay: 14s;"></div>
 <div class="floating-image" style="top: 90%; left: 30%; animation-delay: 16s;"></div>
-<div class="floating-image" style="top: 15%; left: 60%; animation-delay: 18s;"></div>
+<div class="floating-image" style="top: 15%; left: 60%; animation-delay: 18s;"></div>-->
 <main class="container">
 
     <div class=main-banner>
@@ -50,18 +57,22 @@
         <div class="filter-group">
             <label>
                 <input type="radio" name="priceFilter" value="Y">
-                가격 낮은순
             </label>
+            <div class="filter-name">가격 낮은 순</div>
             <label>
                 <input type="radio" name="priceFilter" value="N">
-                가격 높은순
             </label>
-        </div>
-        <div class="filter-group">
+            <div class="filter-name">가격 높은 순</div>
+
             <label>
                 <input type="checkbox" id="excludeOutOfStock">
-                품절 제외
             </label>
+            <div class="filter-name">품절 제외</div>
+        </div>
+        <div class="filter-group">
+            <div class="filter-name">필터 적용</div>
+            <input type="checkbox" id="toggle-slider">
+            <label class="toggle-slider" for="toggle-slider">on/off</label>
         </div>
     </div>
 

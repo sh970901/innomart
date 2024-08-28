@@ -29,19 +29,16 @@ document.getElementById('scrollToTop').addEventListener('click', function() {
     });
 });
 
-// 새로 고침시 필터 초기화
-window.onload = function() {
+
+
+function filterInit() {
     const priceFilters = document.getElementsByName("priceFilter");
     for (let i = 0; i < priceFilters.length; i++) {
         priceFilters[i].checked = false;
     }
     document.getElementById("excludeOutOfStock").checked = false;
+}
 
-    // 선택된 상태를 콘솔에 출력 (예시)
-    getSelectedFilters();
-};
-
-// 선택된 상태를 가져오는 함수
 function getSelectedFilters() {
     let selectedPriceFilter = null;
     const priceFilters = document.getElementsByName("priceFilter");
@@ -85,6 +82,37 @@ function getExcludeOutOfStockStatus() {
         return ''; // 체크되지 않은 경우 'N'
     }
 }
+
+const toggleSlider = document.getElementById('toggle-slider');
+const label = document.querySelector('label.toggle-slider');
+
+window.onload = function() {
+    const $containerElement = $('.container');
+
+    if ($containerElement.length) {
+        $('html, body').animate({
+            scrollTop: $containerElement.offset().top
+        }, 'smooth');
+    }
+};
+
+toggleSlider.addEventListener('change', function() {
+
+    /*조건 적용 버튼 클릭시 다시 뿌리기*/
+
+    if (this.checked) {
+        label.classList.add('active');
+    } else {
+        label.classList.remove('active');
+        filterInit();
+    }
+
+    currentPage = -1;
+    $('#item-list').empty();
+    fetchMoreItems();
+
+
+});
 
 
 function fetchMoreItems() {
