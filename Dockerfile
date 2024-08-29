@@ -21,7 +21,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # Run the application with environment variables
 #ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar market-0.0.1-SNAPSHOT.jar"]
-ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -Dkey=baobab -jar market-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar market-0.0.1-SNAPSHOT.jar"]
 #ENTRYPOINT ["sh", "/innog/init_script.sh", "java", "-jar", "innog.cs-web.webapp.jar"]
 # Default CMD (can be overridden by 'docker run' command)
 #CMD ["-Xms512m", "-Xmx512m"]
