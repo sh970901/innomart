@@ -1,9 +1,9 @@
 package com.hun.market.backoffice.controller;
 
-import com.amazonaws.services.s3.AmazonS3;
 import com.hun.market.backoffice.dto.CoinProvideRequestDto;
 import com.hun.market.backoffice.dto.EmployeeExcelUploadDto;
 import com.hun.market.backoffice.dto.ItemModifyDto;
+import com.hun.market.backoffice.dto.OrderPossYnResponse;
 import com.hun.market.backoffice.enums.ExcelUploadType;
 import com.hun.market.backoffice.service.ExcelService;
 import com.hun.market.backoffice.service.ImageService;
@@ -12,15 +12,11 @@ import com.hun.market.item.dto.ItemDto;
 import com.hun.market.item.dto.ItemDto.ItemCreateRequestDto;
 import com.hun.market.item.service.ItemService;
 import com.hun.market.member.dto.MemberDto;
-import com.hun.market.member.dto.MemberDto.MemberRequestDto;
 import com.hun.market.member.service.MemberService;
+import com.hun.market.order.order.repository.OrderPossRepository;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +42,7 @@ public class BackOfficeApiController {
     private final MemberService memberService;
     private final S3UploadService s3UploadService;
 
+    private final OrderPossRepository orderPossRepository;
 
     @PostMapping("/upload/employees")
     public RedirectView uploadExcel(@RequestParam("employees") MultipartFile file) throws IOException {
@@ -127,6 +124,21 @@ public class BackOfficeApiController {
     @PostMapping("/s3/upload")
     public void s3Upload(@RequestParam("file") MultipartFile multipartFile,  @RequestParam("itemId") Long itemId) throws IOException {
         s3UploadService.saveFile(multipartFile, itemId);
+    }
+
+    @GetMapping("/orderposs")
+    public OrderPossYnResponse checkOrderPoss() {
+        return OrderPossYnResponse.builder().
+                                   possYn(orderPossRepository.findByIdAndOrderPossYn(1L, "Y").get().getOrderPossYn()).build();
+    }
+
+    @PostMapping("/change/{state}")
+    public void changeOrderPoss(@PathVariable String state) {
+        orderPossRepository.findById(1L)
+                           .ifPresent(orderPoss -> {
+                               orderPoss.setState(state);
+                               orderPossRepository.save(orderPoss);
+                           });
     }
 
 }
