@@ -419,7 +419,57 @@
             text-align: center;
             color: #333;
         }
+        .toggle-slider {
+            text-indent: -999em;
+            cursor: pointer;
+            width: 100px;
+            height: 50px;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            position:relative;
+            transition: 0.5s ease-out;
+        }
 
+        label::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            position: absolute;
+            border-radius: 50%;
+            top: 5px;
+            left: 5px;
+            transition: 0.5s ease-out;
+        }
+        #toggle-slider:checked + label {
+            background-color: #20d51a;
+        }
+
+        #toggle-slider:checked + label::after {
+            left:calc(100% - 45px);
+            background-color: #fff;
+        }
+        #toggle-slider {
+            display: none;
+        }
+        .filter-name {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex: 1; /* 그룹을 동일하게 나누기 위해 flex 1 적용 */
+            justify-content: space-evenly; /* 그룹 내 요소 간 균일한 간격 */
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-size: 18px; /* 글자 크기 키우기 */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
 
 
 
@@ -436,6 +486,13 @@
     <header class="header">
         <div class="user-info">
             <span>조민주 업무지원 시스템</span>
+        </div>
+        <div>
+            <div class="filter-group">
+            <div class="filter-name">주문 상태</div>
+            <input type="checkbox" id="toggle-slider">
+            <label class="toggle-slider" for="toggle-slider">on/off</label>
+            </div>
         </div>
     </header>
     <main class="content" id="content">
@@ -662,6 +719,89 @@
 </body>
 <script>
 
+    const toggleSlider = document.getElementById('toggle-slider');
+    const label = document.querySelector('label.toggle-slider');
+
+    window.onload = function() {
+        const $containerElement = $('.container');
+
+        if ($containerElement.length) {
+            $('html, body').animate({
+                scrollTop: $containerElement.offset().top
+            }, 'smooth');
+        }
+    };
+
+    toggleSlider.addEventListener('change', function() {
+
+        /*조건 적용 버튼 클릭시 다시 뿌리기*/
+        console.log("주문상태끄고키기 ")
+
+        if (this.checked) {
+            label.classList.add('active');
+            sendOrderPossState('Y')
+        } else {
+
+            label.classList.remove('active');
+            sendOrderPossState('N');
+        }
+
+
+    });
+
+
+    // 페이지 로딩 및 새로고침 시 실행되는 함수
+    function sendGetRequest() {
+        // GET 요청을 보낼 URL
+        const url = '/backoffice/orderposs';
+
+        // Fetch API를 이용한 GET 요청
+        fetch(url, {
+            method: 'GET'
+        })
+        .then(response => response.json())  // JSON 형식의 응답을 처리
+        .then(data => {
+            setToggle(data)
+
+        })
+        .catch(error => {
+            console.error('GET 요청 실패:', error);
+        });
+    }
+
+    // 페이지가 완전히 로드되면 함수 호출
+    window.onload = sendGetRequest;
+
+    function setToggle(data) {
+        const checkbox = document.getElementById('toggle-slider');
+        if(data.data.possYn == 'Y') {
+            checkbox.checked = true;
+            $('.toggle-slider').addClass('active');
+        } else {
+            checkbox.checked = false;
+            $('.toggle-slider').removeClass('active');
+        }
+
+    }
+
+    function sendOrderPossState(state) {
+        fetch(`/backoffice/change/${state}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ state: state }), // 필요한 경우 본문에 데이터 포함
+        })
+        .then(response => response.json()) // 서버에서 JSON 응답을 받을 경우
+        .then(data => {
+            console.log('변경:', data);
+            // 성공적으로 요청이 완료된 후 페이지를 새로고침
+            // window.location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 
 
     $(function() {

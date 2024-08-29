@@ -31,4 +31,8 @@ public class OrderPoss {
     @Column(name = "order_poss_yn", nullable = false)
     private String orderPossYn;
 
+    public void setState(String state) {
+        this.orderPossYn = state;
+    }
+
 }

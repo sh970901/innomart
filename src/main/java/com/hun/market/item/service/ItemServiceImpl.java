@@ -56,6 +56,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+
     public ItemDto.ItemCreatResponseDto getItemOne(Long itemId) {
 
         Item item = itemRepository.findById(itemId).orElseThrow(()->new ItemNotFoundException("아이템을 찾을 수 없습니다."));
