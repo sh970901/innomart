@@ -63,7 +63,9 @@ public class OrderService {
     )
     public OrderDto.OrderCreateResponseDto createOrderByMemberCart(OrderDto.OrderCreateRequestDto orderDto, String buyer) {
         // 주문가능시간 validation check
-        orderPossRepository.findByIdAndOrderPossYn(1L, "Y").orElseThrow(() -> new RuntimeException("주문 가능한 시간이 아닙니다."));
+        if(orderPossRepository.findByIdAndOrderPossYn(1L, "Y").isEmpty()) {
+            throw new ResponseServiceException("주문 가능한 시간이 아닙니다.");
+        }
 
         List<OrderItem> orderItems = orderDto2OrderItems(orderDto);
 
@@ -163,7 +165,9 @@ public class OrderService {
     )
     public OrderDto.OrderCreateResponseDto createOrderByMember(OrderDto.OrderItemCreateRequestDto orderItemDto, String buyer) {
         // 주문가능시간 validation check
-        orderPossRepository.findByIdAndOrderPossYn(1L, "Y").orElseThrow(() -> new RuntimeException("주문 가능한 시간이 아닙니다."));
+        if(orderPossRepository.findByIdAndOrderPossYn(1L, "Y").isEmpty()) {
+            throw new ResponseServiceException("주문 가능한 시간이 아닙니다.");
+        }
 
         Member member = memberRepository.findByMbNameWithCart(buyer).orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
         Item item = itemRepository.findById(orderItemDto.getItemId()).orElseThrow(() -> new ItemNotFoundException("상품을 찾을 수 없습니다."));
