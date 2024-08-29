@@ -49,7 +49,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true))
                 .sessionManagement((auth) -> auth
-                        .maximumSessions(1)
+                        .maximumSessions(4)
                         .maxSessionsPreventsLogin(false))
 
         ;
