@@ -147,7 +147,7 @@ public class Member extends BaseEntity {
     public void resetPassword(String newPassword) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.mbPassword = passwordEncoder.encode(newPassword);
-        Events.raise(new MbResetRandomPasswordEvent(mbEmail, newPassword));
+        Events.raise(new MbResetRandomPasswordEvent(mbName, newPassword));
     }
 
     public void setPassword(String password) {

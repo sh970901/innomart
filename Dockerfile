@@ -10,7 +10,6 @@ COPY target/market-0.0.1-SNAPSHOT.jar ./market-0.0.1-SNAPSHOT.jar
 #COPY --from=docker.elastic.co/observability/apm-agent-java:latest /usr/agent/elastic-apm-agent.jar /innog/elastic-apm-agent.jar
 
 ENV PORT $DEFAULT_PORT
-ENV key "baobab"
 
 # Expose the required port
 EXPOSE $DEFAULT_PORT
