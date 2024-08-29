@@ -75,8 +75,11 @@ public class InitDataForLocal extends AbstractInitData {
             MemberRequestDto mbDto3= MemberRequestDto.builder().mbName("김성수").mbEmail("이메일").mbPassword(password).mbCoin(12000).department(department).build();
             memberRepository.save(Member.from(mbDto3));
 
-            MemberRequestDto mbDto4= MemberRequestDto.builder().mbName("lee_seunghun06@eland.co.kr").mbEmail("admin222").mbPassword(password).mbCoin(12000).department(department).build();
+            MemberRequestDto mbDto4= MemberRequestDto.builder().mbName("LEE_SEUNGHUN06@ELAND.CO.KR").mbEmail("admin222").mbPassword(password).mbCoin(12000).department(department).build();
             memberRepository.save(Member.from(mbDto4));
+
+//            MemberRequestDto mbDto5= MemberRequestDto.builder().mbName("lee_seunghun06@eland.co.kr").mbEmail("admin222").mbPassword(password).mbCoin(12000).department(department).build();
+//            memberRepository.save(Member.from(mbDto5));
 
 
             OrderDto.OrderItemCreateRequestDto orderItemDto = OrderDto.OrderItemCreateRequestDto.builder().itemId(4L).quantity(2).build();

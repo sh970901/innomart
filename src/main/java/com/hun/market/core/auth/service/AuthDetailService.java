@@ -25,6 +25,8 @@ public class AuthDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String mbName) throws UsernameNotFoundException {
+        mbName = mbName.toUpperCase();
+
         Member member = memberRepository.findByMbNameWithCart(mbName)
                 .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
         List<GrantedAuthority> authorities = new ArrayList<>();
