@@ -48,7 +48,7 @@ function fetchMoreItems() {
                     </div>
                     <div class="item-name">${item.itemName}</div>
                     <div class="item-desc">${item.description}</div>
-                    <div class="item-price">${item.itemPrice}원</div>
+                    <div class="item-price">${item.itemPrice}JW</div>
                     <div class="btn-wrap">
                       <button class="btn" id="buynow" onclick="showPurchaseModal(${item.itemId}, '${item.itemName}', ${item.itemStock},${item.itemPrice})" data-bs-toggle="modal" data-bs-target="#orderModal">바로 구매</button>
                       <button class="btn" id="heart" th:attr="data-item-id=${item.itemId}, data-item-name=${item.itemName}" onclick="addCartJs(${item.itemId}, '${item.itemName}')">찜하기</button>

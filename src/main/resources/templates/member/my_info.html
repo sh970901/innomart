@@ -105,7 +105,7 @@
           </strong>
         </div>
         <div>
-          <strong>보유 코인: </strong> <span th:text="${memberDto.getMemberCoin()}">1000</span>원
+          <strong>보유 코인: </strong> <span th:text="${memberDto.getMemberCoin()}">1000</span>JW
         </div>
       </div>
 
@@ -338,7 +338,7 @@
         const newTdDescription = document.createElement('td');
         // newDiv.textContent = `거래 : ${item.transactionType} - 금액: ${item.amount} -날짜: ${item.eventDate} `;
         newTdTrans.textContent = `${coinHistory.transactionType}`;
-        newTdAmount.textContent = `${coinHistory.amount}원`;
+        newTdAmount.textContent = `${coinHistory.amount}JW`;
         newTdDate.textContent = `${coinHistory.eventDate.substring(0,16).replace('T', ' ')}`;
         newTdDescription.textContent = `${coinHistory.description}`;
 
@@ -359,14 +359,14 @@
         const newTdStatus = document.createElement('td');
         // newDiv.textContent = `거래 : ${item.transactionType} - 금액: ${item.amount} -날짜: ${item.eventDate} `;
         // newTdOrderItems.textContent = `상품: ${order.orderItems}`;
-        newTdTotalPrice.textContent = `${order.totalPrice}원`;
+        newTdTotalPrice.textContent = `${order.totalPrice}JW`;
         newTdDate.textContent = `${order.orderDate}`;
         newTdStatus.textContent = `${order.orderStatus}`;
 
         // 주문 아이템들을 텍스트로 설정
         let orderItemsHTML = '';
         order.orderItems.forEach(item => {
-          orderItemsHTML += `상품명: ${item.itemName}, 수량: ${item.quantity}, 가격: ${item.itemPrice}원<br>`;
+          orderItemsHTML += `상품명: ${item.itemName}, 수량: ${item.quantity}, 가격: ${item.itemPrice}JW<br>`;
         });
         newTdOrderItems.innerHTML = orderItemsHTML.trim();
 
@@ -386,7 +386,7 @@
         const newTdStatus = document.createElement('td');
         // newDiv.textContent = `거래 : ${item.transactionType} - 금액: ${item.amount} -날짜: ${item.eventDate} `;
         newTdClaimItem.textContent = `${claim.itemName}`;
-        newTdAmount.textContent = `${claim.refundAmount}원`;
+        newTdAmount.textContent = `${claim.refundAmount}JW`;
         newTdDate.textContent = `${claim.time}`;
         newTdStatus.textContent = `${claim.claimStatus}`;
 

@@ -89,7 +89,7 @@
 
                 <div class="item-name" th:text="${item.itemName}"></div>
                 <div class="item-desc" th:text="${item.description}">상품 설명</div>
-                <div class="item-price" th:text="${item.itemPrice}+'원'"></div>
+                <div class="item-price" th:text="${item.itemPrice}+'JW'"></div>
 
                 <div th:if="${item.itemStock > 0}">
                   <div class="btn-wrap">
@@ -165,7 +165,7 @@
                 <div class="line-info-wrap total-price-wrap">
                     <div>합계 :</div>
                     <div id="totalPrice"></div>
-                    <div>원</div>
+                    <div>JW</div>
                 </div>
             </div>
             <div class="modal-footer">

@@ -108,10 +108,10 @@
             <div class="modal-body">
                 <p>선택된 상품 목록:</p>
                 <ul id="selectedItemsList"></ul>
-                <p>총 가격: <span id="totalPrice"></span>원</p>
+                <p>총 가격: <span id="totalPrice"></span>JW</p>
                 <p>보유 코인:
                 <span class="user-info" id="mbCoinValue" th:if="${#authorization.expression('isAuthenticated()')}"
-                      th:text="|${#authentication.principal.mbCoin}원|"></span>
+                      th:text="|${#authentication.principal.mbCoin}JW|"></span>
                 </p>
             </div>
             <div class="modal-footer">
