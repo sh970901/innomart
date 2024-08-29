@@ -15,6 +15,8 @@ import com.hun.market.member.dto.MemberDto;
 import com.hun.market.member.service.MemberService;
 import com.hun.market.order.order.repository.OrderPossRepository;
 import jakarta.validation.Valid;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,9 +28,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController

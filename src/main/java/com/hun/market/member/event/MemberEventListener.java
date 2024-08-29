@@ -3,12 +3,9 @@ package com.hun.market.member.event;
 import com.hun.market.message.service.MailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
-
-import java.util.Random;
 
 @Service
 @RequiredArgsConstructor

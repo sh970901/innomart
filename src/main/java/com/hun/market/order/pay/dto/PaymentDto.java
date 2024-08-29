@@ -1,7 +1,11 @@
 package com.hun.market.order.pay.dto;
 
 import com.hun.market.order.pay.domain.PaymentStatus;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 public class PaymentDto {

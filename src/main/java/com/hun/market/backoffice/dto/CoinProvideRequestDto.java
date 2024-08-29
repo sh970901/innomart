@@ -2,7 +2,6 @@ package com.hun.market.backoffice.dto;
 
 import com.hun.market.member.domain.CoinTransType;
 import jakarta.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AccessLevel;

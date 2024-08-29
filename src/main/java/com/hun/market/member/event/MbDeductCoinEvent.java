@@ -1,7 +1,5 @@
 package com.hun.market.member.event;
 
-import com.hun.market.core.event.Events;
-import com.hun.market.member.domain.CoinTransType;
 import com.hun.market.member.domain.Member;
 import com.hun.market.order.order.domain.Order;
 

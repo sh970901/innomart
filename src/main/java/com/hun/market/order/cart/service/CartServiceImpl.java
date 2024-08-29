@@ -15,6 +15,7 @@ import com.hun.market.order.cart.exception.CartItemNotFoundException;
 import com.hun.market.order.cart.repository.CartItemRepository;
 import com.hun.market.order.cart.repository.CartRepository;
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -23,8 +24,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

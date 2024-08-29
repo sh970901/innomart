@@ -1,11 +1,10 @@
 package com.hun.market.member.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 public class MemberContext extends User {

@@ -5,12 +5,24 @@ import com.hun.market.base.entity.BaseEntity;
 import com.hun.market.order.order.domain.Order;
 import com.hun.market.order.order.dto.OrderDto;
 import com.hun.market.order.order.dto.OrderDto.OrderItemByCartCreateRequestDto;
-import jakarta.persistence.*;
-import java.time.LocalDate;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-
 import java.util.List;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Entity
@@ -86,8 +98,10 @@ public class CoinTransHistory extends BaseEntity {
         String description = "";
 
         for (OrderItemByCartCreateRequestDto orderItemDto : orderItemDtos) {
-            description += (orderItemDto.getItemName() + "번 상품" + orderItemDto.getQuantity() +"개 구매" + "\n");
+            description += (orderItemDto.getItemName()+ " "+ orderItemDto.getQuantity() +"개 구매, ");
         }
+        String description2 = description.substring(0, description.length()-2);
+
 
         return CoinTransHistory.builder()
                                .member(member)
@@ -95,14 +109,14 @@ public class CoinTransHistory extends BaseEntity {
                                .transactionType(CoinTransType.구매)
                                .totalCoin(member.getMbCoin())
                                .eventDate(LocalDateTime.now())
-                               .description(description)
+                               .description(description2)
                                .build();
 
     }
 
     public static CoinTransHistory createWithdrawalTransaction(OrderDto.OrderItemCreateRequestDto orderItemDto, Member member, Long orderTotalPrice) {
 
-        String description = (orderItemDto.getItemName() + "번 상품" + orderItemDto.getQuantity() +"개 구매" + "\n");
+        String description = (orderItemDto.getItemName() + " " + orderItemDto.getQuantity() +"개 구매");
         return CoinTransHistory.builder()
                                .member(member)
                                .amount(Math.toIntExact(orderTotalPrice))

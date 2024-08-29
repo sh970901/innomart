@@ -3,9 +3,12 @@ package com.hun.market.order.claim.dto;
 import com.hun.market.member.domain.Member;
 import com.hun.market.order.order.domain.OrderItem;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
-
 import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 public class ClaimDto {
