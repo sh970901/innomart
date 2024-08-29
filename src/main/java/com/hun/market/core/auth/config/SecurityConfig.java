@@ -48,9 +48,9 @@ public class SecurityConfig {
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true))
-                .sessionManagement((auth) -> auth
-                        .maximumSessions(4)
-                        .maxSessionsPreventsLogin(false))
+//                .sessionManagement((auth) -> auth
+//                        .maximumSessions(4)
+//                        .maxSessionsPreventsLogin(true))
 
         ;
         return http.build();
