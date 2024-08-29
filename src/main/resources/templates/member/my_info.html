@@ -339,7 +339,7 @@
         // newDiv.textContent = `거래 : ${item.transactionType} - 금액: ${item.amount} -날짜: ${item.eventDate} `;
         newTdTrans.textContent = `${coinHistory.transactionType}`;
         newTdAmount.textContent = `${coinHistory.amount}원`;
-        newTdDate.textContent = `${coinHistory.eventDate}`;
+        newTdDate.textContent = `${coinHistory.eventDate.substring(0,16).replace('T', ' ')}`;
         newTdDescription.textContent = `${coinHistory.description}`;
 
         container.appendChild(newTr);
