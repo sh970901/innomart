@@ -43,7 +43,7 @@ function fetchMoreItems() {
       const newItem = document.createElement('div');
       newItem.classList.add('item');
       newItem.innerHTML = `
-                    <img src="${item.imagePath}" class="d-block w-100" alt="Exotic Fruits"/>
+                    <img src="${item.imagePath}" class="d-block w-100" alt="No Image"/>
                     <div class="item-name">${item.itemName}</div>
                     <div class="item-desc">${item.description}</div>
                     <div class="item-price">${item.itemPrice}원</div>

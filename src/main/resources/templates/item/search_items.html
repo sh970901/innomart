@@ -43,7 +43,7 @@
     </div>
     <div class="item-list" id="item-list" th:if="${itemList.size() > 0}">
       <div class="item" th:each="item : ${itemList}">
-        <img th:src="@{${item.imagePath}}" class="d-block w-100" alt="Exotic Fruits"/>
+        <img th:src="@{${item.imagePath}}" class="d-block w-100" alt="No Image"/>
         <div class="item-name" th:text="${item.itemName}"></div>
         <div class="item-desc" th:text="${item.description}">상품 설명</div>
         <div class="item-price" th:text="${item.itemPrice}+'원'"></div>
