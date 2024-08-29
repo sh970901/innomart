@@ -28,7 +28,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
 //                        .requestMatchers("/backoffice/**").hasRole("ADMIN")
-                        .requestMatchers("/resource/**", "/", "/main", "/login","/images/**", "/css/**", "/js/**", "/common/**", "/api/v1/items/**", "/api/v1/m/send-password-email", "/backoffice/**").permitAll()
+                        .requestMatchers("/resource/**", "/", "/main", "/login","/images/**", "/css/**", "/js/**", "/common/**", "/api/v1/items/**", "/api/v1/m/send-password-email", "/backoffice/**","/error").permitAll()
 //                        .requestMatchers("/backoffice/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
 //                        .anyRequest().permitAll())
@@ -43,14 +43,14 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login") //post
                         .usernameParameter("mbName")
                         .passwordParameter("mbPassword")
-                        .defaultSuccessUrl("/main"))
+                        .defaultSuccessUrl("/main", true))
                 .logout((logout) -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true))
-//                .sessionManagement((auth) -> auth
-//                        .maximumSessions(4)
-//                        .maxSessionsPreventsLogin(true))
+                .sessionManagement((auth) -> auth
+                        .maximumSessions(3)
+                        .maxSessionsPreventsLogin(false))
 
         ;
         return http.build();
