@@ -301,7 +301,7 @@ section h2 {
 
     .item img {
         max-width: 100%;
-        height: auto;
+        height: 230px;
         margin-bottom: 20px;
         border-radius: 5px;
     }
@@ -316,7 +316,7 @@ section h2 {
 
     .item img {
         max-width: 100%;
-        height: auto;
+        height: 230px;
         margin-bottom: 20px;
         border-radius: 5px;
     }
@@ -341,7 +341,7 @@ section h2 {
 
 .item img {
     max-width: 100%;
-    height: auto;
+    max-height: 230px;
     margin-bottom: 20px;
     border-radius: 5px;
 }
