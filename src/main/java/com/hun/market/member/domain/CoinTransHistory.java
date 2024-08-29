@@ -2,10 +2,14 @@ package com.hun.market.member.domain;
 
 import com.hun.market.backoffice.dto.CoinProvideRequestDto;
 import com.hun.market.base.entity.BaseEntity;
+import com.hun.market.order.order.domain.Order;
+import com.hun.market.order.order.dto.OrderDto;
+import com.hun.market.order.order.dto.OrderDto.OrderItemByCartCreateRequestDto;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import java.util.List;
 import lombok.*;
 
 
@@ -21,7 +25,6 @@ public class CoinTransHistory extends BaseEntity {
     @Column(name = "trans_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
@@ -66,15 +69,48 @@ public class CoinTransHistory extends BaseEntity {
     }
 
     // Todo 주문정보를 받아서 처리
-    public static CoinTransHistory createWithdrawalTransaction(Member member, int amount) {
+    public static CoinTransHistory createWithdrawalTransaction(Member member, Order order) {
+
         return CoinTransHistory.builder()
                 .member(member)
-                .amount(amount)
+                .amount(Math.toIntExact(order.getTotalPrice()))
                 .transactionType(CoinTransType.구매)
+                .totalCoin(member.getMbCoin())
                 .eventDate(LocalDateTime.now())
-                .description("주문")
+                .description("")
                 .build();
     }
 
+    public static CoinTransHistory createWithdrawalTransaction(List<OrderItemByCartCreateRequestDto> orderItemDtos, Member member, Long orderTotalPrice) {
 
+        String description = "";
+
+        for (OrderItemByCartCreateRequestDto orderItemDto : orderItemDtos) {
+            description += (orderItemDto.getItemName() + "번 상품" + orderItemDto.getQuantity() +"개 구매" + "\n");
+        }
+
+        return CoinTransHistory.builder()
+                               .member(member)
+                               .amount(Math.toIntExact(orderTotalPrice))
+                               .transactionType(CoinTransType.구매)
+                               .totalCoin(member.getMbCoin())
+                               .eventDate(LocalDateTime.now())
+                               .description(description)
+                               .build();
+
+    }
+
+    public static CoinTransHistory createWithdrawalTransaction(OrderDto.OrderItemCreateRequestDto orderItemDto, Member member, Long orderTotalPrice) {
+
+        String description = (orderItemDto.getItemName() + "번 상품" + orderItemDto.getQuantity() +"개 구매" + "\n");
+        return CoinTransHistory.builder()
+                               .member(member)
+                               .amount(Math.toIntExact(orderTotalPrice))
+                               .transactionType(CoinTransType.구매)
+                               .totalCoin(member.getMbCoin())
+                               .eventDate(LocalDateTime.now())
+                               .description(description)
+                               .build();
+
+    }
 }

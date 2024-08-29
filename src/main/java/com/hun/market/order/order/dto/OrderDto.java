@@ -37,6 +37,9 @@ public class OrderDto {
         @Positive
         private Integer quantity;
 
+        @NotNull(message = "itemName is required")
+        private String itemName;
+
     }
 
     @Getter
@@ -53,6 +56,10 @@ public class OrderDto {
         @NotNull(message = "quantity is required")
         @Size(max = 10000, message = "quantity cannot exceed 10000")
         private Integer quantity;
+
+
+        @NotNull(message = "Item  is required")
+        private String itemName;
 
     }
 

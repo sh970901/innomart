@@ -237,6 +237,7 @@ function countItemQuantityM(){
 }
 
 async function purchaseItem(){
+    let itemName = document.getElementById('selectedItem').textContent;
     let itemStock = parseInt(document.getElementById('itemStock').textContent);
     let itemQuantity = parseInt(document.getElementById('itemQuantity').textContent);
     const itemId = parseInt(document.getElementById('selectedItemId').textContent);
@@ -256,7 +257,7 @@ async function purchaseItem(){
     }
 
     const orderData = {
-        itemId: itemId, quantity: itemQuantity
+        itemId: itemId, quantity: itemQuantity, itemName: itemName
     };
 
     try {

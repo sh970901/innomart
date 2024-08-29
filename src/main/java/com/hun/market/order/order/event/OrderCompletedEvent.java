@@ -17,7 +17,7 @@ public class OrderCompletedEvent implements OrderEvent {
     @Override
     public void process() {
 
-        Events.raise(new MbDeductCoinEvent(order.getBuyer(), Math.toIntExact(order.getTotalPrice()))); // 멤버 코인 차감
+        Events.raise(new MbDeductCoinEvent(order)); // 멤버 코인 차감
         Events.raise(new DecreaseItStockEvent(order.getOrderItems())); // 상품 갯수 차감
 
         order.complete();

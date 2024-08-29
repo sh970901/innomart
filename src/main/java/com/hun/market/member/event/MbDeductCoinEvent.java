@@ -3,22 +3,17 @@ package com.hun.market.member.event;
 import com.hun.market.core.event.Events;
 import com.hun.market.member.domain.CoinTransType;
 import com.hun.market.member.domain.Member;
+import com.hun.market.order.order.domain.Order;
 
 public class MbDeductCoinEvent implements MemberEvent {
+    private Order order;
 
-    private Member member;
-    private int payCoin;
-
-    public MbDeductCoinEvent(Member member){
-        this.member = member;
-    }
-
-    public MbDeductCoinEvent(Member buyer, int totalPrice) {
-        this.member = buyer;
-        this.payCoin = totalPrice;
+    public MbDeductCoinEvent(Order order) {
+        this.order = order;
     }
 
     @Override public void process() {
-        member.deductCoin(payCoin);
+        Member member = order.getBuyer();
+        member.deductCoin(order);
     }
 }

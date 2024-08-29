@@ -90,6 +90,10 @@ public class Member extends BaseEntity {
       this.department = memberRequestDto.getDepartment();
     }
 
+    public void addCoinTransHistories(CoinTransHistory coinTransHistory) {
+        this.coinTransHistories.add(coinTransHistory);
+    }
+
     public void provideCoin(int coin) {
         this.mbCoin += coin;
     }
@@ -99,7 +103,9 @@ public class Member extends BaseEntity {
         this.coinTransHistories.add(CoinTransHistory.createDepositTransaction(this, coinProvideRequestDto));
     }
 
-    public void deductCoin(int coin){
+    public void deductCoin(Order order){
+        int coin = Math.toIntExact(order.getTotalPrice());
+
         if (coin < 0){
             throw new MemberValidException("회원정보 수정 중 오류가 발생했습니다.");
         }
@@ -107,8 +113,8 @@ public class Member extends BaseEntity {
             throw new MemberCoinLackException("코인이 부족합니다. \n 결제 코인: " + coin+" \n 잔여 코인: "+mbCoin);
         }
         this.mbCoin -= coin;
-        CoinTransHistory coinTransHistory = CoinTransHistory.createWithdrawalTransaction(this, coin);
-        this.coinTransHistories.add(coinTransHistory);
+//        CoinTransHistory coinTransHistory = CoinTransHistory.createWithdrawalTransaction(this, order);
+//        this.coinTransHistories.add(coinTransHistory);
     }
 
     public void mappingCart(Cart cart) {

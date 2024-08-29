@@ -5,10 +5,12 @@ import com.hun.market.item.domain.Item;
 import com.hun.market.item.exception.ItemNotFoundException;
 import com.hun.market.item.exception.ItemStockException;
 import com.hun.market.item.repository.ItemRepository;
+import com.hun.market.member.domain.CoinTransHistory;
 import com.hun.market.member.domain.Member;
 import com.hun.market.member.domain.MemberContext;
 import com.hun.market.member.exception.MemberCoinLackException;
 import com.hun.market.member.exception.MemberValidException;
+import com.hun.market.member.repository.CoinTransHistoryRepository;
 import com.hun.market.member.repository.MemberRepository;
 import com.hun.market.order.cart.service.CartService;
 import com.hun.market.order.order.domain.Order;
@@ -52,6 +54,8 @@ public class OrderService {
     private final PaymentService paymentCartService;
     private final AuthenticationManager authenticationManager;
 
+    private final CoinTransHistoryRepository coinTransHistoryRepository;
+
     private final CartService cartService;
 
     @Validated
@@ -75,6 +79,10 @@ public class OrderService {
 
         try {
             paymentCartService.processPayment(order);
+            CoinTransHistory  coinTransHistory = CoinTransHistory.createWithdrawalTransaction(orderDto.getOrderItemDtos(), member,order.getTotalPrice());
+//            coinTransHistoryRepository.save(coinTransHistory);
+            member.addCoinTransHistories(coinTransHistory);
+            memberRepository.save(member);
         }
         catch (ItemStockException | MemberCoinLackException | MemberValidException e){
             log.info("주문 처리 중 예외 발생: " + e.getMessage());
@@ -178,6 +186,13 @@ public class OrderService {
 
         try {
             paymentCartService.processPayment(order);
+            CoinTransHistory  coinTransHistory = CoinTransHistory.createWithdrawalTransaction(orderItemDto, member,order.getTotalPrice());
+            //            coinTransHistoryRepository.save(coinTransHistory);
+            member.addCoinTransHistories(coinTransHistory);
+            memberRepository.save(member);
+
+
+
         }
         catch (ItemStockException | MemberCoinLackException | MemberValidException e){
             log.info("주문 처리 중 예외 발생: " + e.getMessage());
