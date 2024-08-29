@@ -35,8 +35,7 @@ public class ExcelServiceImpl implements ExcelService {
             //
             for (EmployeeExcelUploadDto excelUploadDto : resultDtoList) {
                 Member member = Member.from(MemberDto.from(excelUploadDto));
-                member.resetPassword(excelUploadDto.getPassword());
-
+                member.setPassword(excelUploadDto.getPassword());
 
                 CoinTransHistory initHistory = CoinTransHistory.registByAdmin(member, excelUploadDto.getCoin().intValue());
                 member.getCoinTransHistories().add(initHistory);

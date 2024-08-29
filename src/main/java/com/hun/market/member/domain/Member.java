@@ -144,6 +144,11 @@ public class Member extends BaseEntity {
         Events.raise(new MbResetRandomPasswordEvent(mbEmail, newPassword));
     }
 
+    public void setPassword(String password) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.mbPassword = passwordEncoder.encode(password);
+    }
+
     public void s2tClaims(List<Claim> claims) {
         this.claims = claims;
     }
