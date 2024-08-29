@@ -30,6 +30,11 @@
       color: white; /* 글자 색상을 하얀색으로 설정 */
     }
 
+    .item-image-wrap {
+      height: 230px;
+      max-height: 230px;
+    }
+
   </style>
 </head>
 <body >
@@ -43,7 +48,9 @@
     </div>
     <div class="item-list" id="item-list" th:if="${itemList.size() > 0}">
       <div class="item" th:each="item : ${itemList}">
+        <div class="item-image-wrap">
         <img th:src="@{${item.imagePath}}" class="d-block w-100" alt="No Image"/>
+        </div>
         <div class="item-name" th:text="${item.itemName}"></div>
         <div class="item-desc" th:text="${item.description}">상품 설명</div>
         <div class="item-price" th:text="${item.itemPrice}+'원'"></div>

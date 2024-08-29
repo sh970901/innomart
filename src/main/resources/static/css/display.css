@@ -792,3 +792,15 @@ footer {
     left:calc(100% - 45px);
     background-color: #fff;
 }
+
+.item-image-wrap {
+    height: 230px;
+    max-height: 230px;
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 (필요시) */
+    border: 1px solid transparent; /* 연한 회색 경계 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    border-radius: 10px; /* 모서리 둥글게 (필요시) */
+    margin-bottom: 20px;
+}
