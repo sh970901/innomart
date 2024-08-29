@@ -13,14 +13,98 @@ body {
     font-family: 'SpoqaHanSansNeo-Regular';
 }
 
-.floating-image {
+.floating-image-one {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background: url('https://cdn.pixabay.com/photo/2022/01/11/18/56/balloons-6931276_1280.png') no-repeat center/cover;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/30.png') no-repeat center/cover;
     animation: float 10s infinite ease-in-out;
     z-index: -1; /* 다른 요소들 뒤에 배치 */
 }
+.floating-image-two {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/31.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-three {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/32.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-four {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/33.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-five {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/34.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-six {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/35.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-seven {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/36.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-eight {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/37.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-nine {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/38.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+
+.floating-image-ten {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/39.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+.floating-image-eleven {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/40.png') no-repeat center/cover;
+    animation: float 10s infinite ease-in-out;
+    z-index: -1; /* 다른 요소들 뒤에 배치 */
+}
+
+
+
 .header-top {
     display: flex;
     justify-content: space-between;
