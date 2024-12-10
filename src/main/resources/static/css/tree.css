@@ -1,0 +1,871 @@
+@import url("https://fonts.googleapis.com/css?family=Mountains+of+Christmas:700");
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
+/* 기본 스타일: 모바일에서 전체 너비 */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: white; /* 배경색 */
+  overflow: hidden; /* 스크롤바 숨기기 */
+  height: 100%; /* 전체 높이를 꽉 채우기 */
+  font-family: Arial, sans-serif;
+}
+
+/* 800px 미만일 때 전체 너비 */
+@media (max-width: 800px) {
+  body,
+  html {
+    max-width: 100%; /* 전체 너비 */
+    margin: 0 auto;
+  }
+
+  /* fixed-text를 화면에 맞게 배치 */
+  .fixed-text {
+    position: absolute;
+    top: 20px; /* 화면 상단 20px */
+    left: 20px; /* 화면 좌측 20px */
+    font-size: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+
+  /* strong 태그 강조 스타일 */
+  .fixed-text strong {
+    color: #F2BB66; /* 강조 스타일 적용 */
+  }
+
+  .xmas-tree {
+    position: absolute; /* 독립적으로 위치 설정 */
+    top: 110%; /* 세로 위치 유지 */
+    left: 50%; /* 가로 위치를 부모 기준으로 중앙 정렬 */
+    transform: translateX(-50%) scale(1.5); /* 중앙 정렬을 위해 50% 왼쪽으로 이동 */
+    margin: 0; /* 마진 초기화 */
+    float: none; /* float 제거 */
+    z-index: 100;
+  }
+
+
+  svg {
+    position: relative;
+    top: 110%; /* 세로 위치 유지 */
+    width: 100%;
+    max-height: 100vh;
+    transform: scale(3);
+    z-index: 100;
+  }
+}
+
+/* 800px 이상일 때 너비를 고정 */
+@media (min-width: 801px) {
+  body,
+  html {
+    max-width: 600px; /* 고정 너비 */
+    margin: 0 auto;
+    overflow: hidden; /* 스크롤바 숨기기 */
+    height: 100%;
+  }
+
+  .fixed-text {
+    position: absolute; /* 부모 요소 기준 고정 */
+    top: 20px; /* 부모 기준 상단에서 20px */
+    left: 47.5%; /* 화면 정가운데 */
+    transform: translateX(-50%) translateX(-20%);
+    font-size: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+
+  .fixed-text strong {
+    color: #F2BB66; /* 강조 스타일 */
+  }
+
+  .xmas-tree {
+    position: absolute; /* 독립적으로 위치 설정 */
+    top: 90%; /* 세로 위치 유지 */
+    left: 50%; /* 가로 위치를 부모 기준으로 중앙 정렬 */
+    transform: translateX(-50%) scale(3); /* 중앙 정렬을 위해 50% 왼쪽으로 이동 */
+    margin: 0; /* 마진 초기화 */
+    float: none; /* float 제거 */
+    z-index: 100;
+  }
+
+  svg {
+    position: relative;
+    top: 90%; /* 세로 위치 유지 */
+    width: 100%;
+    max-height: 100vh;
+    transform: scale(2);
+    z-index: 100;
+  }
+
+  .room-window {
+    width: 280px;
+    height: 250px;
+    border: 10px solid white;
+    box-shadow: 4px 5px 2px 0px rgba(182, 146, 54, 0.3);
+    transform: scale(1.2);
+    float: right;
+    overflow: hidden;
+    position: relative;
+  }
+
+}
+
+
+
+#cat {
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.holidays-title {
+  font-family: "Mountains of Christmas", cursive;
+  font-size: 3em;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.14);
+  position: fixed; /* 화면 전체 기준 */
+  top: 50%; /* 화면 세로 중앙 */
+  left: 50%; /* 화면 가로 중앙 */
+  transform: translate(-50%, -50%); /* 정확한 중앙 보정 */
+  opacity: 0;
+  animation: balloon 6s ease-in-out infinite;
+}
+
+.holidays-title::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 0 solid transparent;
+  border-top: 40px solid #fff;
+  bottom: -31px;
+  right: 33px;
+  transform: rotateZ(-20deg);
+}
+
+
+
+.wrapper {
+  margin: 0;
+  display: flex;
+  height: inherit;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+      circle at center,
+      rgba(255, 223, 159, 0.8) 0%, /* 주황색 시작 */
+      rgba(255, 252, 252, 0.1) 100% /* 옅은 검정색 계열 */
+  );
+
+}
+
+/* 빛 효과를 내는 요소 */
+.light-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1; /* 뒤로 보이도록 */
+ background: radial-gradient(
+      circle at center,
+      rgba(255, 223, 159, 1) 0%,
+      rgba(255, 251, 251,0.1) 100%
+  );
+}
+
+
+.sc-hat, .sc-head .ears, .sc-head .beard::before, .sc-head .nose, .room-window::after, .room-window::before, .tree-jar, .tree-stalk {
+  display: table;
+  margin: 0 auto;
+}
+
+.tie-wrap::after, .tie-wrap::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 17px solid transparent;
+  border-right: 0 solid transparent;
+  border-bottom: 40px solid yellow;
+  left: 21px;
+  top: 5px;
+}
+
+.ground {
+  background: rgba(0, 0, 0, 0.12);
+  width: calc(100vw - 20%);
+  height: 70px;
+  border-radius: 50%;
+  display: table;
+}
+
+.scene {
+  max-width: calc(100vw - 30%);
+  min-width: 180px;
+  position: absolute; /* 화면 기준으로 위치를 지정 */
+  top: 40%; /* 세로 방향 중간보다 살짝 위 */
+  left: 50%; /* 가로 방향 정 가운데 */
+  transform: translate(-50%, -50%); /* 정확한 중앙 정렬 보정 */
+}
+
+
+
+
+.tree-star {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  z-index: 4;
+}
+.tree-star::before {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid #fcd000;
+  box-shadow: 1px 19px 20px -7px #1d5022;
+}
+.tree-star::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 25px solid #fcd000;
+}
+
+.tree-part {
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 100px solid #49bd55;
+  position: relative;
+  z-index: 3;
+}
+.tree-part::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  background-repeat: repeat;
+  height: 15px;
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle at 10px 15px, #3fae4a 12px, transparent 13px);
+  top: 99px;
+  left: -80px;
+  transform: rotateX(180deg);
+}
+.tree-part:nth-child(2) {
+  border-bottom-color: #31883a;
+  transform: scale(1.4);
+  top: -45px;
+  z-index: 2;
+}
+.tree-part:nth-child(2)::before {
+  background-image: radial-gradient(circle at 10px 15px, #389b42 12px, transparent 13px);
+}
+.tree-part:nth-child(3) {
+  border-bottom-color: #2b7532;
+  transform: scale(1.8);
+  top: -80px;
+  z-index: 1;
+}
+.tree-part:nth-child(3)::before {
+  background-image: radial-gradient(circle at 10px 15px, #31883a 12px, transparent 13px);
+}
+
+.tree-stalk {
+  width: 25px;
+  height: 75px;
+  background: #7b652d;
+  box-shadow: inset 0 22px 6px -1px #302812;
+  position: relative;
+  top: -40px;
+}
+
+.tree-jar {
+  width: 80px;
+  position: relative;
+  top: -40px;
+  left: 2px;
+}
+.tree-jar::before {
+  content: "";
+  width: 96px;
+  height: 20px;
+  float: left;
+  background: #584444;
+  box-shadow: 0 3px 2px -1px #4a3939;
+  position: relative;
+  border-radius: 2px;
+  left: -3px;
+}
+.tree-jar::after {
+  content: "";
+  border-top: 50px solid #755a5a;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  height: 0;
+  width: 50px;
+  float: left;
+}
+
+.tree-lights {
+  width: 120px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 3px 0 -1px #000;
+}
+.tree-lights.left {
+  transform: rotateZ(-20deg);
+  position: relative;
+  left: -73px;
+  top: 41px;
+}
+.tree-lights.right {
+  transform: rotateY(180deg) rotateZ(-20deg);
+  position: relative;
+  left: -43px;
+  top: 31px;
+}
+
+.light-bulb {
+  width: 8px;
+  height: 3px;
+  background: black;
+  margin: 20px;
+  border-radius: 20% 50%;
+  position: absolute;
+  animation: 1s cubic-bezier(0.39, 0.58, 0.57, 1) infinite;
+}
+.light-bulb.red {
+  background: #de3939;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 6px 2px #de3939;
+  transform: rotateZ(-73deg);
+  top: 2px;
+  left: -9px;
+  animation-name: blink;
+}
+.light-bulb.yew {
+  background: #69e622;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 6px 2px #69e622;
+  transform: rotateZ(-86deg);
+  top: 6px;
+  left: 20px;
+  animation-name: blink2;
+}
+.light-bulb.purple {
+  background: #9c6aff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 6px 2px #9c6aff;
+  transform: rotateZ(-96deg);
+  top: 6px;
+  left: 50px;
+  animation-name: blink3;
+}
+.light-bulb.blue {
+  background: #0ebeff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 6px 2px #0ebeff;
+  transform: rotateZ(-106deg);
+  top: 3px;
+  left: 75px;
+  animation-name: blink4;
+}
+
+.room-window {
+  width: 280px;
+  height: 250px;
+  border: 10px solid white;
+  box-shadow: 4px 5px 2px 0px rgba(182, 146, 54, 0.3);
+  float: right;
+  overflow: hidden;
+  position: relative;
+}
+.room-window::before {
+  content: "";
+  background: white;
+  box-shadow: 4px 5px 2px 0px rgba(182, 146, 54, 0.3);
+  width: 10px;
+  height: inherit;
+  position: absolute;
+  left: 48%;
+  z-index: 1;
+}
+.room-window::after {
+  content: "";
+  background: white;
+  width: inherit;
+  height: 10px;
+  position: absolute;
+  top: 48%;
+  z-index: 1;
+}
+.room-window .xmas-sky {
+  background: linear-gradient(0deg, #153d54, #061117);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.snow-ground {
+  width: 455px;
+  height: 105px;
+  background: linear-gradient(0deg, #fff, #ccf0fd);
+  border-radius: 40%;
+  position: absolute;
+  bottom: -44px;
+  left: -24px;
+  transform: rotateZ(-6deg);
+}
+
+.xmas-gifts {
+  position: absolute;
+  bottom: -41px;
+  left: 176px;
+}
+
+.xmas-gift {
+  border-radius: 4px;
+}
+.xmas-gift::before {
+  content: "";
+  width: 100%;
+  height: 10px;
+  background: yellow;
+  box-shadow: -30px 0 0 0 #d6d600;
+  display: block;
+  position: relative;
+  top: 35px;
+}
+.xmas-gift::after {
+  content: "";
+  width: 10px;
+  height: inherit;
+  background: yellow;
+  display: block;
+  position: relative;
+  top: -10px;
+  margin: auto;
+}
+.xmas-gift.square {
+  width: 80px;
+  height: 80px;
+  background: #ff54cf;
+  box-shadow: -30px 0 0 0 #ed00aa;
+  position: relative;
+  z-index: 1;
+}
+.xmas-gift.rectangular {
+  width: 60px;
+  height: 120px;
+  background: #0ebeff;
+  box-shadow: -30px 0 0 0 #008dc1;
+  position: absolute;
+  top: -50px;
+  left: 100px;
+}
+
+.tie-wrap {
+  position: absolute;
+  top: -20px;
+  left: -6px;
+  min-width: 82px;
+}
+.tie-wrap .tie, .tie-wrap .tie::before {
+  width: 40px;
+  height: 20px;
+  background: yellow;
+  border-radius: 50% 50% 20% 20%;
+  float: left;
+  z-index: 1;
+  position: relative;
+}
+.tie-wrap .tie::before {
+  content: "";
+  background: #cccc00;
+  transform: scale(0.5) translateX(15px) translateY(8px);
+}
+.tie-wrap .tie.reflected, .tie-wrap .reflected.tie::before {
+  transform: rotateY(180deg);
+}
+.tie-wrap .tie.reflected::before {
+  transform: scale(0.5) translateX(2px) translateY(8px);
+}
+.tie-wrap::after {
+  transform: rotateY(180deg);
+  left: 54px;
+}
+
+.rectangular .tie-wrap {
+  left: -16px;
+}
+
+.santa-claus {
+  margin: 40px;
+  animation: santa-claus 6s ease-in infinite;
+}
+
+.sc-head {
+  width: 80px;
+  height: 80px;
+  border-radius: 40%;
+  background: #f7caaf;
+  position: relative;
+  z-index: 2;
+}
+.sc-head .eyes {
+  position: absolute;
+  left: 2px;
+  top: 20px;
+  display: table;
+  margin: 0 auto;
+}
+.sc-head .eyes::before, .sc-head .eyes::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 15px;
+}
+.sc-head .nose {
+  width: 20px;
+  height: 13px;
+  border-radius: 50%;
+  background: #d48c7e;
+  top: 32px;
+  position: relative;
+}
+.sc-head .beard {
+  position: absolute;
+  bottom: -45px;
+  left: -10px;
+  background: #fff;
+  width: calc(100% + 20px);
+  height: 80px;
+  border-radius: 20% 20% 60% 60%;
+}
+.sc-head .beard::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 0 0 50% 50%;
+  margin-top: 6px;
+}
+.sc-head .ears {
+  width: calc(100% + 17px);
+  position: absolute;
+  top: 25px;
+  left: -8px;
+}
+.sc-head .ears .ear {
+  width: 10px;
+  height: 20px;
+  background: #d48c7e;
+  border-radius: 50% 0 0 50%;
+}
+.sc-head .ears .ear.left {
+  float: left;
+}
+.sc-head .ears .ear.right {
+  float: right;
+  transform: rotateZ(180deg);
+}
+
+.sc-hat {
+  position: absolute;
+  top: -37px;
+  left: -6px;
+  width: calc(100% + 10px);
+  height: 55px;
+  background: #de3939;
+  border-radius: 60px 80px 0 0;
+}
+.sc-hat::before {
+  content: "";
+  width: inherit;
+  height: 20px;
+  background: #fff;
+  display: block;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -5px;
+  left: -4px;
+}
+.sc-hat .hat-tip {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 69px solid #de3939;
+  position: absolute;
+  top: -37px;
+  animation: swing 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  left: 8px;
+}
+.sc-hat .hat-tip::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  left: -13px;
+  top: -10px;
+}
+
+.sc-body {
+  position: absolute;
+  left: -70px;
+  width: 200px;
+  height: 200px;
+  background: #de3939;
+  border-radius: 30%;
+}
+
+.snow, .snow:before, .snow:after {
+  position: absolute;
+  top: -600px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: radial-gradient(5px 5px at 432px 544px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 63px 295px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 122px 426px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 365px 533px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 583px 10px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 513px 460px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 487px 351px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 519px 233px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 559px 15px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 85px 573px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 118px 163px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 518px 393px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 588px 361px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 471px 578px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 101px 231px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 86px 183px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 428px 65px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 504px 285px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 119px 376px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 516px 192px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 205px 512px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 429px 230px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 227px 382px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 109px 572px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 211px 323px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 307px 519px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 551px 132px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 328px 67px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 501px 385px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 435px 403px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 67px 316px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 290px 545px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 195px 122px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 491px 457px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 192px 177px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 128px 226px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 101px 550px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 414px 459px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 86px 425px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 33px 484px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 592px 547px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 263px 198px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 475px 239px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 514px 499px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 32px 184px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 288px 432px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 325px 588px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 236px 223px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 206px 205px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 340px 455px, rgba(255, 255, 255, 0.9) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 535px 467px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 99px 446px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 592px 550px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 496px 437px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 455px 83px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 440px 154px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 75px 337px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 385px 435px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 154px 339px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 497px 206px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 548px 89px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 134px 158px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 322px 294px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 248px 106px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 445px 87px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 139px 420px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 97px 438px, white 70%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 593px 94px, rgba(255, 255, 255, 0.7) 70%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 35px 367px, rgba(255, 255, 255, 0.6) 70%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 373px 538px, rgba(255, 255, 255, 0.8) 70%, rgba(0, 0, 0, 0));
+  background-size: 600px 600px;
+  animation: snow 4s linear infinite;
+  content: "";
+}
+
+.snow:after {
+  margin-left: -200px;
+  opacity: 0.4;
+  animation-duration: 8s;
+  animation-direction: reverse;
+  filter: blur(3px);
+}
+
+.snow:before {
+  animation-duration: 12s;
+  animation-direction: reverse;
+  margin-left: -300px;
+  opacity: 0.65;
+  filter: blur(1.5px);
+}
+
+@keyframes snow {
+  to {
+    transform: translateY(600px);
+  }
+}
+@keyframes blink {
+  20% {
+    background: #eb8888;
+  }
+}
+@keyframes blink2 {
+  60% {
+    background: white;
+  }
+}
+@keyframes blink3 {
+  75% {
+    background: #d9c6ff;
+  }
+}
+@keyframes blink4 {
+  100% {
+    background: #a7e7ff;
+  }
+}
+@keyframes santa-claus {
+  0%, 60%, 80%, 100% {
+    transform: rotateZ(195deg) translateY(0);
+  }
+  30% {
+    transform: rotateZ(195deg) translateY(300px);
+  }
+}
+@keyframes swing {
+  0%, 100% {
+    transform: rotateZ(-42deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+}
+@keyframes balloon {
+  0%, 50%, 100% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  80%, 90% {
+    opacity: 1;
+    transform: translateY(-15px);
+  }
+}
+
+#Christmas_Lights {
+  height: 100%;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1000
+}
+
+.light_cord {
+  fill: none;
+  stroke: #174700;
+}
+
+.light_fixture {
+  fill: #134413;
+}
+
+.red_bulb {
+  fill: #CA2128;
+  stroke: #6D6D6D;
+  stroke-miterlimit: 10;
+}
+
+.green_bulb {
+  fill: #2D754A;
+  stroke: #6D6D6D;
+  stroke-miterlimit: 10;
+}
+
+.blue_bulb {
+  fill: #2C3EA8;
+  stroke: #6D6D6D;
+  stroke-miterlimit: 10;
+}
+
+.white_bulb {
+  fill: #F5EED7;
+  stroke: #6D6D6D;
+  stroke-miterlimit: 10;
+}
+
+.gold_bulb {
+  fill: #ffcc5e;
+  stroke: #6D6D6D;
+  stroke-miterlimit: 10;
+}
+
+
+/* Simply changing the opacity of the SVG fill to create the glow effect for the bulbs */
+
+.bulb {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-name: glow;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+  animation-name: glow;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@-webkit-keyframes glow {
+  0% {
+    fill-opacity: 0.25;
+  }
+  100% {
+    fill-opacity: 1
+  }
+}
+
+@keyframes glow {
+  0% {
+    fill-opacity: 0.25;
+  }
+  100% {
+    fill-opacity: 1.0
+  }
+}
+
+
+/* 전구 CSS */
+
+.blink-1 {
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.blink-2 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.blink-3 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.blink-4 {
+  -webkit-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+.blink-5 {
+  -webkit-animation-delay: 2.5s;
+  animation-delay: 2.5s;
+}
+
+.blink-6 {
+  -webkit-animation-delay: .3s;
+  animation-delay: .3s;
+}
+
+.blink-7 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.blink-8 {
+  -webkit-animation-delay: .2s;
+  animation-delay: .2s;
+}
+
+.blink-9 {
+  -webkit-animation-delay: 0.95s;
+  animation-delay: 0.95s;
+}
+
+.blink-10 {
+  -webkit-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}

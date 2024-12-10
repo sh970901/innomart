@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class BackOfficeController {
 
-    /*@GetMapping("/backoffice/home")
-    public String backOfficeHomeView() {
-        return "backoffice/backoffice";
-    }*/
 
     @GetMapping("/backoffice/home")
     public String backOfficeHomeView(@AuthenticationPrincipal MemberContext memberSession) {
@@ -28,4 +24,12 @@ public class BackOfficeController {
 
         return "backoffice/page";
     }
+
+    @GetMapping("/backoffice/tree")
+    public String treeView( ) {
+
+        return "backoffice/tree";
+    }
+
+
 }
