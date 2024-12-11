@@ -1,28 +1,39 @@
-
-
-
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" type="text/css" th:href="@{/css/tree.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/letter.css}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
-<div class="wrapper">
-  <!--개발 편의상 body 태그안에 스타일 -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- 빛 효과 -->
-  <div class="light-effect"></div>
+<body>
 
 
-  <div class="fixed-text">
-    <strong>김성수</strong> 님에게 배달된 마음편지 💌
-  </div>
+<!-- 빛 효과 -->
+<div class="light-effect"></div>
 
+
+<div class="fixed-text">
+  <strong>김성수</strong> 님에게 배달된 마음편지1 💌
+</div>
+
+<div class="toggle-container" id="toggle">
+  <div class="toggle-button"></div>
+  <div class="toggle-icon left">🌲</div>
+  <div class="toggle-icon right">🎁</div>
+</div>
+
+
+<!--편지 리스트-->
+
+<div id="div1" class="content active letter-container">
+<!--자식 요소 추가 영역-->
+</div>
+
+<!--트리 영역-->
+<div id="div2" class="content wrapper">
   <div class="scene">
     <div class="xmas-tree">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  viewBox="0 0 520 390">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 520 390">
         <g id="tree">
           <ellipse id="tree-base" fill="#39445B" cx="259.5" cy="319" rx="120" ry="38"/>
           <path id="tree-par-1" fill="#42CE8E" d="M260,185c0,0,2.5-0.8,6.7,2.6c4.3,3.4,121.1,81.2,121.1,81.2s4,3.9,1.6,9.6
@@ -121,7 +132,7 @@
 				c-0.4,3.5,0.7-44.3,0.7-44.3l-59-2c0,0-2.1,51.2,0.5,47.4C202.6,237.7,210.4,239.6,215,240.3z"/>
             </defs>
             <clipPath id="SVGID_2_">
-              <use xlink:href="#SVGID_1_"  overflow="visible"/>
+              <use xlink:href="#SVGID_1_" overflow="visible"/>
             </clipPath>
             <g id="cat-clippath" clip-path="url(#SVGID_2_)">
               <g id="cat">
@@ -200,6 +211,8 @@
   </div>
 
   <div class="ground"></div>
-
-  <script src="/common/js/tree.js"></script>
 </div>
+
+<script src="/common/js/tree.js"></script>
+<script src="/common/js/letter.js"></script>
+</body>
