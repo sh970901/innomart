@@ -25,8 +25,13 @@ public class BackOfficeController {
         return "backoffice/page";
     }
 
-    @GetMapping("/backoffice/tree")
-    public String treeView( ) {
+    @GetMapping("/welcome")
+    public String welcomeView() {
+       return "backoffice/welcome" ;
+    }
+
+    @GetMapping("/tree")
+    public String treeView() {
 
         return "backoffice/tree";
     }

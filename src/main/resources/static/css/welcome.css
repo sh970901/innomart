@@ -1,0 +1,318 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff2') format('woff2'),
+  url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  background-color: rgb(34, 38, 70);
+  height: 100vh;
+}
+
+svg {
+  transform: rotate(-15deg) scale(0.4); /* 15도 왼쪽으로 회전 */
+  margin-top : -500px;
+  z-index: -1;
+}
+
+.welcome-title {
+  font-family: 'Pretendard-Regular', sans-serif !important;
+  font-size: 100px;
+  text-align: center;
+  color: white;
+  margin-top : -350px;
+  z-index : 20000;
+}
+
+
+
+.swing{background-color:#FFE7C1;}
+.swin1{fill:#CC4937;}
+.swin2{fill:none;stroke:#CC4937;stroke-width:6;stroke-miterlimit:10;}
+.swin3{fill:#CC2A17;}
+.swin4{fill:#7F9CB7;}
+.swin5{fill:none;stroke:#7F9CB7;stroke-width:4;stroke-linecap:round;stroke-miterlimit:10;}
+.swin6{fill:#DFDFE7;}
+.swin7{fill:#AE2A17;}
+.swin8{fill:#FFFFFF;}
+.swin9{fill:#97A29F;}
+.swin10{fill:#FFC6D0;}
+.swin11{fill:none;stroke:#FFC6D0;stroke-width:15;stroke-linecap:round;stroke-miterlimit:10;}
+.swin12{fill:#300000;}
+.swin13{fill:#84462E;}
+.swin14{display:none;}
+.swin15{display:inline;fill:#FFFFFF;}
+.swin16{display:inline;}
+.swin17{fill:#4E240E;}
+.swin18{fill:#FF5084;}
+.swin19{fill:#FF7EA9;}
+.swin20{fill:none;stroke:#FFFFFF;stroke-width:0.2;stroke-miterlimit:10;}
+.swin21{display:inline;fill:none;stroke:#CC4937;stroke-width:5;stroke-miterlimit:10;}
+.swin22{display:inline;fill:none;stroke:#CC4937;stroke-width:5;stroke-linejoin:round;stroke-miterlimit:10;}
+.swin23{display:inline;fill:none;stroke:#CC4937;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+.swin24{fill:none;stroke:#DDCE70;stroke-width:19;stroke-linecap:round;stroke-miterlimit:10;}
+.swin25{fill:none;stroke:#9C1B37;stroke-width:7;stroke-linecap:round;stroke-miterlimit:10;}
+.swin26{fill:#CC2A17;}
+.swin27{font-family:'MyriadPro-Regular';}
+.swin28{font-size:12px;}
+
+
+#head-p2{
+  transform-origin:center center;
+  animation:head 4s ease infinite;
+}
+
+@keyframes head{
+  0%{transform:translate(-61px,7px)rotate(-25deg);}
+  10%{transform:translate(0,30px)rotate(0deg);}
+  25%,40%{transform:translate(0,0)rotate(0deg);}
+  50%{transform:translate(41px,3px)rotate(18deg);}
+  60%{transform:translate(0,30px)rotate(0deg);}
+  75%,90%{transform:translate(0,0px)rotate(0deg);}
+  100%{transform:translate(-61px,7px)rotate(-25deg);}
+}
+
+#ribbon-p2{
+  transform-origin:center center;
+  animation:ribbon 4s ease infinite;
+}
+
+@keyframes ribbon{
+  0%{transform:translate(-25px,-5px)rotate(-25deg);}
+  10%{transform:translate(0,30px)rotate(0deg);}
+  25%,40%{transform:translate(0,0)rotate(0deg);}
+  50%{transform:translate(30px,3px)rotate(8deg);}
+  60%{transform:translate(0,30px)rotate(0deg);}
+  75%,90%{transform:translate(0,0px)rotate(0deg);}
+  100%{transform:translate(-25px,-5px)rotate(-25deg);}
+}
+
+
+#swing-rotate{
+  transform-origin:center top;
+  animation:rotate 4s ease infinite;
+}
+
+@keyframes rotate{
+  0%{transform:rotate(45deg);}
+  50%{transform:rotate(-45deg);}
+  100%{transform:rotate(45deg);}
+}
+
+
+#deco{
+  transform-origin: top center;
+  animation:deco 4s ease infinite;
+}
+
+@keyframes deco{
+  0%{transform:rotate(0deg);}
+  10%{transform:rotate(20deg);}
+  25%{transform:rotate(40deg);}
+  40%{transform:rotate(25deg);}
+  45%{transform:rotate(50deg);}
+  50%{transform:rotate(0deg);}
+  60%{transform:rotate(-30deg);}
+  75%{transform:rotate(-50deg);}
+  90%{transform:rotate(-40deg);}
+  95%{transform:rotate(-60deg);}
+  100%{transform:rotate(0deg);}
+
+}
+
+
+.christmas{background:#222646;}
+.christ0{fill:#222646;}
+.christ1{fill:#DD945D;}
+.christ2{fill:#8C474F;}
+.christ3{fill:#DDA25D;}
+.christ4{fill:#EE5F5D;}
+.christ5{fill:none;stroke:#6D1915;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+.christ6{fill:#427BFF;}
+.christ7{fill:#a37548;}
+.christ8{fill:#A72C4D;}
+.christ9{fill:#DD325D;}
+.christ10{fill:#B82C4D;}
+.christ11{fill:none;stroke:#FD9870;stroke-width:5;stroke-linecap:round;stroke-miterlimit:10;}
+.christ12{fill:#AEC856;}
+.christ13{fill:#FFFFF5;}
+.christ14{fill:#28ABEC;}
+.christ15{fill:#2846EC;}
+.christ16{fill:#F5B3B1;}
+.christ17{fill:#FFFFFF;}
+.christ18{fill:none;stroke:#6D1915;stroke-linecap:round;stroke-miterlimit:10;}
+.christ19{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+.christ20{fill:none;stroke:#DD325D;stroke-width:17;stroke-linecap:round;stroke-miterlimit:10;}
+.christ21{fill:none;stroke:#64474D;stroke-width:5;stroke-linecap:round;stroke-miterlimit:10;}
+.christ22{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-miterlimit:10;}
+
+
+#camera{
+  transform-origin:center center;
+  animation:move 1.5s ease infinite;
+}
+
+@keyframes move{
+  0%{transform:translate(0,0);}
+  33%{transform:translate(-30px,0);}
+  50%{transform:translate(30px,0);}
+  66%{transform:translate(60px,0);}
+  100%{transform:translate(0,0);}
+}
+
+
+#deer1{
+  opacity:0.7;
+  transform-origin:center center;
+  animation:jump1 1.5s ease infinite;
+}
+
+@keyframes jump1{
+  0%{transform:translate(0,0)rotate(0deg)scale(0.9);}
+  33%{transform:translate(0,-10px)rotate(-30deg)scale(0.9);}
+  50%{transform:translate(0,-60px)rotate(0deg)scale(0.9);}
+  66%{transform:translate(0,-10px)rotate(30deg)scale(0.9);}
+  100%{transform:translate(0,0)rotate(0deg)scale(0.9);}
+}
+
+#deer2{
+  transform-origin:center center;
+  animation:jump2 1.5s ease infinite;
+}
+
+@keyframes jump2{
+  0%{transform:translate(-100px,50px)rotate(0deg);}
+  27%{transform:translate(-100px,40px)rotate(-25deg);}
+  44%{transform:translate(-60px,-10px)rotate(0deg);}
+  57%{transform:translate(-60px,40px)rotate(25deg);}
+  100%{transform:translate(-100px,50px)rotate(0deg);}
+}
+
+
+#deer3{
+  transform-origin:center center;
+  animation:jump3 1.5s ease infinite;
+}
+
+@keyframes jump3{
+  0%{transform:translate(180px,95px)rotate(-15deg);}
+  24%{transform:translate(200px,90px)rotate(-25deg);}
+  40%{transform:translate(230px,40px)rotate(0deg);}
+  52%{transform:translate(260px,90px)rotate(25deg);}
+  90%{transform:translate(160px,100px)rotate(0deg);}
+  100%{transform:translate(180px,95px)rotate(-15deg);}
+}
+
+
+
+#tail{
+  transform-origin:515px 238px;
+  animation:tailwiggle 1.5s ease infinite;
+}
+
+@keyframes tailwiggle{
+  0%{transform:rotate(0deg);}
+  33%{transform:rotate(-60deg);}
+  50%{transform:rotate(0deg);}
+  66%{transform:rotate(50deg);}
+  100%{transform:rotate(0deg);}
+}
+
+#santa-sleigh{
+  transform-origin:center center;
+  animation:sleigh 1.5s ease-in-out infinite;
+}
+
+@keyframes sleigh{
+  0%{transform:rotate(5deg)translate(-30px,0px);}
+  50%{transform:rotate(-5deg)translate(-30px,-30px);}
+  100%{transform:rotate(5deg)translate(-30px,0px);}
+}
+
+
+.close{
+  animation:snow 6s linear infinite;
+}
+
+@keyframes snow{
+  0%{transform:translate(0,0);}
+  100%{transform:translate(-960px,0);}
+}
+
+
+.far{
+  animation:snow 18s linear infinite;
+}
+
+
+#snow{
+  animation:snow 10s linear infinite;
+}
+
+
+/*
+.snowflake{
+transform-origin:center center;
+animation:snowflake 10s linear infinite;
+}
+
+@keyframes snowflake{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(180deg);}
+}*/
+
+
+.login {
+  width: 320px;
+  border: 1px solid #CCC;
+  background: url(https://media4.giphy.com/media/BHNfhgU63qrks/giphy.gif) center center no-repeat;
+  background-size: cover;
+  margin: 30px auto;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+.login .form {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */
+  position: relative;
+  width: 100%;
+  padding: 25px 15px 25px 15px;
+}
+
+.login .form input {
+  text-align: center;
+  width: 70%; /* 부모의 70% 크기 */
+  height: 40px;
+  margin-top: 20px;
+  background: rgba(255,255,255,.5);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 0 15px;
+  color: #FFF;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login .form input:focus {
+  border: 1px solid rgba(255,255,255,.8);
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: #DDD;
+}
+
+.login .form input.submit {
+  width: 80%; /* 부모의 80% 크기 */
+  background: rgba(255,255,255,.9);
+  color: #444;
+  font-size: 15px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
