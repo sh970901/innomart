@@ -28,7 +28,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
 //                        .requestMatchers("/backoffice/**").hasRole("ADMIN")
-                        .requestMatchers("/resource/**", "/", "/main", "/login","/images/**", "/css/**", "/js/**", "/common/**", "/api/v1/items/**", "/api/v1/m/send-password-email", "/backoffice/**", "/letter/**","/error").permitAll()
+                        .requestMatchers("/resource/**", "/", "/main", "/login","/images/**", "/css/**", "/js/**", "/common/**", "/api/v1/items/**", "/api/v1/m/send-password-email", "/backoffice/**", "/tree/**","/welcome/**","/letter/**","/error").permitAll()
 //                        .requestMatchers("/backoffice/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
 //                        .anyRequest().permitAll())
@@ -39,7 +39,7 @@ public class SecurityConfig {
                         .addHeaderWriter(new XFrameOptionsHeaderWriter(
                                 XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
                 .formLogin((formLogin) -> formLogin
-                        .loginPage("/login") //get
+                        .loginPage("/welcome") //get
                         .loginProcessingUrl("/login") //post
                         .usernameParameter("mbName")
                         .passwordParameter("mbPassword")
