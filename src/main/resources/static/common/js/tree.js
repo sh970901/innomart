@@ -54,6 +54,41 @@ const data = {
         "sender": "윤창우",
         "senderDepart": "ITO CRM팀",
         "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
+      },
+      {
+        "sender": "윤창우",
+        "senderDepart": "ITO CRM팀",
+        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
+      },
+      {
+        "sender": "윤창우",
+        "senderDepart": "ITO CRM팀",
+        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
+      },
+      {
+        "sender": "윤창우",
+        "senderDepart": "ITO CRM팀",
+        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
+      },
+      {
+        "sender": "윤창우",
+        "senderDepart": "ITO CRM팀",
+        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
+      },
+      {
+        "sender": "윤창우",
+        "senderDepart": "ITO CRM팀",
+        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
+      },
+      {
+        "sender": "윤창우",
+        "senderDepart": "ITO CRM팀",
+        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
+      },
+      {
+        "sender": "윤창우",
+        "senderDepart": "ITO CRM팀",
+        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
       }
     ],
     "receiver": "이동일"
@@ -63,18 +98,31 @@ const data = {
 const letters = data.data.letters;
 
 const positions = [
-  { cx: 146, cy: 256 },
+/*  { cx: 146, cy: 256 },
   { cx: 196, cy: 286 },
   { cx: 370, cy: 256 },
   { cx: 320, cy: 286 },
-  { cx: 260, cy: 296 },
+  { cx: 230, cy: 296 },
   { cx: 196, cy: 216 },
   { cx: 320, cy: 216 },
-  { cx: 260, cy: 226 },
+  { cx: 230, cy: 226 },
   { cx: 196, cy: 156 },
   { cx: 320, cy: 156 },
-  { cx: 260, cy: 166 },
-  { cx: 260, cy: 106 }
+  { cx: 230, cy: 166 },*/
+   /*신규위치*/
+/*  { cx: 230, cy: 116 },
+  { cx: 295, cy: 116 }
+  { cx: 230, cy: 145 },*/
+  { cx: 290, cy: 145 },
+  { cx: 225, cy: 156 },
+  { cx: 290, cy: 200 },
+  { cx: 345, cy: 230 },
+  { cx: 290, cy: 260 },
+  { cx: 170, cy: 230 },
+  { cx: 165, cy: 295 },
+  { cx: 230, cy: 275 },
+  { cx: 285, cy: 315 },
+  { cx: 355, cy: 295 }
 ];
 
 const images = [
@@ -119,10 +167,10 @@ function placeRandomElement(letter) {
 
   // ✨ 이미지 추가
   const imageElement = document.createElementNS("http://www.w3.org/2000/svg", "image");
-  imageElement.setAttribute("x", randomPosition.cx - 25); // 이미지 중심 정렬
+  imageElement.setAttribute("x", randomPosition.cx - 15); // 이미지 중심 정렬
   imageElement.setAttribute("y", randomPosition.cy - 25); // 이미지 중심 정렬
-  imageElement.setAttribute("width", "40");
-  imageElement.setAttribute("height", "40");
+  imageElement.setAttribute("width", "30");
+  imageElement.setAttribute("height", "30");
   imageElement.setAttribute("href", randomImage);
   imageElement.setAttribute("class", "random-image");
   groupElement.appendChild(imageElement);
@@ -130,7 +178,7 @@ function placeRandomElement(letter) {
   // ✨ 텍스트 추가
   const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
   textElement.setAttribute("x", randomPosition.cx); // 텍스트 중심 정렬
-  textElement.setAttribute("y", randomPosition.cy + 30); // 이미지 아래로 살짝 내림
+  textElement.setAttribute("y", randomPosition.cy + 15); // 이미지 아래로 살짝 내림
   textElement.setAttribute("class", "random-text");
   textElement.setAttribute("data-content", letter.message); // 메시지를 data-content에 추가
   textElement.setAttribute("text-anchor", "middle"); // 중앙 정렬
@@ -138,7 +186,7 @@ function placeRandomElement(letter) {
   textElement.textContent = letter.sender;
 
   // 🎨 스타일 적용
-  textElement.style.fontSize = "14px"; // 폰트 크기
+  textElement.style.fontSize = "12px"; // 폰트 크기
   textElement.style.fill = "white"; // 글씨 색상 (흰색)
   textElement.style.fontFamily = "SpoqaHanSansNeo-Regular"; // 폰트 스타일
   textElement.style.fontWeight = "600"; // 글씨 굵게 (bold)

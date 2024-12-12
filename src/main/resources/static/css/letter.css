@@ -1,16 +1,19 @@
 /* 전체 토글 컨테이너 */
 .toggle-container {
-  top: 100px;
-  left : 50px;
+  border: solid 1px black;
+  top: 80px;
+  left: 25px;
   display: flex;
   align-items: center;
   width: 100px;
-  height: 50px;
-  border-radius: 25px;
+  height: 40px;
+  border-radius: 17px;
   background-color: #2c2f40;
   position: relative;
   cursor: pointer;
   transition: background-color 0.3s;
+  user-select: none; /* 텍스트 선택 방지 */
+  pointer-events: auto; /* 클릭 이벤트 정상 작동 */
 }
 
 /* 토글 버튼 */
@@ -18,10 +21,13 @@
   position: absolute;
   width: 50%;
   height: 100%;
-  border-radius: 25px;
+  border-radius: 15px;
   background-color: #ffffff;
   transition: transform 0.3s;
+  user-select: none; /* 텍스트 선택 방지 */
+  pointer-events: auto; /* 클릭 이벤트 정상 작동 */
 }
+
 
 /* 왼쪽과 오른쪽 상태 */
 .toggle-container.active .toggle-button {
@@ -62,9 +68,8 @@
 /*편지 리스트 표기영역 컨테이너*/
 .letter-container {
   position: relative;
-  top: 35%; /* 최상단에서부터 25% 아래로 */
+  top: 37.5%; /* 최상단에서부터 25% 아래로 */
   transform: translateY(-25%); /* 화면 높이에 따른 정렬 보정 */
-  /*display: flex; !* 플렉스박스 사용 *!*/
   justify-content: center; /* 가로 중앙 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
   width: 100%;
@@ -73,10 +78,8 @@
   overflow-y: auto; /* 세로 스크롤 활성화 */
   overflow-x: hidden; /* 가로 스크롤 제거 */
   margin: 0 auto; /* 가로 가운데 정렬 */
-  border: 2px solid #ddd; /* 테두리 */
-  border-radius: 10px; /* 둥근 테두리 */
-  padding: 20px; /* 내부 여백 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  padding: 40px; /* 내부 여백 */
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); !* 그림자 효과 *!*/
   box-sizing: border-box;
   background-color: #fff; /* 배경 색상 */
 }
@@ -95,30 +98,40 @@
 
 
 
+@font-face {
+  font-family: 'Ownglyph_kimkonghae';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/Ownglyph_kimkonghae.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
 /*개별 편지*/
-@import url(https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope);
 .handwritten {
 
   /*z-index: 20000;*/
   line-height: 1.5;
-  margin-top: 40px;
+  /*margin-top: 40px;*/
 
+  width: 450px;
   height: 500px;
-  padding: 20px 30px 20px 30px;
-  background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/samplecard.png') ;
+  padding: 20px 40px 20px 40px;
+  margin-bottom: 40px;
+  background: url('https://innomarket.s3.ap-northeast-2.amazonaws.com/letterpaper9.PNG') ;
   background-size: cover; /* 배경 이미지가 요소를 꽉 채우도록 조정 */
-  font-size: 18px;
+  font-size: 24px;
   -moz-box-shadow: #ccc 3px 3px 6px;
   -webkit-box-shadow: #ccc 3px 3px 6px;
   box-shadow: #ccc 3px 3px 6px;
-  font-family: "Annie Use Your Telescope";
+  border: 1px solid #b3b3b3; /* 테두리 */
+  border-radius: 8px; /* 둥근 테두리 */
+  font-family: Ownglyph_kimkonghae, serif;
   font-weight: bold;
   color: black;
 }
 .handwritten em {
   /*background-color: rgba(255, 247, 128, 0.7);*/
   font-style: normal;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   color: black;
 }

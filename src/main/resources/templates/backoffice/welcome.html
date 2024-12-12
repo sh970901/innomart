@@ -586,9 +586,11 @@ INNO LETTER
 
 <div class="login">
   <div class="form">
-<!--    <h2>Welcome</h2>-->
-    <input type="text" placeholder="Username">
-    <input type="submit" value="Sign In" class="submit">
+    <form action="/tree" method="POST">
+      <input type="text" name="code" placeholder="사원번호" required>
+      <input type="submit" value="편지 보러 가기" class="submit">
+    </form>
+
   </div>
 </div>
 

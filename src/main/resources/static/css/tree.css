@@ -109,7 +109,7 @@ html {
   .fixed-text {
     position: absolute; /* 부모 요소 기준 고정 */
     top: 20px; /* 부모 기준 상단에서 20px */
-    left: 47.5%; /* 화면 정가운데 */
+    left: 46.5%; /* 화면 정가운데 */
     transform: translateX(-50%) translateX(-20%);
     font-size: 20px;
     color: white;
@@ -126,7 +126,7 @@ html {
     position: absolute; /* 독립적으로 위치 설정 */
     top: 90%; /* 세로 위치 유지 */
     left: 50%; /* 가로 위치를 부모 기준으로 중앙 정렬 */
-    transform: translateX(-50%) scale(3); /* 중앙 정렬을 위해 50% 왼쪽으로 이동 */
+    transform: translateX(-50%) scale(2.8); /* 중앙 정렬을 위해 50% 왼쪽으로 이동 */
     margin: 0; /* 마진 초기화 */
     float: none; /* float 제거 */
     z-index: 100;
@@ -137,7 +137,7 @@ html {
     top: 90%; /* 세로 위치 유지 */
     width: 100%;
     max-height: 100vh;
-    transform: scale(2);
+    transform: scale(1.7);
     z-index: 100;
   }
 
@@ -146,7 +146,7 @@ html {
     height: 250px;
     border: 10px solid white;
     box-shadow: 4px 5px 2px 0px rgba(182, 146, 54, 0.3);
-    transform: scale(1.2);
+    transform: scale(1);
     float: right;
     overflow: hidden;
     position: relative;

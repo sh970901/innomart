@@ -2,72 +2,70 @@ const toggle = document.getElementById('toggle');
 const div1 = document.getElementById('div1');
 const div2 = document.getElementById('div2');
 
-toggle.addEventListener('click', () => {
-  toggle.classList.toggle('active'); // 토글 상태 변경
-  div1.classList.toggle('active'); // div1 표시/숨기기
-  div2.classList.toggle('active'); // div2 표시/숨기기
+/*토글 변경 이벤트*/
+toggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  toggle.classList.toggle('active');
+  div1.classList.toggle('active');
+  div2.classList.toggle('active');
 });
 
-// 주어진 데이터
-const datap = {
-  "resultCode": "200",
-  "resultMessage": "success",
-  "data": {
-    "letters": [
-      {
-        "sender": "이환",
-        "senderDepart": "커머스ITO(UI/FE개발)",
-        "message": "모든 일에 최선을 다하고 기분 좋은 에너지를 주셔서 좋았습니다. 새해에 좋은 일이 가득하길 기원합니다"
-      },
-      {
-        "sender": "공수재",
-        "senderDepart": "클라우드",
-        "message": "동일아. 항상 열심히 하는 모습이 참 보기 좋다. 반드시 보답될 거다. 화이팅!"
-      },
-      {
-        "sender": "윤창우",
-        "senderDepart": "ITO CRM팀",
-        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
-      },
-      {
-        "sender": "윤창우",
-        "senderDepart": "ITO CRM팀",
-        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
-      },
-      {
-        "sender": "윤창우",
-        "senderDepart": "ITO CRM팀",
-        "message": "갑작스럽게 팀장 되면서 같이 일하던 동료에서 팀장으로 대하기 어려운 부분도 있었겠지만, 주도적으로 해주셔서 많은 수고를 덜게 된 것 같습니다. 항상 분위기 잘 이끌어주시고 도전적인 과업을 맡고 계시지만 내년에 성과 많이 날거라고 믿어 의심치 않습니다.올해도 수고 많으셨고 내년엔 더 성과 많도록 같이 잘해 봐요. 올해도 내년도 감사합니다."
-      }
 
-    ],
-    "receiver": "이동일"
-  }
-};
-
-// DOM 요소 가져오기
-const letterContainer = document.getElementById('div1');
-
-// 데이터 기반으로 요소 추가
-datap.data.letters.forEach(letter => {
-  const letterElement = document.createElement('div');
-  letterElement.className = 'handwritten';
-  letterElement.setAttribute('data-extra', 'from-travis');
+const defaultMessage = {
+    "sender": "이랜드이노플",
+    "senderDepart": "😊",
+    "message": "안녕하세요. 24년도 이랜드 이노플과 함께 해주셔서 감사합니다. 25년도 잘 부탁 드립니다. 연말 마무리 잘 하시고 댁내 두루 평안이 가득하시길 기원합니다."
+}
 
 
+document.addEventListener('DOMContentLoaded', function() {
 
-  // sender (em 요소)
-  const senderElement = document.createElement('em');
-  senderElement.textContent = `From ${letter.sender}`;
-  letterElement.appendChild(senderElement);
+  const letterContainer = document.getElementById('div1');
 
-  const brElement = document.createElement('br');
-  letterElement.appendChild(brElement)
+  const code = document.querySelector('#employeeCode').getAttribute('data-code');
 
-  // message 내용
-  const messageText = document.createTextNode(letter.message);
-  letterElement.appendChild(messageText);
 
-  // 요소 추가
-  letterContainer.appendChild(letterElement);
+  fetch(`/letter/employee/${code}`)
+  .then(response => response.json())
+  .then(data => {
+    data.data.letters.unshift(defaultMessage);
+
+    /*받는사람*/
+    $('#receiver').text(data.data.receiver);
+
+    data.data.letters.forEach(letter => {
+      const letterElement = document.createElement('div');
+      letterElement.className = 'handwritten';
+      letterElement.setAttribute('data-extra', 'from-travis');
+
+      /*보낸 사람*/
+      const senderElement = document.createElement('em');
+      senderElement.textContent = `From  ${letter.sender}  (${letter.senderDepart})`;
+      letterElement.appendChild(senderElement);
+
+      const brElement = document.createElement('br');
+      letterElement.appendChild(brElement)
+
+      /*편지 내용*/
+      const messageText = document.createTextNode(letter.message);
+      letterElement.appendChild(messageText);
+
+      letterContainer.appendChild(letterElement);
+
+
+    });
+
+
+    /*맨 아래 편지 여백 추가*/
+    let newDiv = document.createElement("div");
+    newDiv.style.height = "200px";
+    newDiv.style.backgroundColor = "white";
+    newDiv.style.marginBottom = "20px";
+
+    letterContainer.appendChild(newDiv);
+
+
+  })
+  .catch(error => console.error('Error:', error));
 });
+

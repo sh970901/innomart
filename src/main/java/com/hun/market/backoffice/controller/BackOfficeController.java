@@ -5,7 +5,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -30,9 +33,10 @@ public class BackOfficeController {
        return "backoffice/welcome" ;
     }
 
-    @GetMapping("/tree")
-    public String treeView() {
+    @PostMapping("/tree")
+    public String treeView(@RequestParam("code") String code, Model model) {
 
+        model.addAttribute("code",code);
         return "backoffice/tree";
     }
 
