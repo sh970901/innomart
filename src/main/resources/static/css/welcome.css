@@ -8,23 +8,24 @@
 
 body {
   background-color: rgb(34, 38, 70);
+  margin: 0;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pretendard-Regular', sans-serif;
 }
 
 svg {
-  transform: rotate(-15deg) scale(0.4); /* 15도 왼쪽으로 회전 */
-  margin-top : -500px;
-  z-index: -1;
+  transform: rotate(-15deg) scale(1.4) translateX(-50%); /* 15도 왼쪽으로 회전 */
+  top: 5vh;
+  left: 2vh;
+  margin-left: 50%; /* 화면 중앙 */
+  opacity: 0.5; /* 투명도 50% */
+  z-index: -100; /* 가장 낮은 우선순위로 배경처럼 설정 */
+  position: absolute; /* 절대 위치 */
 }
 
-.welcome-title {
-  font-family: 'Pretendard-Regular', sans-serif !important;
-  font-size: 100px;
-  text-align: center;
-  color: white;
-  margin-top : -350px;
-  z-index : 20000;
-}
 
 
 
@@ -252,42 +253,126 @@ svg {
 }
 
 
-/*
-.snowflake{
-transform-origin:center center;
-animation:snowflake 10s linear infinite;
+
+
+@font-face {
+  font-family: 'Ownglyph_StudyHard-Rg';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_StudyHard-Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@keyframes snowflake{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(180deg);}
-}*/
+/* 800px 이상일 때 너비를 고정 */
+@media (min-width: 801px) {
+  /* login 폼을 화면 정중앙에 배치 */
+  .login {
+    width: 400px;
+    border: 1px solid #CCC;
+    background: url(https://innomarket.s3.ap-northeast-2.amazonaws.com/giphy.webp) center center no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 화면 중앙 정렬 */
+  }
 
 
-.login {
-  width: 320px;
-  border: 1px solid #CCC;
-  background: url(https://media4.giphy.com/media/BHNfhgU63qrks/giphy.gif) center center no-repeat;
-  background-size: cover;
-  margin: 30px auto;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
+  .welcome-title {
+    font-family: 'Ownglyph_StudyHard-Rg', sans-serif !important;
+    font-size: 5vw; /* 화면 크기에 따라 글자 크기 자동 조정 */
+    text-align: center;
+    color: white;
+    margin-top: 20vh; /* 세로방향 상단에 위치 */
+    margin-bottom: 100px; /* 로그인 폼과 간격을 조정 */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* 가로방향 중앙 정렬 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+  }
+
+
+  svg {
+    transform: rotate(-15deg) scale(1.7) translateX(-50%); /* 15도 왼쪽으로 회전 */
+    /*top: 1vh;*/
+    left: 20vh;
+    margin-top: -5%;
+    margin-left: 50%; /* 화면 중앙 */
+    opacity: 0.5; /* 투명도 50% */
+    z-index: -100; /* 가장 낮은 우선순위로 배경처럼 설정 */
+    position: absolute; /* 절대 위치 */
+  }
+
+
 }
 
+
+@media (max-width: 800px) {
+  /* login 폼을 화면 정중앙에 배치 */
+  .login {
+    width: 80%;
+    border: 1px solid #CCC;
+    background: url(https://innomarket.s3.ap-northeast-2.amazonaws.com/giphy.webp) center center no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 화면 중앙 정렬 */
+  }
+
+
+  /* welcome-title을 화면 중앙에 배치, 세로 방향으로는 화면 상단에 위치 */
+  .welcome-title {
+    font-family: 'Ownglyph_StudyHard-Rg', sans-serif !important;
+    font-size: 15vw; /* 화면 크기에 따라 글자 크기 자동 조정 */
+    text-align: center;
+    color: white;
+    margin-top: 28vh; /* 세로방향 상단에 위치 */
+    margin-bottom: 100px; /* 로그인 폼과 간격을 조정 */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* 가로방향 중앙 정렬 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+  }
+
+  svg {
+    transform: rotate(-15deg) scale(4) translateX(-50%); /* 15도 왼쪽으로 회전 */
+    top: 17vh;
+    left: 13vh;
+    margin-left: 50%; /* 화면 중앙 */
+    opacity: 0.5; /* 투명도 50% */
+    z-index: -100; /* 가장 낮은 우선순위로 배경처럼 설정 */
+    position: absolute; /* 절대 위치 */
+  }
+
+
+}
+
+
+/* 로그인 폼 내부의 폼을 세로로 중앙 정렬 */
 .login .form {
+
   display: flex;
   flex-direction: column; /* 세로 정렬 */
   align-items: center; /* 가로 중앙 정렬 */
-  position: relative;
-  width: 100%;
+  justify-content: center; /* 세로 중앙 정렬 */
+  /*width: 100%;*/
   padding: 25px 15px 25px 15px;
 }
 
+/* input 필드들을 가로 중앙 정렬 */
 .login .form input {
   text-align: center;
-  width: 70%; /* 부모의 70% 크기 */
+  width: 90%; /* 부모의 70% 크기 */
   height: 40px;
   margin-top: 20px;
   background: rgba(255,255,255,.5);
@@ -298,21 +383,27 @@ animation:snowflake 10s linear infinite;
   font-size: 14px;
 }
 
+/* 포커스 시 입력 폼 스타일 */
 .login .form input:focus {
   border: 1px solid rgba(255,255,255,.8);
   outline: none;
 }
 
 ::-webkit-input-placeholder {
-  color: #DDD;
+  font-family: 'Ownglyph_StudyHard-Rg', sans-serif !important;
+
+  color: white; /* 글씨 색상 */
+  font-weight: normal; /* 글씨 진하기 */
+
 }
 
+/* 제출 버튼도 중앙 정렬 */
 .login .form input.submit {
-  width: 80%; /* 부모의 80% 크기 */
+  font-family: 'Ownglyph_StudyHard-Rg', sans-serif !important;
+  width: 100%;
   background: rgba(255,255,255,.9);
   color: #444;
   font-size: 15px;
   margin-top: 40px;
   font-weight: bold;
 }
-
