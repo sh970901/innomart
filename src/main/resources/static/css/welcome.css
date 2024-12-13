@@ -360,7 +360,6 @@ svg {
 
 /* 로그인 폼 내부의 폼을 세로로 중앙 정렬 */
 .login .form {
-
   display: flex;
   flex-direction: column; /* 세로 정렬 */
   align-items: center; /* 가로 중앙 정렬 */
