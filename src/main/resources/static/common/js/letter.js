@@ -67,6 +67,11 @@ function createLetterElement(letter) {
   // ✨ 배경 이미지 동적 추가
   letterElement.style.backgroundImage = `url('${backgroundUrl}')`;
 
+
+
+  letterElement.style.backgroundPosition = 'center';
+  letterElement.style.backgroundRepeat = 'no-repeat';
+
   // 보낸 사람
   const senderElement = document.createElement('em');
   senderElement.textContent = `From  ${letter.sender}  (${letter.senderDepart})`;
