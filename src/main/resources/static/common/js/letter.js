@@ -11,12 +11,7 @@ toggle.addEventListener('click', (e) => {
 });
 
 
-const defaultMessage = {
-    "sender": "이랜드이노플",
-    "senderDepart": "😊",
-    "message" : "안녕하세요.\n24년도 이랜드 이노플과 함께 해주셔서 감사합니다.\n25년도 잘 부탁 드립니다.\n연말 마무리 잘 하시고 댁내 두루 평안이 가득하시길 기원합니다."
 
-}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -29,6 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
   fetch(`/letter/employee/${code}`)
   .then(response => response.json())
   .then(data => {
+
+
+    const defaultMessage = {
+      "sender": "이랜드이노플",
+      "senderDepart": "😊",
+      "message" : "안녕하세요 " + data.data.receiver + "님!\n\n2024년도 이랜드 이노플과 \n 함께 해주셔서 감사합니다.\n\n"
+          + "다사다난 했던 한해 " + data.data.receiver + "님과\n\ 함께여서 행복했습니다."
+          + "\n\n25년도 잘 부탁 드립니다.\n\n남은 연말 마무리 잘 하시고 \n댁내 두루 평안이 가득하시길 기원합니다.\n\n 💗행복하세요💗"
+    }
     data.data.letters.unshift(defaultMessage);
 
     /*받는사람*/
