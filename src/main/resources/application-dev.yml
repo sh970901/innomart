@@ -5,7 +5,11 @@ server:
   error:
     whitelabel:
       enabled: false
+  port: 8081
 spring:
+  docker:
+    compose:
+      enabled: false
   servlet:
     multipart:
       enabled: true
@@ -16,7 +20,7 @@ spring:
   security:
     user:
       name: admin
-      password: ENC(fz4Clksg8EANe725lIAGFw==)
+      password: 1234
   thymeleaf:
     prefix : classpath:/templates/
     cache: false
@@ -26,20 +30,20 @@ spring:
     hikari:
       pool-name: Leader
       auto-commit: false
-      jdbc-url: jdbc:postgresql://innog-gitlab-postgresql.cj8my6ge41dn.ap-northeast-2.rds.amazonaws.com:5432/mart
-      username: ENC(AtiadebP+OATBFenS9ucPw==)
-      password: ENC(fz4Clksg8EANe725lIAGFw==)
-      maximum-pool-size: 15
-      minimum-idle: 15
+      jdbc-url: jdbc:postgresql://host.docker.internal:5432/mart
+      username: admin
+      password: admin
+      maximum-pool-size: 10
+      minimum-idle: 10
       driver-class-name: org.postgresql.Driver
       follower:
         pool-name: Follower
         driver-class-name: org.postgresql.Driver
-        jdbc-url: jdbc:postgresql://innog-gitlab-postgresql.cj8my6ge41dn.ap-northeast-2.rds.amazonaws.com:5432/mart
-        username: ENC(AtiadebP+OATBFenS9ucPw==)
-        password: ENC(fz4Clksg8EANe725lIAGFw==)
-        minimum-idle: 15
-        maximum-pool-size: 15
+        jdbc-url: jdbc:postgresql://host.docker.internal:5432/mart
+        username: admin
+        password: admin
+        minimum-idle: 5
+        maximum-pool-size: 5
 
   jpa:  # DB (none, create, create-drop, update, validate)
     open-in-view: false
@@ -53,14 +57,14 @@ spring:
         order_inserts: true
         order_updates: true
         hbm2ddl:
-          auto: none
+          auto: create-drop
 
 
   cache:
     type: redis
   redis:
     cache:
-      host: dev-redis.innocommerce.co.kr
+      host: host.docker.internal
       port: 6379
 
 baobab:
@@ -75,10 +79,10 @@ jasypt:
 cloud:
   aws:
     s3:
-      bucket: ENC(8QcfrsEpussiiOES00GMlsuFXtv9radE)
+      bucket: 123132
     credentials:
-      access-key: ENC(KjA95eZYRYgXNFDava4jYhdwXxTzdjjicfymeg8otJs=)
-      secret-key: ENC(B/cCXzloxKckbq4AnIBABg1yKRj+zEX4JUr+SLTvmbeZ50qSoRrUmoBRVb3tQq8de5yajpFmDiE=)
+      access-key: 123123
+      secret-key: 132131
     region:
       static: ap-northeast-2
       auto: false

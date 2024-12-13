@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JasyptConfig {
+//    private static final String key = System.getenv("key");
     private static final String key = System.getenv("key");
     private static final String ALGORITHM = "PBEWithMD5AndDES";
 

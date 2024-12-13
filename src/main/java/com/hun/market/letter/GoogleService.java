@@ -17,6 +17,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,6 +33,8 @@ public class GoogleService {
 
     private final RedisTemplate redisCacheTemplate;
 
+    private final AsyncTaskService asyncTaskService;
+
     private static final String SPREADSHEET_ID = "12-kj9LL61DMihahC4_v5kKS3Fu66rkSVrGc6pFcHglU";
 
     // 현재의 메소드는 Sheets 인스턴스를 얻는 데 사용
@@ -46,7 +49,6 @@ public class GoogleService {
 
         return sheetsService;
     }
-
     public void writeToSh22tCache() {
         try {
             Sheets service = getSheetsService();
@@ -79,6 +81,11 @@ public class GoogleService {
                     setOperations.add(employeeNum, letter);
                     redisCacheTemplate.opsForValue().set("name:"+employeeNum, receiver);
                 }
+//                for (int i = 1; i < sheetData.size(); i++) {
+//                    List<Object> row = sheetData.get(i);
+//
+//                    asyncTaskService.processRowAsync(row, redisCacheTemplate); // 비동기로 처리
+//                }
             }
         } catch (Exception e) {
             throw new RedisPostException("Failed to write data to the redis: " + e.getMessage());

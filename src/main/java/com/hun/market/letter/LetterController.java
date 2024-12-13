@@ -30,8 +30,14 @@ public class LetterController {
     @Scheduled(fixedRate = 3600000)
 //    @Scheduled(fixedRate = 5000)
     public void writeToCache() {
+        long startTime = System.nanoTime(); // 시작 시간 기록
         log.info("Redis Update 실행");
+
         googleService.writeToSh22tCache();
+
+        long endTime = System.nanoTime(); // 종료 시간 기록
+        double durationInSeconds = (endTime - startTime) / 1_000_000_000.0; // 초 단위로 변환
+        log.info("writeToCache 실행 시간: {} 초", durationInSeconds);
     }
 
     @GetMapping("/employee/{id}")
