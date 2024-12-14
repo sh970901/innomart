@@ -30,7 +30,7 @@ spring:
     hikari:
       pool-name: Leader
       auto-commit: false
-      jdbc-url: jdbc:postgresql://host.docker.internal:5432/mart
+      jdbc-url: jdbc:postgresql://localhost:5432/mart
       username: admin
       password: admin
       maximum-pool-size: 10
@@ -39,7 +39,7 @@ spring:
       follower:
         pool-name: Follower
         driver-class-name: org.postgresql.Driver
-        jdbc-url: jdbc:postgresql://host.docker.internal:5432/mart
+        jdbc-url: jdbc:postgresql://postgres-db:5432/mart
         username: admin
         password: admin
         minimum-idle: 5
@@ -64,7 +64,7 @@ spring:
     type: redis
   redis:
     cache:
-      host: host.docker.internal
+      host: redis-db
       port: 6379
 
 baobab:
