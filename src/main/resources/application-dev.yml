@@ -30,7 +30,7 @@ spring:
     hikari:
       pool-name: Leader
       auto-commit: false
-      jdbc-url: jdbc:postgresql://localhost:5432/mart
+      jdbc-url: jdbc:postgresql://postgres-db:5432/mart
       username: admin
       password: admin
       maximum-pool-size: 10
