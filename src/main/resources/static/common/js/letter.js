@@ -155,7 +155,7 @@ function placeRandomElement(letter) {
   textElement.style.fontSize = "12px"; // 폰트 크기
   textElement.style.fill = "white"; // 글씨 색상 (흰색)
   textElement.style.fontFamily = "SpoqaHanSansNeo-Regular"; // 폰트 스타일
-  textElement.style.fontWeight = "600"; // 글씨 굵게 (bold)
+  textElement.style.fontWeight = "500"; // 글씨 굵게 (bold)
   textElement.style.filter = "url(#text-shadow)"; // 드롭 섀도우 필터 적용
 
   groupElement.appendChild(textElement); // 텍스트를 그룹에 추가

@@ -77,7 +77,7 @@ html {
 
   .xmas-tree {
     position: absolute; /* 독립적으로 위치 설정 */
-    top: 110%; /* 세로 위치 유지 */
+    top: 90%; /* 세로 위치 유지 */
     left: 50%; /* 가로 위치를 부모 기준으로 중앙 정렬 */
     transform: translateX(-50%) scale(1.5); /* 중앙 정렬을 위해 50% 왼쪽으로 이동 */
     margin: 0; /* 마진 초기화 */
@@ -255,7 +255,7 @@ html {
 }
 
 .scene {
-  max-width: calc(100vw - 30%);
+  max-width: calc(100vw - 27.5%);
   min-width: 180px;
   position: absolute; /* 화면 기준으로 위치를 지정 */
   top: 40%; /* 세로 방향 중간보다 살짝 위 */

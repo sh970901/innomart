@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'SpoqaHanSansNeo-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* 전체 토글 컨테이너 */
 .toggle-container {
   border: solid 1px black;
@@ -152,7 +159,7 @@
   /*편지 리스트 표기영역 컨테이너*/
   .letter-container {
     position: relative;
-    top: 37.5%; /* 최상단에서부터 25% 아래로 */
+    top: 42.5%; /* 최상단에서부터 25% 아래로 */
     transform: translateY(-25%); /* 화면 높이에 따른 정렬 보정 */
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
