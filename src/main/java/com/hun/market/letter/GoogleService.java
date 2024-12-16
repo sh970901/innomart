@@ -79,7 +79,7 @@ public class GoogleService {
                             .build();
 
                     setOperations.add(employeeNum, letter);
-                    redisCacheTemplate.opsForValue().set("name:"+employeeNum, receiver);
+//                    redisCacheTemplate.opsForValue().set("name:"+employeeNum, receiver);
                 }
 //                for (int i = 1; i < sheetData.size(); i++) {
 //                    List<Object> row = sheetData.get(i);
