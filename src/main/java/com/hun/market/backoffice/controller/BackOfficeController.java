@@ -1,5 +1,7 @@
 package com.hun.market.backoffice.controller;
 
+import com.hun.market.letter.Letter;
+import com.hun.market.letter.LetterController;
 import com.hun.market.member.domain.MemberContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +37,12 @@ public class BackOfficeController {
 
     @PostMapping("/tree")
     public String treeView(@RequestParam("code") String code, Model model) {
-
+        /**
+         * 로그인 처리 하여도 됨
+         */
+//        if(LetterController.employees.get(code) == null) {
+//            log.info("없는 사번");
+//        }
         model.addAttribute("code",code);
         return "backoffice/tree";
     }
