@@ -61,12 +61,16 @@ public class GoogleService {
             if (sheetData == null || sheetData.isEmpty()) {
                 log.info("No data found.");
             } else {
-                for (int i = 1; i < sheetData.size(); i++) {
+                for (int i = 2; i < sheetData.size(); i++) {
                     SetOperations setOperations = redisCacheTemplate.opsForSet();
 
                     List<Object> row = sheetData.get(i);
 
                     String employeeNum = String.valueOf(row.get(6));
+
+                    if(LetterController.employees.get(employeeNum) == null) {
+                        log.info("구글 시트와 JVM 사원 사번이 맞지않음: {}", employeeNum);
+                    }
                     String sender = String.valueOf(row.get(2));
                     String receiver = String.valueOf(row.get(4));
                     String senderDepart = String.valueOf(row.get(1));

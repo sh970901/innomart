@@ -29,7 +29,7 @@ public class LetterController {
     private final GoogleService googleService;
     private final RedisTemplate redisCacheTemplate;
 
-    private static final Map<String, Employee> employees = new HashMap<>();
+    public static final Map<String, Employee> employees = new HashMap<>();
 
 
     @PostMapping("/write/cache")
