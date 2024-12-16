@@ -99,7 +99,12 @@ function placeRandomElement(letter) {
     return;
   }
 
-  /*오브제 중복제거*/
+  // 🔥 1️⃣ 뷰포트 크기 동적 계산 (모바일, PC 겸용)
+  const svgElement = document.querySelector('svg');
+  const svgWidth = svgElement.clientWidth;
+  const svgHeight = svgElement.clientHeight;
+
+  // 📍 2️⃣ 중복 위치 방지: 랜덤 위치 계산 (뷰포트 크기 비율로)
   let randomPosition;
   do {
     randomPosition = positions[Math.floor(Math.random() * positions.length)];
@@ -111,77 +116,74 @@ function placeRandomElement(letter) {
     return;
   }
 
-  /*랜덤 오브제*/
+  // 🎉 3️⃣ 랜덤 오브제 선택
   const randomImageIndex = Math.floor(Math.random() * images.length);
   const randomImage = images.splice(randomImageIndex, 1)[0];
 
-  // 🎉 그룹 요소 생성 (이미지와 텍스트를 묶기 위해)
+  // 🎉 4️⃣ 그룹 요소 생성 (이미지와 텍스트를 묶기 위해)
   const groupElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
 
-  // ✨ 이미지 추가
+  // ✨ 5️⃣ 이미지 추가
+  const imageSize = 30; // 이미지 크기
   const imageElement = document.createElementNS("http://www.w3.org/2000/svg", "image");
-  imageElement.setAttribute("x", randomPosition.cx - 15); // 이미지 중심 정렬
-  imageElement.setAttribute("y", randomPosition.cy - 25); // 이미지 중심 정렬
-  imageElement.setAttribute("width", "30");
-  imageElement.setAttribute("height", "30");
+  imageElement.setAttribute("x", randomPosition.cx - imageSize / 2);
+  imageElement.setAttribute("y", randomPosition.cy - imageSize / 2);
+  imageElement.setAttribute("width", imageSize);
+  imageElement.setAttribute("height", imageSize);
   imageElement.setAttribute("href", randomImage);
   imageElement.setAttribute("class", "random-image");
+  imageElement.style.willChange = 'transform, opacity'; // 하드웨어 가속
   groupElement.appendChild(imageElement);
 
   // 🆕 ✨ 텍스트 박스 추가 (검정 투명 배경)
-  const textWidth = 40; // 텍스트 박스의 너비 (필요에 따라 조절 가능)
-  const textHeight = 20; // 텍스트 박스의 높이
+  const textWidth = 40;
+  const textHeight = 20;
   const rectElement = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  rectElement.setAttribute("x", randomPosition.cx - textWidth / 2); // 박스의 x 좌표 (중앙 정렬)
-  rectElement.setAttribute("y", randomPosition.cy + 7); // 이미지 아래로 약간 띄움
+  rectElement.setAttribute("x", randomPosition.cx - textWidth / 2);
+  rectElement.setAttribute("y", randomPosition.cy + imageSize / 2 + 7);
   rectElement.setAttribute("width", textWidth);
   rectElement.setAttribute("height", textHeight);
-  rectElement.setAttribute("rx", 5); // 둥근 모서리 (필요에 따라 조절)
+  rectElement.setAttribute("rx", 5);
   rectElement.setAttribute("ry", 5);
-  rectElement.setAttribute("fill", "rgba(0, 0, 0, 0.5)"); // 투명한 검정색 배경
-  groupElement.appendChild(rectElement); // 배경 박스를 그룹에 추가
+  rectElement.setAttribute("fill", "rgba(0, 0, 0, 0.5)");
+  groupElement.appendChild(rectElement);
 
-  // ✨ 텍스트 추가
+  // ✨ 6️⃣ 텍스트 추가
   const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  textElement.setAttribute("x", randomPosition.cx); // 텍스트 중심 정렬
-  textElement.setAttribute("y", randomPosition.cy + 18); // 이미지 아래로 살짝 내림 (rect 안에 정렬)
+  textElement.setAttribute("x", randomPosition.cx);
+  textElement.setAttribute("y", randomPosition.cy + imageSize / 2 + textHeight / 2 + 4.5);
   textElement.setAttribute("class", "random-text");
-  textElement.setAttribute("data-content", letter.message); // 메시지를 data-content에 추가
-  textElement.setAttribute("text-anchor", "middle"); // 중앙 정렬
-  textElement.setAttribute("dominant-baseline", "middle"); // y축 중앙 정렬
+  textElement.setAttribute("data-content", letter.message);
+  textElement.setAttribute("text-anchor", "middle");
+  textElement.setAttribute("dominant-baseline", "middle");
+  textElement.setAttribute("dy", "0.35em"); // iOS 호환성 보완
   textElement.textContent = letter.sender;
 
-  // 🎨 스타일 적용
-  textElement.style.fontSize = "12px"; // 폰트 크기
-  textElement.style.fill = "white"; // 글씨 색상 (흰색)
-  textElement.style.fontFamily = "SpoqaHanSansNeo-Regular"; // 폰트 스타일
-  textElement.style.fontWeight = "500"; // 글씨 굵게 (bold)
-  textElement.style.filter = "url(#text-shadow)"; // 드롭 섀도우 필터 적용
+  // 🎨 7️⃣ 스타일 추가
+  textElement.style.fontSize = "12px";
+  textElement.style.fill = "white";
+  textElement.style.fontWeight = "600";
+  textElement.style.filter = "url(#text-shadow)";
+  textElement.style.fontFamily = "Arial, sans-serif";
+  textElement.style.willChange = 'transform, opacity';
+  groupElement.appendChild(textElement);
 
-  groupElement.appendChild(textElement); // 텍스트를 그룹에 추가
-
-  // 🔥 클릭 이벤트 추가 (그룹 클릭 시 메시지 표시)
+  // 🔥 8️⃣ 클릭 이벤트 추가
   groupElement.addEventListener('click', function() {
-    openModal(letter); // 클릭한 편지의 내용을 모달로 표시
+    openModal(letter);
   });
 
+  // 🔥 9️⃣ 기본 동작 방지 (PC, 모바일 모두 대응)
+  groupElement.addEventListener('mousedown', (event) => event.preventDefault());
+  groupElement.addEventListener('touchstart', (event) => event.preventDefault()); // 모바일 대응
 
-
-
-
-
-
-
-
-
-  // 🔥 기본 동작 막기 (커서 제거)
-  groupElement.addEventListener('mousedown', (event) => {
-    event.preventDefault(); // 클릭 시 기본 동작 차단
+  // 🎉 10️⃣ SVG에 그룹 추가
+  requestAnimationFrame(() => {
+    document.querySelector('svg').appendChild(groupElement);
+    groupElement.style.opacity = "1"; // 강제 리렌더링
   });
-
-  // 🎉 그룹을 SVG에 추가
-  document.querySelector('svg').appendChild(groupElement);
 }
+
 
 
 function createRandomElement(letters) {
