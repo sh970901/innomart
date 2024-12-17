@@ -4,9 +4,15 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.netty.http.client.HttpClient;
+import reactor.netty.tcp.TcpClient;
+import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 
 @Configuration
 public class WebGateConfig {
+
+    private static final int CONNECT_TIMEOUT_MILLIS = 1000;
+    private static final String ACCESS_CONTROL_URL = "http://43.203.254.209:8082";
 
     @Bean
     @ConditionalOnMissingBean(WebGate.class)
@@ -16,8 +22,16 @@ public class WebGateConfig {
 
     @Bean(name = "webGateClient")
     public WebClient webGateClient(WebClient.Builder builder) {
-        return builder.baseUrl("http://43.203.254.209:8082") // 기본 URL 설정
-                .build();
+
+        TcpClient tcpClient = TcpClient.create()
+                                       .option(io.netty.channel.ChannelOption.CONNECT_TIMEOUT_MILLIS, CONNECT_TIMEOUT_MILLIS);
+
+        HttpClient httpClient = HttpClient.from(tcpClient);
+
+        return builder
+            .baseUrl(ACCESS_CONTROL_URL) // 기본 URL 설정
+            .clientConnector(new ReactorClientHttpConnector(httpClient))
+            .build();
     }
 
 //    @Bean
