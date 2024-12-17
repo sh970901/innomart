@@ -41,10 +41,9 @@
     // const queue = '[[${queue}]]';
     const userId = getCookie("userId");
     // const queryParam = new URLSearchParams({queue: queue, user_id: userId});
-    fetch('http://43.203.254.209:8082/api/v1/limiter/order/baobabtraffic3/' + userId)
+    fetch('/proxy/limiter/order/baobabtraffic3/' + userId)
     .then(response => response.json())
     .then(result => {
-      console.log("3333",code)
       console.log(result)
       // if(result.data.order === 0) {
       if(result.data === 0) {
