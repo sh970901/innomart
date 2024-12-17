@@ -33,13 +33,13 @@ public class BackOfficeController {
     }
 
     @GetMapping("/welcome")
-    @TrafficLimiter(gateId = "baobabtraffic3", waitingPagePath = "backoffice/waiting")
+    @TrafficLimiter(gateId = "baobabtraffic30", waitingPagePath = "backoffice/waiting")
     public String welcomeView() {
        return "backoffice/welcome" ;
     }
 
     @PostMapping("/tree")
-    @TrafficLimiter(gateId = "baobabtraffic3", waitingPagePath = "backoffice/waiting-post")
+    @TrafficLimiter(gateId = "baobabtraffic30", waitingPagePath = "backoffice/waiting-post")
     public String treeView(@RequestParam("code") String code, Model model) {
 
         /**
