@@ -109,7 +109,7 @@ html {
   .fixed-text {
     position: absolute; /* 부모 요소 기준 고정 */
     top: 20px; /* 부모 기준 상단에서 20px */
-    left: 46.5%; /* 화면 정가운데 */
+    left: 47.5%;
     transform: translateX(-50%) translateX(-20%);
     font-size: 20px;
     color: white;

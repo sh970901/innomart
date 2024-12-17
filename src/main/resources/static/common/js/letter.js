@@ -93,18 +93,16 @@ function createLetterElement(letter) {
 
 
 
-/*랜덤오브제생성*/
+/* 랜덤 오브제 생성 */
 function placeRandomElement(letter) {
   if (usedPositions.length >= positions.length) {
     return;
   }
 
-  // 🔥 1️⃣ 뷰포트 크기 동적 계산 (모바일, PC 겸용)
   const svgElement = document.querySelector('svg');
   const svgWidth = svgElement.clientWidth;
   const svgHeight = svgElement.clientHeight;
 
-  // 📍 2️⃣ 중복 위치 방지: 랜덤 위치 계산 (뷰포트 크기 비율로)
   let randomPosition;
   do {
     randomPosition = positions[Math.floor(Math.random() * positions.length)];
@@ -116,15 +114,12 @@ function placeRandomElement(letter) {
     return;
   }
 
-  // 🎉 3️⃣ 랜덤 오브제 선택
   const randomImageIndex = Math.floor(Math.random() * images.length);
   const randomImage = images.splice(randomImageIndex, 1)[0];
 
-  // 🎉 4️⃣ 그룹 요소 생성 (이미지와 텍스트를 묶기 위해)
   const groupElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
 
-  // ✨ 5️⃣ 이미지 추가
-  const imageSize = 30; // 이미지 크기
+  const imageSize = 30;
   const imageElement = document.createElementNS("http://www.w3.org/2000/svg", "image");
   imageElement.setAttribute("x", randomPosition.cx - imageSize / 2);
   imageElement.setAttribute("y", randomPosition.cy - imageSize / 2);
@@ -132,10 +127,9 @@ function placeRandomElement(letter) {
   imageElement.setAttribute("height", imageSize);
   imageElement.setAttribute("href", randomImage);
   imageElement.setAttribute("class", "random-image");
-  imageElement.style.willChange = 'transform, opacity'; // 하드웨어 가속
+  imageElement.style.willChange = 'transform, opacity';
   groupElement.appendChild(imageElement);
 
-  // 🆕 ✨ 텍스트 박스 추가 (검정 투명 배경)
   const textWidth = 40;
   const textHeight = 20;
   const rectElement = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -148,41 +142,45 @@ function placeRandomElement(letter) {
   rectElement.setAttribute("fill", "rgba(0, 0, 0, 0.5)");
   groupElement.appendChild(rectElement);
 
-  // ✨ 6️⃣ 텍스트 추가
   const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
   textElement.setAttribute("x", randomPosition.cx);
-  textElement.setAttribute("y", randomPosition.cy + imageSize / 2 + textHeight / 2 + 4.5);
+  textElement.setAttribute("y", randomPosition.cy + imageSize / 2 + textHeight / 2 + 9); // y 위치 조정
   textElement.setAttribute("class", "random-text");
   textElement.setAttribute("data-content", letter.message);
   textElement.setAttribute("text-anchor", "middle");
-  textElement.setAttribute("dominant-baseline", "middle");
-  textElement.setAttribute("dy", "0.35em"); // iOS 호환성 보완
+  textElement.setAttribute("alignment-baseline", "middle"); // 사파리 호환
+  textElement.setAttribute("font-family", "Arial, sans-serif"); // 명시적 폰트 설정
+  textElement.setAttribute("font-size", "12px"); // 폰트 크기
+  textElement.setAttribute("fill", "white"); // fill 명시적 적용
   textElement.textContent = letter.sender;
 
-  // 🎨 7️⃣ 스타일 추가
-  textElement.style.fontSize = "12px";
-  textElement.style.fill = "white";
-  textElement.style.fontWeight = "600";
-  textElement.style.filter = "url(#text-shadow)";
-  textElement.style.fontFamily = "Arial, sans-serif";
-  textElement.style.willChange = 'transform, opacity';
   groupElement.appendChild(textElement);
+  textElement.style.fontWeight = "600";
+  groupElement.style.pointerEvents = 'auto';
+  groupElement.style.touchAction = 'manipulation';
+  groupElement.style.userSelect = 'none';
+  groupElement.style.cursor = 'pointer';
 
-  // 🔥 8️⃣ 클릭 이벤트 추가
   groupElement.addEventListener('click', function() {
     openModal(letter);
   });
 
-  // 🔥 9️⃣ 기본 동작 방지 (PC, 모바일 모두 대응)
-  groupElement.addEventListener('mousedown', (event) => event.preventDefault());
-  groupElement.addEventListener('touchstart', (event) => event.preventDefault()); // 모바일 대응
+  groupElement.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+    openModal(letter);
+  }, { passive: true });
 
-  // 🎉 10️⃣ SVG에 그룹 추가
+  groupElement.addEventListener('mousedown', (event) => event.preventDefault());
+  groupElement.addEventListener('touchstart', (event) => event.preventDefault());
+
   requestAnimationFrame(() => {
     document.querySelector('svg').appendChild(groupElement);
-    groupElement.style.opacity = "1"; // 강제 리렌더링
+    groupElement.style.opacity = "1";
   });
 }
+
+
+
 
 
 
