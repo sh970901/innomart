@@ -29,9 +29,13 @@
 <div class="login">
   <div class="waiting-txt message">
     <div>접속량이 많습니다.</div>
-    <div><span>현재 대기 순번 </span><span id="number">[[${number}]]</span><span> 입니다.</span></div>
+    <div>
+      <span>현재 대기 순번 </span>
+      <span id="number">[[${number}]]</span>
+      <span> 입니다.</span>
+    </div>
     <br/>
-    <div>서버의 접속량이 많아<div>
+    <div>서버의 접속량이 많아</div>
     <div>시간이 걸릴 수 있습니다.</div>
     <div>잠시만 기다려주세요.</div>
     <div id="updated"></div>
@@ -40,7 +44,7 @@
 
 
 
-<!--<script>
+<script>
   fetchWaitingRank();
 
   function fetchWaitingRank() {
@@ -74,7 +78,7 @@
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
   }
-</script>-->
+</script>
 <script src="/common/js/welcome.js"></script>
 </body>
 </html>
